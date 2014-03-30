@@ -18,12 +18,15 @@ public class Line {
     private String browser, browserVersion, os;
 
     public Line(String line) {
-        String[] tokens = line.split(",", 11);
+        String[] tokens = line.split("\\,", 11);
         if (tokens.length == 11) {
             country = tokens[1];
             // some states might be undefined
             state = parse(tokens[2]);
-            city = tokens[3];
+            city = parse(tokens[3]);
+            if (city.equals("-")) {
+                throw new IllegalArgumentException("Need city!");
+            }
 
             lat = Float.valueOf(tokens[4]);
             lng = Float.valueOf(tokens[5]);
@@ -39,7 +42,7 @@ public class Line {
     }
     
     private String parse(String token) {
-        if (token.trim().isEmpty()) {
+        if (token.trim().isEmpty() || token.trim().equals(",")) {
             return "-";
         } else {
             return token;

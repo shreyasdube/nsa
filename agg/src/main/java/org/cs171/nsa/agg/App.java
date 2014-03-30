@@ -69,7 +69,11 @@ public class App {
                 } else {
                     currTimestamp = timestamp;
                     // store all lines for this timestamp
-                    linesForCurrentTimestamp.add(new Line(s));
+                    try {
+                        linesForCurrentTimestamp.add(new Line(s));
+                    } catch (IllegalArgumentException ex) {
+                        System.out.println("Dropping: " + s);
+                    }
                 }
             }
             System.out.println("Output written to " + outputFile);
