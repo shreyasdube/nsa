@@ -21,39 +21,28 @@ public class Line {
         String[] tokens = line.split(",", 11);
         if (tokens.length == 11) {
             country = tokens[1];
-            state = tokens[2];
+            // some states might be undefined
+            state = parse(tokens[2]);
             city = tokens[3];
 
             lat = Float.valueOf(tokens[4]);
             lng = Float.valueOf(tokens[5]);
 
-            isp = tokens[6];
-            userAgent = tokens[7];
-            browser = tokens[8];
-            browserVersion = tokens[9];
-            os = tokens[10];
-
-            setDefaults();
+            isp = parse(tokens[6]);
+            userAgent = parse(tokens[7]);
+            browser = parse(tokens[8]);
+            browserVersion = parse(tokens[9]);
+            os = parse(tokens[10]);
         } else {
             throw new IllegalArgumentException("Invalid line: " + line);
         }
     }
-
-    private void setDefaults() {
-        if (isp.trim().isEmpty()) {
-            isp = "-";
-        }
-        if (userAgent.trim().isEmpty()) {
-            userAgent = "-";
-        }
-        if (browser.trim().isEmpty()) {
-            browser = "-";
-        }
-        if (browserVersion.trim().isEmpty()) {
-            browserVersion = "-";
-        }
-        if (os.trim().isEmpty()) {
-            os = "-";
+    
+    private String parse(String token) {
+        if (token.trim().isEmpty()) {
+            return "-";
+        } else {
+            return token;
         }
     }
 
