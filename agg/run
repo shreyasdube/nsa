@@ -4,4 +4,4 @@
 mvn clean package
 
 # run
-java -cp target/agg-1.0.0-SNAPSHOT.jar org.cs171.nsa.agg.App ../data/waf_cleaned
+java -cp target/agg-1.0.0-SNAPSHOT.jar org.cs171.nsa.agg.App ../data/sample_waf_cleaned
