@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Hello world!
@@ -13,7 +15,21 @@ import java.util.List;
 public class App {
 
     private static void agg(Long timestamp, List<Line> lines) {
-        System.out.println(timestamp + " has " + lines.toString());
+        if (lines.isEmpty()) {
+            return;
+        }
+        
+        Map<Line, Integer> lineCount = new LinkedHashMap<>();
+        for (Line line : lines) {
+            if (lineCount.containsKey(line)) {
+                // increment existing count
+                lineCount.put(line, (lineCount.get(line) + 1));
+            } else {
+                // add new entry
+                lineCount.put(line, 1);
+            }
+        }
+        System.out.println(timestamp + " ==> " + lineCount);
     }
 
     private static void readFile(String fileName) throws IOException {

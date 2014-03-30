@@ -18,8 +18,8 @@ public class Line {
     private String browser, version, os;
 
     public Line(String line) {
-        String[] tokens = line.split(",");
-        if (tokens.length == 0) {
+        String[] tokens = line.split(",", 11);
+        if (tokens.length == 11) {
             country = tokens[1];
             state = tokens[2];
             city = tokens[3];
@@ -32,6 +32,28 @@ public class Line {
             browser = tokens[8];
             version = tokens[9];
             os = tokens[10];
+            
+            setDefaults();
+        } else {
+            throw new IllegalArgumentException("Invalid line: " + line);
+        }
+    }
+    
+    private void setDefaults() {
+        if (isp.trim().isEmpty()) {
+            isp = "-";
+        }
+        if (userAgent.trim().isEmpty()) {
+            userAgent = "-";
+        }
+        if (browser.trim().isEmpty()) {
+            browser = "-";
+        }
+        if (version.trim().isEmpty()) {
+            version = "-";
+        }
+        if (os.trim().isEmpty()) {
+            os = "-";
         }
     }
 
@@ -79,5 +101,11 @@ public class Line {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return country + "," + state + "," + city + "," + lat + "," + lng + "," 
+                + isp + "," + browser + "," + version + "," + os;
     }
 }
