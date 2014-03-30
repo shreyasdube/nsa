@@ -42,14 +42,15 @@ public class App {
     }
 
     private static void start(String fileName) throws IOException {
+        final String outputFile = fileName + "_agg";
         BufferedReader r = null;
         BufferedWriter w = null;
         try {
             // file reader
             r = new BufferedReader(new FileReader(fileName));
-
+            
             // file writer
-            w = new BufferedWriter(new FileWriter(fileName + "_agg"));
+            w = new BufferedWriter(new FileWriter(outputFile));
             // write header
             w.write("timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count");
 
@@ -71,6 +72,7 @@ public class App {
                     linesForCurrentTimestamp.add(new Line(s));
                 }
             }
+            System.out.println("Output written to " + outputFile);
         } finally {
             if (r != null) {
                 r.close();
