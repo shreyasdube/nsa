@@ -45,7 +45,8 @@ public class Line {
         if (token.trim().isEmpty() || token.trim().equals(",")) {
             return "-";
         } else {
-            return token;
+            return token.replaceAll(",", "\\,")
+                    .replace("\"", "\\\"");
         }
     }
 

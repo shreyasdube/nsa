@@ -840,7 +840,7 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1393986600,MY,-,KUALALUMPUR,3.17,101.7,-,Safari,7.0.6,iPad,1
 1393986600,MY,-,KUALALUMPUR,3.17,101.7,tmnet,Internet Explorer,9.0,Windows,2
 1393986600,NL,-,AMSTERDAM,52.35,4.92,-,sqlmap,1.0-dev,-,14
-1393986600,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(124)</script>,-,1
+1393986600,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(124)</script>,-,1
 1393986600,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,7.0,Windows,1
 1393986600,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,190
 1393986600,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,3
@@ -870,8 +870,8 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1393986900,GB,EN,BAGULEY,53.38,-2.25,virginmedia,Safari,7.0.2,Macintosh,206
 1393986900,MY,-,KUALALUMPUR,3.17,101.7,tmnet,Internet Explorer,9.0,Windows,1
 1393986900,NL,-,AMSTERDAM,52.35,4.92,-,sqlmap,1.0-dev,-,107
-1393986900,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(177)</script>,-,1
-1393986900,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(210)</script>,-,1
+1393986900,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(177)</script>,-,1
+1393986900,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(210)</script>,-,1
 1393986900,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,166
 1393986900,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,3
 1393986900,US,DC,WASHINGTON,38.9102,-77.0179,-,SportsPunter.com,-,-,213
@@ -1608,9 +1608,9 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1393993200,IE,-,DUBLIN,53.33,-6.25,-,-,-,-,4
 1393993200,IT,-,MILANO,45.47,9.2,ti,Internet Explorer,7.0,Windows,12
 1393993200,RU,-,MOSCOW,55.75,37.58,-,Chrome,33.0.1750.146,Windows,2
-1393993200,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(1074)</script>,-,1
-1393993200,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(1079)</script>,-,1
-1393993200,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(1129)</script>,-,1
+1393993200,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(1074)</script>,-,1
+1393993200,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(1079)</script>,-,1
+1393993200,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(1129)</script>,-,1
 1393993200,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,8
 1393993200,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,85
 1393993200,US,DC,WASHINGTON,38.9102,-77.0179,-,SportsPunter.com,-,-,199
@@ -1700,7 +1700,7 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1393994400,CN,SN,XIAN,34.26,108.94,chinanet,Chrome,29.0.1547.66,Windows,2
 1393994400,IE,-,DUBLIN,53.33,-6.25,-,-,-,-,4
 1393994400,NL,-,AMSTERDAM,52.35,4.92,-,Mozilla,5.0,-,1
-1393994400,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(1273)</script>,-,1
+1393994400,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(1273)</script>,-,1
 1393994400,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,43
 1393994400,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,39
 1393994400,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,226
@@ -1966,11 +1966,11 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1393997400,KR,-,SEOUL,37.57,127.0,koreatelecom,Microsoft,-,-,1
 1393997400,NL,-,AMSTERDAM,52.35,4.92,-,Mozilla,5.0,-,11
 1393997400,PH,-,MANILA,14.58,121.0,-,Chrome,33.0.1750.146,Windows,31
-1393997400,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2142)</script>,-,1
-1393997400,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2173)</script>,-,1
-1393997400,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2183)</script>,-,1
-1393997400,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2188)</script>,-,1
-1393997400,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2198)</script>,-,1
+1393997400,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2142)</script>,-,1
+1393997400,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2173)</script>,-,1
+1393997400,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2183)</script>,-,1
+1393997400,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2188)</script>,-,1
+1393997400,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2198)</script>,-,1
 1393997400,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,1416
 1393997400,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,2
 1393997400,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,229
@@ -1978,7 +1978,7 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1393997400,US,GA,ATLANTA,33.7486,-84.3884,att,DirBuster-1.0-RC1,-,-,2218
 1393997400,US,IL,CHICAGO,41.8643,-87.645,-,Internet Explorer,8.0,Windows,3719
 1393997400,US,NY,NEWYORK,40.75,-73.9967,-,Internet Explorer,11.0,Windows,134
-1393997400,US,PA,EBENSBURG,40.4747,-78.7176,-,";,-,-,5
+1393997400,US,PA,EBENSBURG,40.4747,-78.7176,-,\";,-,-,5
 1393997400,US,PA,EBENSBURG,40.4747,-78.7176,-,-,-,-,14
 1393997400,US,PA,EBENSBURG,40.4747,-78.7176,-,Internet Explorer,8.0,Windows,7383
 1393997400,US,PA,EBENSBURG,40.4747,-78.7176,-,webmin,-,-,2
@@ -1995,14 +1995,14 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1393997700,GB,EN,LONDON,51.5,-0.12,-,Dalvik,1.6.0,-,27
 1393997700,GB,EN,LONDON,51.5,-0.12,-,Internet Explorer,8.0,Windows,2
 1393997700,IE,-,DUBLIN,53.33,-6.25,-,-,-,-,5
-1393997700,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2263)</script>,-,1
-1393997700,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2268)</script>,-,1
-1393997700,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2283)</script>,-,1
-1393997700,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2306)</script>,-,1
-1393997700,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2311)</script>,-,1
-1393997700,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2326)</script>,-,1
-1393997700,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2331)</script>,-,1
-1393997700,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2336)</script>,-,1
+1393997700,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2263)</script>,-,1
+1393997700,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2268)</script>,-,1
+1393997700,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2283)</script>,-,1
+1393997700,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2306)</script>,-,1
+1393997700,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2311)</script>,-,1
+1393997700,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2326)</script>,-,1
+1393997700,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2331)</script>,-,1
+1393997700,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2336)</script>,-,1
 1393997700,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,707
 1393997700,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,2
 1393997700,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,236
@@ -2031,8 +2031,8 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1393998000,IE,-,DUBLIN,53.33,-6.25,-,-,-,-,4
 1393998000,IN,DL,NEWDELHI,28.6,77.2,-,-,-,-,439
 1393998000,IN,DL,NEWDELHI,28.6,77.2,vodafone,Safari,-,07.42,4
-1393998000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2361)</script>,-,1
-1393998000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2366)</script>,-,1
+1393998000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2361)</script>,-,1
+1393998000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2366)</script>,-,1
 1393998000,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,591
 1393998000,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,1
 1393998000,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,258
@@ -2077,12 +2077,12 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1393998600,IE,-,DUBLIN,53.33,-6.25,-,-,-,-,7
 1393998600,IN,CH,CHANDIGARH,30.74,76.79,-,Chrome,33.0.1750.146,Windows,11
 1393998600,IN,DL,NEWDELHI,28.6,77.2,-,Chrome,33.0.1750.146,Windows,15
-1393998600,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2426)</script>,-,1
-1393998600,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2429)</script>,-,1
-1393998600,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2434)</script>,-,1
-1393998600,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2439)</script>,-,1
-1393998600,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2444)</script>,-,1
-1393998600,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2449)</script>,-,1
+1393998600,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2426)</script>,-,1
+1393998600,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2429)</script>,-,1
+1393998600,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2434)</script>,-,1
+1393998600,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2439)</script>,-,1
+1393998600,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2444)</script>,-,1
+1393998600,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2449)</script>,-,1
 1393998600,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,785
 1393998600,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,2
 1393998600,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,356
@@ -2156,23 +2156,23 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1393999500,IE,-,DUBLIN,53.33,-6.25,-,-,-,-,6
 1393999500,IN,DL,NEWDELHI,28.6,77.2,-,Safari,-,Windows,51
 1393999500,NO,-,OSLO,59.92,10.75,-,Internet Explorer,11.0,Windows,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2535)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2542)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2547)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2552)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2557)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2562)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2567)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2572)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2577)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2582)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2587)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2592)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2597)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2602)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2612)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2617)</script>,-,1
-1393999500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2622)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2535)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2542)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2547)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2552)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2557)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2562)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2567)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2572)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2577)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2582)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2587)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2592)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2597)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2602)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2612)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2617)</script>,-,1
+1393999500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2622)</script>,-,1
 1393999500,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,154
 1393999500,SG,-,SINGAPORE,1.29,103.86,-,Safari,5.0.6,Macintosh,127
 1393999500,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,1
@@ -2196,10 +2196,10 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1393999800,IE,-,DUBLIN,53.33,-6.25,-,-,-,-,11
 1393999800,IL,-,TELAVIV,32.07,34.77,-,Internet Explorer,6.0,Windows,90
 1393999800,IN,DL,NEWDELHI,28.6,77.2,-,Safari,-,Windows,4
-1393999800,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2662)</script>,-,1
-1393999800,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2672)</script>,-,1
-1393999800,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2685)</script>,-,1
-1393999800,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2708)</script>,-,1
+1393999800,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2662)</script>,-,1
+1393999800,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2672)</script>,-,1
+1393999800,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2685)</script>,-,1
+1393999800,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2708)</script>,-,1
 1393999800,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,60
 1393999800,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,243
 1393999800,US,DC,WASHINGTON,38.9102,-77.0179,-,SportsPunter.com,-,-,3
@@ -2225,16 +2225,16 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1394000100,IE,-,DUBLIN,53.33,-6.25,-,-,-,-,7
 1394000100,IN,TN,CHENNAI,13.08,80.28,-,Internet Explorer,9.0,Windows,1
 1394000100,KR,-,SEOUL,37.57,127.0,-,Internet Explorer,7.0,Windows,2
-1394000100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2756)</script>,-,1
-1394000100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2761)</script>,-,1
-1394000100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2766)</script>,-,1
-1394000100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2775)</script>,-,1
-1394000100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2835)</script>,-,1
-1394000100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2855)</script>,-,1
-1394000100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2859)</script>,-,1
-1394000100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2862)</script>,-,1
-1394000100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2865)</script>,-,1
-1394000100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2868)</script>,-,1
+1394000100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2756)</script>,-,1
+1394000100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2761)</script>,-,1
+1394000100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2766)</script>,-,1
+1394000100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2775)</script>,-,1
+1394000100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2835)</script>,-,1
+1394000100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2855)</script>,-,1
+1394000100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2859)</script>,-,1
+1394000100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2862)</script>,-,1
+1394000100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2865)</script>,-,1
+1394000100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2868)</script>,-,1
 1394000100,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,92
 1394000100,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,2
 1394000100,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,264
@@ -2259,13 +2259,13 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1394000400,CN,SH,SHANGHAI,31.22,121.46,chinanet,Chrome,21.0.1180.89,Windows,14
 1394000400,IE,-,DUBLIN,53.33,-6.25,-,-,-,-,7
 1394000400,KR,-,SEOUL,37.57,127.0,-,Internet Explorer,11.0,Windows,3
-1394000400,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2871)</script>,-,1
-1394000400,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2874)</script>,-,1
-1394000400,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2877)</script>,-,1
-1394000400,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2880)</script>,-,1
-1394000400,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2883)</script>,-,1
-1394000400,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2886)</script>,-,1
-1394000400,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2889)</script>,-,1
+1394000400,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2871)</script>,-,1
+1394000400,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2874)</script>,-,1
+1394000400,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2877)</script>,-,1
+1394000400,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2880)</script>,-,1
+1394000400,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2883)</script>,-,1
+1394000400,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2886)</script>,-,1
+1394000400,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2889)</script>,-,1
 1394000400,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,94
 1394000400,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,39
 1394000400,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,186
@@ -2310,27 +2310,27 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1394001000,CN,GD,GUANGZHOU,23.12,113.25,chinanet,Internet Explorer,8.0,Windows,169
 1394001000,IE,-,DUBLIN,53.33,-6.25,-,-,-,-,15
 1394001000,PL,-,KALISZ,52.95,20.65,-,Safari,-,SmartHub,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2926)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2931)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2936)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2941)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2946)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2951)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2956)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2961)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2966)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2971)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2976)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2981)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2986)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(2991)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3001)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3006)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3021)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3026)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3034)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3047)</script>,-,1
-1394001000,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3052)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2926)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2931)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2936)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2941)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2946)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2951)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2956)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2961)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2966)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2971)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2976)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2981)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2986)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(2991)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3001)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3006)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3021)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3026)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3034)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3047)</script>,-,1
+1394001000,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3052)</script>,-,1
 1394001000,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,185
 1394001000,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,3
 1394001000,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,312
@@ -2349,21 +2349,21 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1394001300,CN,HI,HAIKOU,20.05,110.34,chinanet,Internet Explorer,8.0,Windows,1
 1394001300,GB,EN,BAGULEY,53.38,-2.25,virginmedia,Chrome,33.0.1750.146,Windows,15
 1394001300,IE,-,DUBLIN,53.33,-6.25,-,-,-,-,2
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3057)</script>,-,1
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3062)</script>,-,1
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3067)</script>,-,1
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3072)</script>,-,1
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3077)</script>,-,1
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3082)</script>,-,1
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3087)</script>,-,1
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3092)</script>,-,1
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3107)</script>,-,1
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3112)</script>,-,1
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3117)</script>,-,1
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3122)</script>,-,1
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3147)</script>,-,1
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3168)</script>,-,1
-1394001300,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(3172)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3057)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3062)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3067)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3072)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3077)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3082)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3087)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3092)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3107)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3112)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3117)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3122)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3147)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3168)</script>,-,1
+1394001300,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(3172)</script>,-,1
 1394001300,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,79
 1394001300,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,2
 1394001300,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,203
@@ -3481,7 +3481,7 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1394009700,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,12
 1394009700,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,71
 1394009700,US,CA,SUNNYVALE,37.3873,-122.0158,-,Java,1.7.0_45,-,132
-1394009700,US,FL,MIAMI,25.7738,-80.1936,-,"Xx<XaXaXXaXaX>xXx';",)`,-,2
+1394009700,US,FL,MIAMI,25.7738,-80.1936,-,\"Xx<XaXaXXaXaX>xXx';\",)`,-,2
 1394009700,US,FL,MIAMI,25.7738,-80.1936,-,-,-,-,4
 1394009700,US,FL,MIAMI,25.7738,-80.1936,-,Internet Explorer,7.0,Windows,1
 1394009700,US,FL,MIAMI,25.7738,-80.1936,-,Internet Explorer,7.0,Windows,349
@@ -3534,7 +3534,7 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1394010000,US,CA,LOSBANOS,36.9711,-120.9668,comcast,Chrome,33.0.1750.146,Windows,34
 1394010000,US,CA,SUNNYVALE,37.3873,-122.0158,-,Java,1.7.0_45,-,3
 1394010000,US,DC,WASHINGTON,38.9102,-77.0179,-,SportsPunter.com,-,-,132
-1394010000,US,FL,MIAMI,25.7738,-80.1936,-,"Xx<XaXaXXaXaX>xXx';",)`,-,2
+1394010000,US,FL,MIAMI,25.7738,-80.1936,-,\"Xx<XaXaXXaXaX>xXx';\",)`,-,2
 1394010000,US,FL,MIAMI,25.7738,-80.1936,-,-,-,-,4
 1394010000,US,FL,MIAMI,25.7738,-80.1936,-,Internet Explorer,7.0,Windows,1103
 1394010000,US,IL,CHICAGO,41.8643,-87.645,-,Internet Explorer,8.0,Windows,216
@@ -3731,19 +3731,19 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1394011500,GB,EN,LONDON,51.5,-0.12,bskyb,Chrome,33.0.1750.146,Windows,11
 1394011500,IE,-,DUBLIN,53.33,-6.25,-,-,-,-,9
 1394011500,SE,AB,STOCKHOLM,59.33,18.05,bt,Internet Explorer,9.0,Windows,145
-1394011500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(4937)</script>,-,1
-1394011500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(4942)</script>,-,1
-1394011500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(4947)</script>,-,1
-1394011500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(4952)</script>,-,1
-1394011500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(4957)</script>,-,1
-1394011500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(4962)</script>,-,1
-1394011500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(4970)</script>,-,1
-1394011500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(4975)</script>,-,1
-1394011500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(4985)</script>,-,1
-1394011500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(4990)</script>,-,1
-1394011500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(4995)</script>,-,1
-1394011500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5006)</script>,-,1
-1394011500,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5011)</script>,-,1
+1394011500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(4937)</script>,-,1
+1394011500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(4942)</script>,-,1
+1394011500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(4947)</script>,-,1
+1394011500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(4952)</script>,-,1
+1394011500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(4957)</script>,-,1
+1394011500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(4962)</script>,-,1
+1394011500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(4970)</script>,-,1
+1394011500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(4975)</script>,-,1
+1394011500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(4985)</script>,-,1
+1394011500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(4990)</script>,-,1
+1394011500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(4995)</script>,-,1
+1394011500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5006)</script>,-,1
+1394011500,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5011)</script>,-,1
 1394011500,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,58
 1394011500,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,1
 1394011500,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,144
@@ -3776,15 +3776,15 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1394011800,IE,-,DUBLIN,53.33,-6.25,-,-,-,-,12
 1394011800,JP,13,TOKYO,35.69,139.75,-,-,-,-,2
 1394011800,SE,AB,STOCKHOLM,59.33,18.05,bt,Internet Explorer,9.0,Windows,5
-1394011800,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5014)</script>,-,1
-1394011800,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5017)</script>,-,1
-1394011800,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5020)</script>,-,1
-1394011800,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5023)</script>,-,1
-1394011800,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5026)</script>,-,1
-1394011800,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5029)</script>,-,1
-1394011800,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5040)</script>,-,1
-1394011800,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5045)</script>,-,1
-1394011800,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5054)</script>,-,1
+1394011800,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5014)</script>,-,1
+1394011800,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5017)</script>,-,1
+1394011800,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5020)</script>,-,1
+1394011800,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5023)</script>,-,1
+1394011800,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5026)</script>,-,1
+1394011800,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5029)</script>,-,1
+1394011800,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5040)</script>,-,1
+1394011800,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5045)</script>,-,1
+1394011800,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5054)</script>,-,1
 1394011800,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,561
 1394011800,SG,-,SINGAPORE,1.29,103.86,-,Chrome,33.0.1750.117,Windows,2
 1394011800,SG,-,SINGAPORE,1.29,103.86,-,Chrome,33.0.1750.146,Windows,3
@@ -4015,7 +4015,7 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1394013900,IN,MH,PUNE,18.53,73.87,-,Firefox,24.0,Windows,1
 1394013900,PL,-,KOLOBRZEG,54.18,15.58,-,Przepisy.pl,-,-,2115
 1394013900,SE,AB,STOCKHOLM,59.33,18.05,-,Internet Explorer,8.0,Windows,133
-1394013900,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5178)</script>,-,1
+1394013900,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5178)</script>,-,1
 1394013900,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,57
 1394013900,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,1
 1394013900,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,215
@@ -4235,33 +4235,33 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1394015100,IN,MH,MUMBAI,18.98,72.83,-,Internet Explorer,6.0,Windows,4
 1394015100,IN,MH,MUMBAI,18.98,72.83,-,NokiaX2-02,2.0,-,4
 1394015100,PL,-,KOLOBRZEG,54.18,15.58,-,Przepisy.pl,-,-,1138
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5484)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5487)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5490)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5495)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5500)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5505)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5566)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5571)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5576)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5605)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5610)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5618)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5623)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5626)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5636)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5639)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5644)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5649)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5654)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5676)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5686)</script>,-,1
-1394015100,SG,-,SINGAPORE,1.29,103.86,-,"'><,script></textarea><script>alert(5696)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5484)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5487)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5490)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5495)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5500)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5505)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5566)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5571)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5576)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5605)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5610)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5618)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5623)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5626)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5636)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5639)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5644)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5649)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5654)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5676)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5686)</script>,-,1
+1394015100,SG,-,SINGAPORE,1.29,103.86,-,\"'><,script></textarea><script>alert(5696)</script>,-,1
 1394015100,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,8.0,Windows,4045
 1394015100,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,2
 1394015100,SG,-,SINGAPORE,1.29,103.86,-,Internet Explorer,10.0,Windows,169
 1394015100,US,CA,SANTACLARA,37.3519,-121.952,-,Safari,5.1.6,Macintosh,34
-1394015100,US,CO,DENVER,39.7393,-104.9844,-,"Xx<XaXaXXaXaX>xXx';",)`,-,2
+1394015100,US,CO,DENVER,39.7393,-104.9844,-,\"Xx<XaXaXXaXaX>xXx';\",)`,-,2
 1394015100,US,CO,DENVER,39.7393,-104.9844,-,-,-,-,4
 1394015100,US,CO,DENVER,39.7393,-104.9844,-,Internet Explorer,7.0,Windows,1148
 1394015100,US,DC,WASHINGTON,38.9102,-77.0179,-,SportsPunter.com,-,-,74
@@ -5847,7 +5847,7 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1394042400,GB,EN,LONDON,51.5,-0.12,bskyb,Chrome,33.0.1750.146,Windows,198
 1394042400,GB,EN,LONDON,51.5,-0.12,bskyb,Chrome,33.0.1750.117,Windows,6
 1394042400,GB,SC,EDINBURGH,55.95,-3.2,virginmedia,Chrome,26.0.1410.40,Windows,18
-1394042400,IN,CH,CHANDIGARH,30.74,76.79,-,1'"2000,-,-,129
+1394042400,IN,CH,CHANDIGARH,30.74,76.79,-,1'\"2000,-,-,129
 1394042400,IN,CH,CHANDIGARH,30.74,76.79,-,Internet Explorer,9.0,Windows,6348
 1394042400,IN,DL,NEWDELHI,28.6,77.2,vodafone,Android,-,Linux,11
 1394042400,JP,13,TOKYO,35.69,139.75,-,-,-,-,175
@@ -5877,7 +5877,7 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1394042700,GB,EN,LONDON,51.5,-0.12,bt,Chrome,18.0.1025.308,Linux,19
 1394042700,GB,SC,RENFREW,55.87,-4.37,virginmedia,Chrome,33.0.1750.146,Windows,13
 1394042700,GB,SC,UDDINGSTON,55.8,-4.07,virginmedia,Firefox,27.0,Windows,16
-1394042700,IN,CH,CHANDIGARH,30.74,76.79,-,1'"2000,-,-,80
+1394042700,IN,CH,CHANDIGARH,30.74,76.79,-,1'\"2000,-,-,80
 1394042700,IN,CH,CHANDIGARH,30.74,76.79,-,Internet Explorer,9.0,Windows,3401
 1394042700,JP,13,TOKYO,35.69,139.75,-,-,-,-,219
 1394042700,MX,DIF,MEXICOCITY,19.43,-99.14,uninet,Firefox,27.0,Windows,4
@@ -6121,7 +6121,7 @@ timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count
 1394046900,CN,GD,GUANGZHOU,23.12,113.25,chinaunicom,Java,1.5.0_08,-,240
 1394046900,FR,-,VITRYSURSEINE,48.78,2.4,-,-,-,-,130
 1394046900,GB,EN,CAMBRIDGE,52.2,0.12,virginmedia,Chrome,33.0.1750.146,Windows,930
-1394046900,IE,-,DUBLIN,53.33,-6.25,-,"Mozilla,5.0,-,1
+1394046900,IE,-,DUBLIN,53.33,-6.25,-,\"Mozilla,5.0,-,1
 1394046900,JP,13,TOKYO,35.69,139.75,-,Internet Explorer,9.0,Windows,10
 1394046900,NL,-,AMSTERDAM,52.35,4.92,-,Internet Explorer,7.0,Windows,1
 1394046900,SG,-,SINGAPORE,1.29,103.86,-,Mozilla,5.0,X11,18
