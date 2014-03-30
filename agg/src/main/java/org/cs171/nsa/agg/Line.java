@@ -15,7 +15,7 @@ public class Line {
     private String country, state, city;
     private Float lat, lng;
     private String isp, userAgent;
-    private String browser, version, os;
+    private String browser, browserVersion, os;
 
     public Line(String line) {
         String[] tokens = line.split(",", 11);
@@ -30,15 +30,15 @@ public class Line {
             isp = tokens[6];
             userAgent = tokens[7];
             browser = tokens[8];
-            version = tokens[9];
+            browserVersion = tokens[9];
             os = tokens[10];
-            
+
             setDefaults();
         } else {
             throw new IllegalArgumentException("Invalid line: " + line);
         }
     }
-    
+
     private void setDefaults() {
         if (isp.trim().isEmpty()) {
             isp = "-";
@@ -49,8 +49,8 @@ public class Line {
         if (browser.trim().isEmpty()) {
             browser = "-";
         }
-        if (version.trim().isEmpty()) {
-            version = "-";
+        if (browserVersion.trim().isEmpty()) {
+            browserVersion = "-";
         }
         if (os.trim().isEmpty()) {
             os = "-";
@@ -105,7 +105,7 @@ public class Line {
 
     @Override
     public String toString() {
-        return country + "," + state + "," + city + "," + lat + "," + lng + "," 
-                + isp + "," + browser + "," + version + "," + os;
+        return country + "," + state + "," + city + "," + lat + "," + lng + ","
+                + isp + "," + browser + "," + browserVersion + "," + os;
     }
 }
