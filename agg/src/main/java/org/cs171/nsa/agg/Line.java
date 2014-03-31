@@ -40,26 +40,33 @@ public class Line {
             throw new IllegalArgumentException("Invalid line: " + line);
         }
     }
-    
+
+    private boolean containsUnsafeChars(String token) {
+        return token.contains("\"") || token.contains(",")
+                || token.contains("<") || token.contains(">");
+    }
+
     private String parse(String token) {
-        if (token.trim().isEmpty() || token.trim().equals(",")) {
+        if (token.trim().isEmpty() || token.trim().equals(",")
+                || containsUnsafeChars(token)) {
             return "-";
         } else {
-            return token.replaceAll(",", "\\,")
-                    .replace("\"", "\\\"");
+            return token;
         }
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 79 * hash + Objects.hashCode(this.country);
-        hash = 79 * hash + Objects.hashCode(this.state);
-        hash = 79 * hash + Objects.hashCode(this.city);
-        hash = 79 * hash + Objects.hashCode(this.lat);
-        hash = 79 * hash + Objects.hashCode(this.lng);
-        hash = 79 * hash + Objects.hashCode(this.isp);
-        hash = 79 * hash + Objects.hashCode(this.userAgent);
+        hash = 41 * hash + Objects.hashCode(this.country);
+        hash = 41 * hash + Objects.hashCode(this.state);
+        hash = 41 * hash + Objects.hashCode(this.city);
+        hash = 41 * hash + Objects.hashCode(this.lat);
+        hash = 41 * hash + Objects.hashCode(this.lng);
+        hash = 41 * hash + Objects.hashCode(this.isp);
+        hash = 41 * hash + Objects.hashCode(this.browser);
+        hash = 41 * hash + Objects.hashCode(this.browserVersion);
+        hash = 41 * hash + Objects.hashCode(this.os);
         return hash;
     }
 
@@ -90,7 +97,13 @@ public class Line {
         if (!Objects.equals(this.isp, other.isp)) {
             return false;
         }
-        if (!Objects.equals(this.userAgent, other.userAgent)) {
+        if (!Objects.equals(this.browser, other.browser)) {
+            return false;
+        }
+        if (!Objects.equals(this.browserVersion, other.browserVersion)) {
+            return false;
+        }
+        if (!Objects.equals(this.os, other.os)) {
             return false;
         }
         return true;
