@@ -46,6 +46,35 @@ var waf = {
     });
   },
 
+  getAggregatedMapData: function() {
+    var filteredData = waf.getFilteredData();
+
+    // aggregate by city, drop all other dimensions
+    var cities = {};
+    filteredData.forEach(function(d) {
+      var city = d.city;
+      // city already exists, just add the total count
+      if (cities[city]) {
+        cities[city].count += d.count;
+      } else {
+        // create new city
+        cities[city] = {
+          city: city, 
+          lat: d.lat,
+          lng: d.lng, 
+          count: d.count
+        }
+      }
+    });
+
+    // convert to array
+    var citiesArray = [];
+    for (var city in cities) {
+      citiesArray.push(cities[city]);
+    }
+    return citiesArray;
+  }, 
+
   init: function(wafData) {
     waf.data = wafData;
   } 
