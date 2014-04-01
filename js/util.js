@@ -3,14 +3,6 @@ var countryCodes = {
 	iso2CountryCodes: {},
 	geoJsonCountryCodes: {},
 
-	getWafCountryCodes: function(wafData) {
-		var wafCodes = {};
-		wafData.forEach(function(d) {
-			var countryCode = d.country;
-			wafCodes[countryCode] = countryCode;
-		});
-		return wafCodes;
-	}, 
 
 	initCountriesMap: function(countries, useIso2Code) {
 		var countriesMap = {};
@@ -21,8 +13,7 @@ var countryCodes = {
 		return countriesMap;
 	},
 
-	initIsoCodeLookupTable: function(countries, wafData) {
-		var wafCodes = countryCodes.getWafCountryCodes(wafData);
+	initIsoCodeLookupTable: function(countries, wafCodes) {
 		var countriesMap = countryCodes.initCountriesMap(countries, true);
 		for (var wafCountry in wafCodes) {
 			var country = countriesMap[wafCountry];
@@ -35,8 +26,7 @@ var countryCodes = {
 		}
 	},
 
-	initGeoJsonCodeLookupTable: function(countries, wafData) {
-		var wafCodes = countryCodes.getWafCountryCodes(wafData);
+	initGeoJsonCodeLookupTable: function(countries, wafCodes) {
 		var countriesMap = countryCodes.initCountriesMap(countries, false);
 		for (var wafCountry in wafCodes) {
 			var country = countryCodes.iso2CountryCodes[wafCountry];
@@ -45,8 +35,15 @@ var countryCodes = {
 	},
 
 	init: function(countries, worldData, wafData) {
-		countryCodes.initIsoCodeLookupTable(countries, wafData);
-		countryCodes.initGeoJsonCodeLookupTable(countries, wafData);
+		// get all waf country codes
+		var wafCodes = {};
+		wafData.forEach(function(d) {
+			var countryCode = d.country;
+			wafCodes[countryCode] = countryCode;
+		});
+
+		countryCodes.initIsoCodeLookupTable(countries, wafCodes);
+		countryCodes.initGeoJsonCodeLookupTable(countries, wafCodes);
 	}
 
 };
