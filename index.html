@@ -104,9 +104,12 @@
           .attr("d", path);
     }
 
-    var showAttacks = function(wafData) {
+    var showAttacks = function() {
+      // reset
+      g.selectAll("attack").remove();
+
       g.selectAll("attack")
-        .data(wafData)
+        .data(waf.getFilteredData())
         .enter().append("circle")
           .attr("class", "attack")
           // use projection to figure out cx and cy
@@ -148,7 +151,7 @@
       // draw world
       drawWorld(world);
       // overlay attacks
-      showAttacks(wafData);
+      showAttacks();
     }
 
     /*********************************************************************
