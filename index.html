@@ -80,6 +80,9 @@
       .attr("class", "tooltip")               
       .style("opacity", 0);
 
+    // pretty format large numbers
+    var numberFormat = d3.format(",.0f");
+
     // projection used
     var projection = d3.geo.mercator().translate([width / 2, height / 1.8]);
     // path used to draw the world map
@@ -87,7 +90,7 @@
 
     // extracts the values for longitude and latitude
     var getLngLat = function(d) {
-      return [parseFloat(d["lng"]), parseFloat(d["lat"])];
+      return [parseFloat(d.lng), parseFloat(d.lat)];
     }
 
     // converts lon, lat to x and y using a d3 projection
@@ -109,7 +112,7 @@
       g.selectAll("attack").remove();
 
       g.selectAll("attack")
-        .data(waf.getFilteredData())
+        .data(waf.getAggregatedMapData())
         .enter().append("circle")
           .attr("class", "attack")
           // use projection to figure out cx and cy
@@ -122,10 +125,8 @@
               .duration(200)      
               .style("opacity", 0.9)
 
-            // station id and name
-            var html = d.city + " (" + d.network + ") <b>" + d.count + "</b>";
-            html += "<br />Browser: " + d.browser;
-            html += "<br />OS: " + d.os;
+            // city name and count
+            var html = d.city + ": <b>" + numberFormat(d.count) + "</b>";
             tooltip.html(html)  
               .style("left", (d3.event.pageX) + "px")
               .style("top", (d3.event.pageY) + "px"); 
