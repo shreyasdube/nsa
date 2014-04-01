@@ -57,15 +57,21 @@
   <div id="vis"></div>
 
   <script type="text/javascript">
-    var margin = {
-      top: 10,
-      right: 10,
-      bottom: 10,
-      left: 10
-    };
+    var width = 960, height = 1040;
 
-    var width = 960 - margin.left - margin.right;
-    var height = 740 - margin.bottom - margin.top;
+    var bbMap = {
+      top: 310,
+      left: 10,
+      height: 720,
+      width: 940
+    }
+
+    var bbPolar = {
+      top: 10,
+      left:10,
+      height: 280,
+      width: 280
+    }
 
     var svg = d3.select("#vis").append("svg")
       .attr({
@@ -73,7 +79,21 @@
         height: height
       });
 
-    var g = svg.append("g");
+    // Polar plot
+    var gPolar = svg.append("g')
+      .attr({
+        transform: "translate(" + bbPolar.left + "," + bbPolar.top + ")"
+      });
+
+    // draws the polar plot
+    var drawPolar = function() {
+    }
+
+    // Bubble map
+    var gMap = svg.append("g")
+      .attr({
+        transform: "translate(" + bbMap.left + "," + bbMap.top + ")"
+      });
 
     // tooltip div element
     var tooltip = d3.select("body").append("div")   
@@ -84,7 +104,7 @@
     var numberFormat = d3.format(",.0f");
 
     // projection used
-    var projection = d3.geo.mercator().translate([width / 2, height / 1.8]);
+    var projection = d3.geo.mercator().translate([bbMap.width / 2, bbMap.height / 1.8]);
     // path used to draw the world map
     var path = d3.geo.path().projection(projection);
 
@@ -100,7 +120,7 @@
 
     // draws the world map
     var drawWorld = function(world) {
-      g.selectAll("path")
+      gMap.selectAll("path")
         .data(world.features)
         .enter().append("path")
           .attr("class", "country")
@@ -116,9 +136,9 @@
         .range([2, 15]);
 
       // reset
-      g.selectAll("attack").remove();
+      gMap.selectAll("attack").remove();
 
-      g.selectAll("attack")
+      gMap.selectAll("attack")
         .data(data)
         .enter().append("circle")
           .attr("class", "attack")
@@ -160,6 +180,8 @@
       drawWorld(world);
       // overlay attacks
       showAttacks();
+      // draw polar plot
+      drawPolar();
     }
 
     /*********************************************************************
