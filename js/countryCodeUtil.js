@@ -34,10 +34,10 @@ var countryCodes = {
     }
   },
 
-  init: function(countries, worldData, wafData) {
+  init: function(countries, worldData) {
     // get all waf country codes
     var wafCodes = {};
-    wafData.forEach(function(d) {
+    waf.data.forEach(function(d) {
       var countryCode = d.country;
       wafCodes[countryCode] = countryCode;
     });

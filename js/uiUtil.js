@@ -3,7 +3,6 @@ var uiUtil = {
   initCountrySelector: function(countrySelectorId) {
     // get all countries in sorted order
     var countries = countryCodes.getSortedCountries();
-    console.log(countries);
 
     // create manual entry for the entire world
     var world = {
@@ -18,5 +17,16 @@ var uiUtil = {
         .enter().append("option")
         .attr("value", function(d) { return d.iso2Code; })
         .text(function(d) { return d.name; });
+  }, 
+
+  initNetworkSelector: function(networkSelectorId) {
+    // get all networks in sorted order
+    var networks = waf.getNetworks();
+
+    d3.select(networkSelectorId).append("select")
+        .selectAll("option").data(["*"].concat(networks))
+        .enter().append("option")
+        .attr("value", function(d) { return d; })
+        .text(function(d) { return d; });
   }
 }

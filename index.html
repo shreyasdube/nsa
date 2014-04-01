@@ -11,6 +11,7 @@
   <!--script src="http://d3js.org/topojson.v1.min.js"></script-->
   <script type="text/javascript" src="lib/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="lib/colorbrewer.js"></script>
+  <script type="text/javascript" src="js/waf.js"></script> 
   <script type="text/javascript" src="js/countryCodeUtil.js"></script> 
   <script type="text/javascript" src="js/uiUtil.js"></script> 
 
@@ -51,6 +52,7 @@
 
   <div>
     <span id="countrySelector">Region&nbsp;</span>
+    <span id="networkSelector">Network&nbsp;</span>
   </div>
   <div id="vis"></div>
 
@@ -137,9 +139,12 @@
     // initialize the visualization
     var initVis = function(error, wafData, world, countries) {
 
+      // stash data
+      waf.init(wafData);
       // init utils
-      countryCodes.init(countries, world, wafData);
+      countryCodes.init(countries, world);
       uiUtil.initCountrySelector("#countrySelector");
+      uiUtil.initNetworkSelector("#networkSelector");
       // draw world
       drawWorld(world);
       // overlay attacks
