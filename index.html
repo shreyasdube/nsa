@@ -108,17 +108,24 @@
     }
 
     var showAttacks = function() {
+      var data = waf.getAggregatedMapData();
+
+      // create linear scale for the radius
+      var rScale = d3.scale.linear()
+        .domain(d3.extent(data, function(d) { return d.count; }))
+        .range([2, 15]);
+
       // reset
       g.selectAll("attack").remove();
 
       g.selectAll("attack")
-        .data(waf.getAggregatedMapData())
+        .data(data)
         .enter().append("circle")
           .attr("class", "attack")
           // use projection to figure out cx and cy
           .attr("cx", function(d, i) { return latLngToXY(d)[0]; })
           .attr("cy", function(d, i) { return latLngToXY(d)[1]; })
-          .attr("r", 2)
+          .attr("r", function(d) { return 2; })
           // show tooltip
           .on("mouseover", function(d, i) {
             tooltip.transition()   
