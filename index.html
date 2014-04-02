@@ -16,13 +16,18 @@
   <script type="text/javascript" src="js/uiUtil.js"></script> 
 
   <style type="text/css">
+    body {
+      color: white;
+      background-color: black;
+    }
+
     svg{
       /*background: #B2DFEE;*/
     }
 
     .country{
       fill: none;
-      stroke: black;
+      stroke: white;
     }
 
     text, body{
@@ -35,9 +40,9 @@
       border: none;
     }
 
-    .attack {
+    .mapAttack {
       fill: red;
-      opacity: 0.3;
+      opacity: 0.6;
     }
 
     div.tooltip {   
@@ -137,12 +142,12 @@
         .range([4, 32]);
 
       // reset
-      gMap.selectAll("attack").remove();
+      gMap.selectAll("mapAttack").remove();
 
-      gMap.selectAll("attack")
+      gMap.selectAll("mapAttack")
         .data(data)
         .enter().append("circle")
-          .attr("class", "attack")
+          .attr("class", "mapAttack")
           // use projection to figure out cx and cy
           .attr("cx", function(d, i) { return latLngToXY(d)[0]; })
           .attr("cy", function(d, i) { return latLngToXY(d)[1]; })
