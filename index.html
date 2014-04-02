@@ -46,6 +46,11 @@
       opacity: 0.6;
     }
 
+    .mapOverlay {
+      fill: none;
+      pointer-events: all;
+    }
+
     div.tooltip {   
       position: absolute;           
       padding: 4px;             
@@ -126,11 +131,26 @@
 
     // draws the world map
     var drawWorld = function(world) {
+      var zoom = d3.behavior.zoom()
+        // .translate([0, 0])
+        // .scale(1)
+        .scaleExtent([1, 8])
+        .on("zoom", function() {
+          gMap.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+        });
+
       gMap.selectAll("path")
         .data(world.features)
         .enter().append("path")
           .attr("class", "country")
           .attr("d", path);
+
+      svg.append("rect")
+        .attr("class", "mapOverlay")
+        .attr("transform", "translate(" + bbMap.left + "," + bbMap.top + ")")
+        .attr("width", bbMap.width)
+        .attr("height", bbMap.height)
+        .call(zoom);
     }
 
     var showAttacks = function() {
