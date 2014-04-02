@@ -37,6 +37,7 @@
 
     .attack {
       fill: red;
+      opacity: 0.3;
     }
 
     div.tooltip {   
@@ -131,9 +132,9 @@
       var data = waf.getAggregatedMapData();
 
       // create linear scale for the radius
-      var rScale = d3.scale.linear()
+      var rScale = d3.scale.sqrt()
         .domain(d3.extent(data, function(d) { return d.count; }))
-        .range([2, 15]);
+        .range([10, 100]);
 
       // reset
       gMap.selectAll("attack").remove();
@@ -145,7 +146,7 @@
           // use projection to figure out cx and cy
           .attr("cx", function(d, i) { return latLngToXY(d)[0]; })
           .attr("cy", function(d, i) { return latLngToXY(d)[1]; })
-          .attr("r", function(d) { return 2; })
+          .attr("r", function(d) { return rScale(d.count); })
           // show tooltip
           .on("mouseover", function(d, i) {
             tooltip.transition()   
