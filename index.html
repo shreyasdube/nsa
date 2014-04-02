@@ -210,23 +210,6 @@
       
     }
 
-    // initialize the visualization
-    var initVis = function(error, wafData, world, countries) {
-
-      // stash data
-      waf.init(wafData);
-      // init utils
-      countryCodes.init(countries, world);
-      uiUtil.initCountrySelector("#countrySelector");
-      uiUtil.initNetworkSelector("#networkSelector");
-      // draw world
-      drawWorld(world);
-      // overlay attacks
-      showAttacks();
-      // draw polar plot
-      drawPolar();
-    }
-
     /*********************************************************************
                                 start here
     **********************************************************************/
