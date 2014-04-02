@@ -58,9 +58,7 @@ var polarPlot = {
       .attr("r", function (d, i) {
         return polarPlot.radius(d);
       })
-      .attr("class", "circle-axis")
-      .style("stroke", "#CCC")
-      .style("fill", "none");
+      .attr("class", "circle-axis");
 
     circleAxes.append("svg:text")
       .attr("text-anchor", "middle")
@@ -80,8 +78,7 @@ var polarPlot = {
 
     lineAxes.append('svg:line')
       .attr("x2", -1 * polarPlot.radius(polarPlot.maxVal))
-      .attr("class", "line-axis")
-      .style("stroke", "#CCC");
+      .attr("class", "line-axis");
 
     lineAxes.append('svg:text')
       .text(String)
@@ -113,7 +110,7 @@ var polarPlot = {
           return (i / polarPlot.categories.length) * 2 * Math.PI;
         })
       )
-      .style("stroke-width", 3)
+      .style("stroke-width", 2)
       .style("fill", "none");
 
     lines.attr("d", d3.svg.line.radial()

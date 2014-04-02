@@ -31,6 +31,15 @@
       stroke: white;
     }
 
+    .line-axis, .circle-axis {
+      fill: none;
+      stroke: darkgray;
+    }
+
+    .line-ticks, .circle-ticks {
+      stroke: lightgray;
+    }
+
     text, body{
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 9pt;
@@ -98,6 +107,9 @@
 
     // draws the polar plot
     var drawPolar = function() {
+      var hourlyData = waf.getFilteredDataGroupedHourly();
+      hourlyData = hourlyData.concat(hourlyData[0]); // complete the circle
+      polarPlot.init(gPolar, bbPolar.width, bbPolar.height, d3.range(24), [hourlyData]);
     }
 
     // Bubble map

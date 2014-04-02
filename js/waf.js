@@ -28,7 +28,7 @@ var waf = {
 
     console.log("filter by ", country, network);
     return waf.data.filter(function(d) {
-      
+
       // if both are *, return immediately
       if (country === "*" && network === "*") {
         return true;
@@ -47,6 +47,17 @@ var waf = {
     });
   },
 
+  getFilteredDataGroupedHourly: function() {
+    var hourBuckets = d3.range(24).map(function() { return 0; });
+
+    // bucket counts based upon hour of the day
+    waf.getFilteredData().forEach(function(d) {
+      hourBuckets[d.date.getHours()] += d.count;
+    });
+
+    return hourBuckets;
+  },
+
   getAggregatedMapData: function() {
     var filteredData = waf.getFilteredData();
 
@@ -60,10 +71,10 @@ var waf = {
       } else {
         // create new city
         cities[city] = {
-          city: city, 
+          city: city,
           lat: d.lat,
-          lng: d.lng, 
-          count: +d.count
+          lng: d.lng,
+          count: d.count
         }
       }
     });
@@ -80,9 +91,16 @@ var waf = {
     });
 
     return citiesArray;
-  }, 
+  },
 
   init: function(wafData) {
-    waf.data = wafData;
-  } 
+    waf.data = wafData.map(function(d) {
+      // convert numbers and dates
+      d.count = +d.count;
+      d.lat   = +d.lat;
+      d.lng   = +d.lng;
+      d.date  = new Date(+d.timestamp * 1000);
+      return d;
+    });
+  }
 }
