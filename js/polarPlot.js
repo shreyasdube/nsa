@@ -91,17 +91,10 @@ var polarPlot = {
   draw: function() {
     var color = d3.scale.category10();
 
-    var groups = polarPlot.vizBody.selectAll('.series')
+    var lines = polarPlot.vizBody.selectAll('.line')
       .data(polarPlot.values);
 
-    groups.enter().append("svg:g")
-      .attr('class', 'series')
-      .style('fill', function (d, i) { return color(i); })
-      .style('stroke', function (d, i) { return color(i); });
-
-    groups.exit().remove();
-
-    var lines = groups.append('svg:path')
+    lines.enter().append('svg:path')
       .attr("class", "line")
       .attr("d", d3.svg.line.radial()
         .radius(function (d) { return 0; })
@@ -110,10 +103,11 @@ var polarPlot = {
           return (i / polarPlot.categories.length) * 2 * Math.PI;
         })
       )
-      .style("stroke-width", 2)
+      .style("stroke-width", 3)
+      .style('stroke', function (d, i) { return color(i); })
       .style("fill", "none");
 
-    lines.attr("d", d3.svg.line.radial()
+    lines.transition(750).attr("d", d3.svg.line.radial()
       .radius(function (d) { return polarPlot.radius(d); })
       .angle(function (d, i) {
         i = i % polarPlot.categories.length; // wrap back around

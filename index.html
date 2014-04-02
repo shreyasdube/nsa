@@ -107,9 +107,11 @@
 
     // draws the polar plot
     var drawPolar = function() {
-      var hourlyData = waf.getFilteredDataGroupedHourly();
-      hourlyData = hourlyData.concat(hourlyData[0]); // complete the circle
-      polarPlot.init(gPolar, bbPolar.width, bbPolar.height, d3.range(24), [hourlyData]);
+      var allHourlyData = waf.getAllDataGroupedHourly();
+      allHourlyData = allHourlyData.concat(allHourlyData[0]); // complete the circle
+      var filteredHourlyData = waf.getFilteredDataGroupedHourly();
+      filteredHourlyData = filteredHourlyData.concat(filteredHourlyData[0]); // complete the circle
+      polarPlot.init(gPolar, bbPolar.width, bbPolar.height, d3.range(24), [allHourlyData, filteredHourlyData]);
     }
 
     // Bubble map

@@ -47,6 +47,17 @@ var waf = {
     });
   },
 
+  getAllDataGroupedHourly: function() {
+    var hourBuckets = d3.range(24).map(function() { return 0; });
+
+    // bucket counts based upon hour of the day
+    waf.data.forEach(function(d) {
+      hourBuckets[d.date.getHours()] += d.count;
+    });
+
+    return hourBuckets;
+  },
+
   getFilteredDataGroupedHourly: function() {
     var hourBuckets = d3.range(24).map(function() { return 0; });
 
