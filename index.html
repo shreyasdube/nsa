@@ -103,12 +103,13 @@
     // Bubble map
     var gMapWrapper = svg.append("g")
       .attr({
+        class: "mapWrapper",
         transform: "translate(" + bbMap.left + "," + bbMap.top + ")"
       });
     var gMap = gMapWrapper.append("g");
     var mapOverlay = gMapWrapper.append("rect")
         .attr("class", "mapOverlay")
-        .attr("transform", "translate(" + bbMap.left + "," + bbMap.top + ")")
+        // .attr("transform", "translate(" + bbMap.left + "," + bbMap.top + ")")
         .attr("width", bbMap.width)
         .attr("height", bbMap.height)
 
