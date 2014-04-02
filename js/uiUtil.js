@@ -16,12 +16,16 @@ var uiUtil = {
       name: "World"
     }
 
-    d3.select(countrySelectorId).append("select")
-        // concat world + countries
-        .selectAll("option").data([world].concat(countries))
-        .enter().append("option")
-        .attr("value", function(d) { return d.iso2Code; })
-        .text(function(d) { return d.name; });
+    var select = d3.select(countrySelectorId).append("select");
+
+    // concat world + countries
+    select
+      .selectAll("option").data([world].concat(countries))
+      .enter().append("option")
+      .attr("value", function(d) { return d.iso2Code; })
+      .text(function(d) { return d.name; });
+
+    return select;
   }, 
 
   // gets selected country
@@ -35,11 +39,15 @@ var uiUtil = {
     // get all networks in sorted order
     var networks = waf.getNetworks();
 
-    d3.select(networkSelectorId).append("select")
-        .selectAll("option").data(["*"].concat(networks))
-        .enter().append("option")
-        .attr("value", function(d) { return d; })
-        .text(function(d) { return d; });
+    var select = d3.select(networkSelectorId).append("select");
+
+    select
+      .selectAll("option").data(["*"].concat(networks))
+      .enter().append("option")
+      .attr("value", function(d) { return d; })
+      .text(function(d) { return d; });
+
+    return select;
   },
 
   // gets selected network
