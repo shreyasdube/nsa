@@ -77,9 +77,9 @@ var bubbleMap = {
       .range([4, 32]);
 
     // reset
-    bubbleMap.g.selectAll("mapAttack").remove();
+    bubbleMap.g.selectAll(".mapAttack").remove();
 
-    bubbleMap.g.selectAll("mapAttack")
+    bubbleMap.g.selectAll(".mapAttack")
       .data(data)
       .enter().append("circle")
         .attr("class", "mapAttack")
