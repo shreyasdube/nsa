@@ -2,6 +2,7 @@ var controller = {
   // called when the selector(s) are changed
   update: function() {
     console.log("update!");
+    bubbleMap.update();
   },
 
   // initialize the visualization
@@ -20,12 +21,14 @@ var controller = {
       });;
 
 
-    // draw world
-    drawWorld(world);
-    // overlay attacks
-    showAttacks();
+    // init the world map
+    bubbleMap.init(gMapWrapper, bbMap, world);
+
     // draw polar plot
     drawPolar();
+
+    // update the UI
+    controller.update();
   }, 
 
   init: function() {
