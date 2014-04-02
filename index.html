@@ -11,6 +11,7 @@
   <!--script src="http://d3js.org/topojson.v1.min.js"></script-->
   <script type="text/javascript" src="lib/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="lib/colorbrewer.js"></script>
+  <script type="text/javascript" src="js/controller.js"></script> 
   <script type="text/javascript" src="js/waf.js"></script> 
   <script type="text/javascript" src="js/countryCodeUtil.js"></script> 
   <script type="text/javascript" src="js/uiUtil.js"></script> 
@@ -229,13 +230,7 @@
     /*********************************************************************
                                 start here
     **********************************************************************/
-    // very cool queue function to make multiple calls.. 
-    // see [0]
-    queue()
-      .defer(d3.csv, "../data/waf_5mi")
-      .defer(d3.json, "../data/world_data.json")
-      .defer(d3.json,"../data/countrycodes.json")
-      .await(initVis);
+    controller.init();
   </script>
 </body>
 </html>
