@@ -21,6 +21,7 @@ var waf = {
   },
 
   // returns only those data items that match the selected country and network dropdowns
+  // not meant for direct use
   getFilteredData: function() {
     var country = uiUtil.getSelectedCountry();
     var network = uiUtil.getSelectedNetwork();
@@ -55,14 +56,14 @@ var waf = {
       var city = d.city;
       // city already exists, just add the total count
       if (cities[city]) {
-        cities[city].count += d.count;
+        cities[city].count += +d.count;
       } else {
         // create new city
         cities[city] = {
           city: city, 
           lat: d.lat,
           lng: d.lng, 
-          count: d.count
+          count: +d.count
         }
       }
     });
@@ -72,6 +73,12 @@ var waf = {
     for (var city in cities) {
       citiesArray.push(cities[city]);
     }
+
+    // sort array in DESC order
+    citiesArray.sort(function(a, b) {
+      return d3.descending(a.count, b.count);
+    });
+
     return citiesArray;
   }, 
 
