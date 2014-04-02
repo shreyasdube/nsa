@@ -101,10 +101,16 @@
     }
 
     // Bubble map
-    var gMap = svg.append("g")
+    var gMapWrapper = svg.append("g")
       .attr({
         transform: "translate(" + bbMap.left + "," + bbMap.top + ")"
       });
+    var gMap = gMapWrapper.append("g");
+    var mapOverlay = gMapWrapper.append("rect")
+        .attr("class", "mapOverlay")
+        .attr("transform", "translate(" + bbMap.left + "," + bbMap.top + ")")
+        .attr("width", bbMap.width)
+        .attr("height", bbMap.height)
 
     // tooltip div element
     var tooltip = d3.select("body").append("div")   
@@ -145,12 +151,7 @@
           .attr("class", "country")
           .attr("d", path);
 
-      svg.append("rect")
-        .attr("class", "mapOverlay")
-        .attr("transform", "translate(" + bbMap.left + "," + bbMap.top + ")")
-        .attr("width", bbMap.width)
-        .attr("height", bbMap.height)
-        .call(zoom);
+      mapOverlay.call(zoom);
     }
 
     var showAttacks = function() {
