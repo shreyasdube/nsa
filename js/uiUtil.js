@@ -111,11 +111,11 @@ var bubbleMap = {
     bubbleMap.bb = bbMap;
 
     bubbleMap.g = gWrapper.append("g");
-    var mapOverlay = gWrapper.append("rect")
+    /*var mapOverlay = gWrapper.append("rect")
         .attr("class", "mapOverlay")
         // .attr("transform", "translate(" + bbMap.left + "," + bbMap.top + ")")
         .attr("width", bbMap.width)
-        .attr("height", bbMap.height)
+        .attr("height", bbMap.height)*/
 
     // tooltip div element
     bubbleMap.tooltip = d3.select("body").append("div")   
@@ -141,6 +141,6 @@ var bubbleMap = {
           .attr("class", "country")
           .attr("d", bubbleMap.path);
 
-    mapOverlay.call(zoom);
+    // mapOverlay.call(zoom);
   }
 }
