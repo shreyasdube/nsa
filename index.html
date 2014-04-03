@@ -16,6 +16,7 @@
   <script type="text/javascript" src="js/countryCodeUtil.js"></script> 
   <script type="text/javascript" src="js/uiUtil.js"></script> 
   <script type="text/javascript" src="js/polarPlot.js"></script>
+  <script type="text/javascript" src="js/iciclePlot.js"></script>
 
   <style type="text/css">
     body {
@@ -39,6 +40,11 @@
 
     .line-ticks, .circle-ticks {
       stroke: lightgray;
+    }
+
+    .line {
+      opacity: 0.7;
+      stroke-width: 3;
     }
 
     text, body{
@@ -89,9 +95,16 @@
 
     var bbPolar = {
       top: 10,
-      left:10,
+      left: 10,
       height: 280,
       width: 280
+    }
+
+    var bbIcicle = {
+      top: 10,
+      left: 310,
+      height: 280,
+      width: 400
     }
 
     var svg = d3.select("#vis").append("svg")
@@ -113,6 +126,18 @@
       var filteredHourlyData = waf.getFilteredDataGroupedHourly();
       filteredHourlyData = filteredHourlyData.concat(filteredHourlyData[0]); // complete the circle
       polarPlot.init(gPolar, bbPolar.width, bbPolar.height, d3.range(24), [allHourlyData, filteredHourlyData]);
+    }
+
+    // Icicle plot
+    var gIcicle = svg.append("g")
+      .attr({
+        transform: "translate(" + bbIcicle.left + "," + bbIcicle.top + ")"
+      });
+
+    // draws the icicle plot
+    var drawIcicle = function() {
+      var root = waf.getFilteredRoot();
+      iciclePlot.init(gIcicle, bbIcicle.width, bbIcicle.height, root);
     }
 
     // Bubble map

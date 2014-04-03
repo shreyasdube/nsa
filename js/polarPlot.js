@@ -103,7 +103,6 @@ var polarPlot = {
           return (i / polarPlot.categories.length) * 2 * Math.PI;
         })
       )
-      .style("stroke-width", 3)
       .style('stroke', function (d, i) { return color(i); })
       .style("fill", "none");
 
