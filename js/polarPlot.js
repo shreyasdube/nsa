@@ -1,19 +1,22 @@
 // Based upon ideas from http://bl.ocks.org/jeffthink/1630683
 var polarPlot = {
   vizBody: null,
-  width: 0,
-  height: 0,
+  bounds: {},
   categories: [],
+  valueFuncs: [],
   values: [],
   maxVal: 0,
   radius: null,
 
-  init: function(vizBody, width, height, categories, values) {
+  init: function(vizBody, bounds, categories, valueFuncs) {
     polarPlot.vizBody = vizBody;
-    polarPlot.width = width;
-    polarPlot.height = height;
+    polarPlot.bounds = bounds;
     polarPlot.categories = categories;
-    polarPlot.values = values;
+    polarPlot.valueFuncs = valueFuncs;
+
+    polarPlot.values = polarPlot.valueFuncs.map(function (d) {
+      return d();
+    });
 
     polarPlot.setScales();
     polarPlot.addAxes();
@@ -22,14 +25,14 @@ var polarPlot = {
 
   setScales: function() {
     var vizPadding = {
-      top: 10,
+      top: 14,
       right: 0,
-      bottom: 15,
+      bottom: 0,
       left: 0
     };
 
-    var heightCircleConstraint = polarPlot.height - vizPadding.top - vizPadding.bottom;
-    var widthCircleConstraint = polarPlot.width - vizPadding.left - vizPadding.right;
+    var heightCircleConstraint = polarPlot.bounds.height - vizPadding.top - vizPadding.bottom;
+    var widthCircleConstraint = polarPlot.bounds.width - vizPadding.left - vizPadding.right;
     var maxRadius = d3.min([heightCircleConstraint, widthCircleConstraint]) / 2;
 
     var centerX = widthCircleConstraint / 2 + vizPadding.left;
@@ -113,6 +116,13 @@ var polarPlot = {
         return (i / polarPlot.categories.length) * 2 * Math.PI;
       })
     );
+  },
+
+  update: function() {
+    polarPlot.values = polarPlot.valueFuncs.map(function (d) {
+      return d();
+    });
+    return polarPlot.draw();
   },
 
   flatten: function(values) {

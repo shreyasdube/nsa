@@ -69,7 +69,7 @@ var waf = {
     return hourBuckets;
   },
 
-  getFilteredRoot: function() {
+  getFilteredHierarchy: function() {
     return {
       "flare": {
         "analytics": {
