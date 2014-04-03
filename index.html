@@ -11,10 +11,10 @@
   <!--script src="http://d3js.org/topojson.v1.min.js"></script-->
   <script type="text/javascript" src="lib/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="lib/colorbrewer.js"></script>
-  <script type="text/javascript" src="js/controller.js"></script> 
-  <script type="text/javascript" src="js/waf.js"></script> 
-  <script type="text/javascript" src="js/countryCodeUtil.js"></script> 
-  <script type="text/javascript" src="js/uiUtil.js"></script> 
+  <script type="text/javascript" src="js/controller.js"></script>
+  <script type="text/javascript" src="js/waf.js"></script>
+  <script type="text/javascript" src="js/countryCodeUtil.js"></script>
+  <script type="text/javascript" src="js/uiUtil.js"></script>
   <script type="text/javascript" src="js/polarPlot.js"></script>
   <script type="text/javascript" src="js/iciclePlot.js"></script>
 
@@ -24,27 +24,30 @@
       background-color: #272822;
     }
 
-    svg{
-      /*background: #B2DFEE;*/
+    svg {
     }
 
-    .country{
+    .country {
       fill: none;
       stroke: white;
     }
 
-    .line-axis, .circle-axis {
+    .polarWrapper .line-axis, .polarWrapper .circle-axis {
       fill: none;
       stroke: darkgray;
     }
 
-    .line-ticks, .circle-ticks {
+    .polarWrapper .line-ticks, .polarWrapper .circle-ticks {
       stroke: lightgray;
     }
 
-    .line {
+    .polarWrapper .line {
       opacity: 0.7;
       stroke-width: 3;
+    }
+
+    .icicleWrapper .icicle {
+      clip-path: url(#icicleClipPath)
     }
 
     text, body{
@@ -67,13 +70,13 @@
       pointer-events: all;
     }
 
-    div.tooltip {   
-      position: absolute;           
-      padding: 4px;             
+    div.tooltip {
+      position: absolute;
+      padding: 4px;
       font: 12px sans-serif;
       border: 1px solid white;
-      border-radius: 8px;           
-      pointer-events: none;         
+      border-radius: 8px;
+      pointer-events: none;
     }
   </style>
 
@@ -104,41 +107,29 @@
       top: 10,
       left: 310,
       height: 280,
-      width: 400
+      width: 400,
+      clipPath: 'icicleClipPath'
     }
 
     var svg = d3.select("#vis").append("svg")
       .attr({
-        width: width, 
+        width: width,
         height: height
       });
 
     // Polar plot
-    var gPolar = svg.append("g")
+    var gPolarWrapper = svg.append("g")
       .attr({
+        class: "polarWrapper",
         transform: "translate(" + bbPolar.left + "," + bbPolar.top + ")"
       });
 
-    // draws the polar plot
-    var drawPolar = function() {
-      var allHourlyData = waf.getAllDataGroupedHourly();
-      allHourlyData = allHourlyData.concat(allHourlyData[0]); // complete the circle
-      var filteredHourlyData = waf.getFilteredDataGroupedHourly();
-      filteredHourlyData = filteredHourlyData.concat(filteredHourlyData[0]); // complete the circle
-      polarPlot.init(gPolar, bbPolar.width, bbPolar.height, d3.range(24), [allHourlyData, filteredHourlyData]);
-    }
-
     // Icicle plot
-    var gIcicle = svg.append("g")
+    var gIcicleWrapper = svg.append("g")
       .attr({
+        class: "icicleWrapper",
         transform: "translate(" + bbIcicle.left + "," + bbIcicle.top + ")"
       });
-
-    // draws the icicle plot
-    var drawIcicle = function() {
-      var root = waf.getFilteredRoot();
-      iciclePlot.init(gIcicle, bbIcicle.width, bbIcicle.height, root);
-    }
 
     // Bubble map
     var gMapWrapper = svg.append("g")
@@ -159,5 +150,5 @@
 </body>
 </html>
 <!-- REFERENCES
-  
+
 -->

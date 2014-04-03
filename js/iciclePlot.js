@@ -1,18 +1,25 @@
 // Based upon ideas from http://bl.ocks.org/mbostock/1005873
 var iciclePlot = {
   vizBody: null,
-  width: 0,
-  height: 0,
+  bounds: {},
+  rootFunc: null,
   root: {},
   x: null,
   y: null,
   icicles: null,
 
-  init: function(vizBody, width, height, root) {
+  init: function(vizBody, bounds, rootFunc) {
     iciclePlot.vizBody = vizBody;
-    iciclePlot.width = width;
-    iciclePlot.height = height;
-    iciclePlot.root = root;
+    iciclePlot.bounds = bounds;
+    iciclePlot.rootFunc = rootFunc;
+
+    vizBody.append("defs").append("clipPath")
+      .attr("id", bounds.clipPath)
+      .append("rect")
+        .attr("width", bounds.width)
+        .attr("height", bounds.height);
+
+    iciclePlot.root = iciclePlot.rootFunc();
 
     iciclePlot.draw();
   },
@@ -20,8 +27,8 @@ var iciclePlot = {
   draw: function() {
     var color = d3.scale.category20c();
 
-    iciclePlot.x = d3.scale.linear().range([0, iciclePlot.width]);
-    iciclePlot.y = d3.scale.linear().range([0, iciclePlot.height]);
+    iciclePlot.x = d3.scale.linear().range([0, iciclePlot.bounds.width]);
+    iciclePlot.y = d3.scale.linear().range([0, iciclePlot.bounds.height]);
 
     var partition = d3.layout.partition()
       .children(function(d) { return isNaN(d.value) ? d3.entries(d.value) : null; })
@@ -40,9 +47,14 @@ var iciclePlot = {
       .on("click", iciclePlot.clicked);
   },
 
+  update: function(d) {
+    iciclePlot.root = iciclePlot.rootFunc();
+    iciclePlot.draw();
+  },
+
   clicked: function(d) {
     iciclePlot.x.domain([d.x, d.x + d.dx]);
-    iciclePlot.y.domain([d.y, 1]).range([d.y ? 20 : 0, iciclePlot.height]);
+    iciclePlot.y.domain([d.y, 1]).range([d.y ? 20 : 0, iciclePlot.bounds.height]);
 
     iciclePlot.icicles.transition()
       .duration(750)

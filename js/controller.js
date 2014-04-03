@@ -3,6 +3,8 @@ var controller = {
   update: function() {
     console.log("update!");
     bubbleMap.update();
+    polarPlot.update();
+    iciclePlot.update();
   },
 
   // initialize the visualization
@@ -25,11 +27,14 @@ var controller = {
     bubbleMap.init(gMapWrapper, bbMap, world);
 
     // draw polar plot
-    drawPolar();
+    polarPlot.init(gPolarWrapper, bbPolar, d3.range(24), [waf.getAllDataGroupedHourly, waf.getFilteredDataGroupedHourly]);
+
+    // draw icicle plot
+    iciclePlot.init(gIcicleWrapper, bbIcicle, waf.getFilteredHierarchy);
 
     // update the UI
     controller.update();
-  }, 
+  },
 
   init: function() {
     queue()
