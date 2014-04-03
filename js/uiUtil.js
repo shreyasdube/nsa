@@ -82,7 +82,9 @@ var bubbleMap = {
     // use object constancy to preserve data bindings
     // see [1]
     var selection = bubbleMap.g.selectAll(".mapAttack")
-      .data(data, function(d) { return d.city; });
+      // some cities can have the same name, so I am concat'ing it with the latitude
+      // to create a unique key
+      .data(data, function(d) { return d.city + "-" + d.lat; });
     
     // new circles
     selection.enter().append("circle")
