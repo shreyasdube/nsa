@@ -109,6 +109,14 @@ var bubbleMap = {
 
   init: function(gWrapper, bbMap, world) {
     bubbleMap.bb = bbMap;
+    // this will clip paths and points that lie outside the drawable area
+    // thanks to [1]
+    gWrapper.append("defs")
+      .append("clipPath")
+        .attr("id", "bubbleMapClipper")
+        .append("rect")
+          .attr("width", bbMap.width)
+          .attr("height", bbMap.height);
 
     var mapOverlay = gWrapper.append("rect")
         .attr("class", "mapOverlay")
