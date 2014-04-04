@@ -78,13 +78,15 @@ var bubbleMap = {
 
     // reset
     // bubbleMap.g.selectAll(".mapAttack").classed("mapAttackDisabled", true);
+    bubbleMap.g.selectAll(".mapAttack").remove();
 
     // use object constancy to preserve data bindings
     // see [1]
     var selection = bubbleMap.g.selectAll(".mapAttack")
       // some cities can have the same name, so I am concat'ing it with the latitude
       // to create a unique key
-      .data(data, function(d) { return d.city + "-" + d.lat; });
+      // .data(data, function(d) { return d.city + "-" + d.lat; });
+      .data(data);
     
     // new circles
     selection.enter().append("circle")
@@ -113,12 +115,12 @@ var bubbleMap = {
         });
 
     // updated circles
-    selection
-      .classed("mapAttackDisabled", false);
+    // selection
+    //   .classed("mapAttackDisabled", false);
 
     // exiting circles
-    selection.exit()
-      .classed("mapAttackDisabled", true);
+    // selection.exit()
+    //   .classed("mapAttackDisabled", true);
   }, 
 
   init: function(gWrapper, bbMap, world) {
