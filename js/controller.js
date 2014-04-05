@@ -2,6 +2,7 @@ var controller = {
   // called when the selector(s) are changed
   update: function() {
     console.log("update!");
+    uiUtil.update();
     bubbleMap.update();
     polarPlot.update();
     iciclePlot.update();
