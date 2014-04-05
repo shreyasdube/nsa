@@ -110,11 +110,13 @@ var polarPlot = {
       .style('stroke', function (d, i) { return color(i); })
       .style("fill", "none");
 
-    lines.transition(750).attr("d", d3.svg.line.radial()
-      .radius(function (d) { return polarPlot.radius(d); })
-      .angle(function (d, i) {
-        i = i % polarPlot.categories.length; // wrap back around
-        return (i / polarPlot.categories.length) * 2 * Math.PI;
+    lines.transition()
+      .duration(transitionDuration)
+      .attr("d", d3.svg.line.radial()
+        .radius(function (d) { return polarPlot.radius(d); })
+        .angle(function (d, i) {
+          i = i % polarPlot.categories.length; // wrap back around
+          return (i / polarPlot.categories.length) * 2 * Math.PI;
       })
     );
   },
@@ -126,6 +128,8 @@ var polarPlot = {
     polarPlot.maxVal = d3.max(polarPlot.flatten(polarPlot.values));
     polarPlot.radius = d3.scale.linear().domain([0, polarPlot.maxVal])
       .range([0, polarPlot.maxRadius]);
+
+    polarPlot.addAxes();
 
     return polarPlot.draw();
   },

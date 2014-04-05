@@ -57,7 +57,7 @@ var iciclePlot = {
     iciclePlot.y.domain([d.y, 1]).range([d.y ? 20 : 0, iciclePlot.bounds.height]);
 
     iciclePlot.icicles.transition()
-      .duration(750)
+      .duration(transitionDuration)
       .attr("x", function(d) { return iciclePlot.x(d.x); })
       .attr("y", function(d) { return iciclePlot.y(d.y); })
       .attr("width", function(d) { return iciclePlot.x(d.x + d.dx) - iciclePlot.x(d.x); })
