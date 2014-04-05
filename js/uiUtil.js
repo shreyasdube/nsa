@@ -53,6 +53,16 @@ var uiUtil = {
   // gets selected network
   getSelectedNetwork: function() {
     return d3.select(uiUtil.networkSelectorId + " > select").node().value;
+  },
+
+  updateNumberOfAttacks: function() {
+    var count = waf.getNumberOfAttacks();
+    d3.select("#numberOfAttacks")
+      .text(numberFormat(count));
+  }, 
+
+  update: function() {
+    uiUtil.updateNumberOfAttacks();
   }
 
 }
