@@ -58,7 +58,18 @@ var uiUtil = {
   updateNumberOfAttacks: function() {
     var count = waf.getNumberOfAttacks();
     d3.select("#numberOfAttacks")
-      .text(numberFormat(count));
+      .transition(transitionDuration)
+      // use tween[3] to animate the change .. slick!
+      // also see [4]
+      .tween("text", function() {
+        // remove all ","s from the string; see [2]
+        var number = this.textContent.split(",").join(""); 
+        var i = d3.interpolate(+number, count);
+
+        return function(t) {
+          this.textContent = numberFormat(Math.round(i(t)));
+        };
+      });
   }, 
 
   update: function() {
