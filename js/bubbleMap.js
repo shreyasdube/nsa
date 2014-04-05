@@ -10,24 +10,25 @@ var bubbleMap = {
   },
 
   update: function() {
+    var radiusNoData = 4;
     var data = waf.getAggregatedMapData();
 
     // create linear scale for the radius
     var rScale = d3.scale.sqrt()
       .domain(d3.extent(data, function(d) { return d.count; }))
-      .range([4, 32]);
+      .range([radiusNoData, 32]);
 
     // reset
     // bubbleMap.g.selectAll(".mapAttack").classed("mapAttackDisabled", true);
-    bubbleMap.g.selectAll(".mapAttack").remove();
+    // bubbleMap.g.selectAll(".mapAttack").remove();
 
     // use object constancy to preserve data bindings
     // see [1]
     var selection = bubbleMap.g.selectAll(".mapAttack")
       // some cities can have the same name, so I am concat'ing it with the latitude
       // to create a unique key
-      // .data(data, function(d) { return d.city + "-" + d.lat; });
-      .data(data);
+      .data(data, function(d) { return d.id; });
+      // .data(data);
 
     // new circles
     selection.enter().append("circle")
@@ -36,6 +37,7 @@ var bubbleMap = {
         .attr("cx", function(d, i) { return bubbleMap.latLngToXY(d)[0]; })
         .attr("cy", function(d, i) { return bubbleMap.latLngToXY(d)[1]; })
         .attr("r", function(d) { return rScale(d.count); })
+        .classed("mapAttackDisabled", false)
         // show tooltip
         .on("mouseover", function(d, i) {
           bubbleMap.tooltip.transition()
@@ -56,12 +58,14 @@ var bubbleMap = {
         });
 
     // updated circles
-    // selection
-    //   .classed("mapAttackDisabled", false);
+    selection
+      .attr("r", function(d) { return rScale(d.count); })
+      .classed("mapAttackDisabled", false);
 
     // exiting circles
-    // selection.exit()
-    //   .classed("mapAttackDisabled", true);
+    selection.exit()
+      .attr("r", radiusNoData)
+      .classed("mapAttackDisabled", true);
   },
 
   init: function(gWrapper, bbMap, world) {
