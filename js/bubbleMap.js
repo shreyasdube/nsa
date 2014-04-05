@@ -10,13 +10,13 @@ var bubbleMap = {
   },
 
   update: function() {
-    var radiusNoData = 4;
+    var radiusNoData = 3;
     var data = waf.getAggregatedMapData();
 
     // create linear scale for the radius
     var rScale = d3.scale.sqrt()
       .domain(d3.extent(data, function(d) { return d.count; }))
-      .range([radiusNoData, 32]);
+      .range([radiusNoData + 2, 32]);
 
     // reset
     // bubbleMap.g.selectAll(".mapAttack").classed("mapAttackDisabled", true);
@@ -37,7 +37,7 @@ var bubbleMap = {
         .attr("cx", function(d, i) { return bubbleMap.latLngToXY(d)[0]; })
         .attr("cy", function(d, i) { return bubbleMap.latLngToXY(d)[1]; })
         .attr("r", function(d) { return rScale(d.count); })
-        .classed("mapAttackDisabled", false)
+        .style("fill", colorAttack)
         // show tooltip
         .on("mouseover", function(d, i) {
           bubbleMap.tooltip.transition()
@@ -59,13 +59,15 @@ var bubbleMap = {
 
     // updated circles
     selection
+      .transition(transitionDuration)
       .attr("r", function(d) { return rScale(d.count); })
-      .classed("mapAttackDisabled", false);
+      .style("fill", colorAttack);
 
     // exiting circles
     selection.exit()
+      .transition(transitionDuration)
       .attr("r", radiusNoData)
-      .classed("mapAttackDisabled", true);
+      .style("fill", colorNoAttack);
   },
 
   init: function(gWrapper, bbMap, world) {
