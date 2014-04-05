@@ -390,6 +390,17 @@ var waf = {
     return citiesArray;
   },
 
+  getNumberOfAttacks: function() {
+    var filteredData = waf.getFilteredData();
+    var count = 0;
+
+    filteredData.forEach(function(d) {
+      count += d.count;
+    });
+
+    return count;
+  },
+
   init: function(wafData) {
     waf.data = wafData.map(function(d) {
       // convert numbers and dates
