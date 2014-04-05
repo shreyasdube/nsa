@@ -27,7 +27,7 @@ var controller = {
     bubbleMap.init(gMapWrapper, bbMap, world);
 
     // draw polar plot
-    polarPlot.init(gPolarWrapper, bbPolar, d3.range(24), [waf.getAllDataGroupedHourly, waf.getFilteredDataGroupedHourly]);
+    polarPlot.init(gPolarWrapper, bbPolar, d3.range(24), [waf.getFilteredHourlyMean, waf.getFilteredDataGroupedHourly]);
 
     // draw icicle plot
     iciclePlot.init(gIcicleWrapper, bbIcicle, waf.getFilteredHierarchy);

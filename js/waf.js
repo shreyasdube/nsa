@@ -47,26 +47,22 @@ var waf = {
     });
   },
 
-  getAllDataGroupedHourly: function() {
-    var hourBuckets = d3.range(24).map(function() { return 0; });
+  getFilteredHourlyMean: function() {
+    var mean = d3.mean(waf.getFilteredDataGroupedHourly());
 
-    // bucket counts based upon hour of the day
-    waf.data.forEach(function(d) {
-      hourBuckets[d.date.getHours()] += d.count;
-    });
-
-    return hourBuckets;
+    // we return 25 buckets to wrap around to 0
+    return d3.range(25).map(function() { return mean; });
   },
 
   getFilteredDataGroupedHourly: function() {
-    var hourBuckets = d3.range(24 * 7).map(function() { return 0; });
+    var hourBuckets = d3.range(24).map(function() { return 0; });
 
     // bucket counts based upon hour of the day
     waf.getFilteredData().forEach(function(d) {
-      hourBuckets[d.date.getHours() + d.date.getDay() * 24] += d.count;
+      hourBuckets[d.date.getHours()] += d.count;
     });
 
-    return hourBuckets;
+    return hourBuckets.concat(hourBuckets[0]);
   },
 
   getFilteredHierarchy: function() {

@@ -6,6 +6,7 @@ var polarPlot = {
   valueFuncs: [],
   values: [],
   maxVal: 0,
+  maxRadius: 0,
   radius: null,
 
   init: function(vizBody, bounds, categories, valueFuncs) {
@@ -33,14 +34,14 @@ var polarPlot = {
 
     var heightCircleConstraint = polarPlot.bounds.height - vizPadding.top - vizPadding.bottom;
     var widthCircleConstraint = polarPlot.bounds.width - vizPadding.left - vizPadding.right;
-    var maxRadius = d3.min([heightCircleConstraint, widthCircleConstraint]) / 2;
+    polarPlot.maxRadius = d3.min([heightCircleConstraint, widthCircleConstraint]) / 2;
 
     var centerX = widthCircleConstraint / 2 + vizPadding.left;
     var centerY = heightCircleConstraint / 2 + vizPadding.top;
 
     polarPlot.maxVal = d3.max(polarPlot.flatten(polarPlot.values));
     polarPlot.radius = d3.scale.linear().domain([0, polarPlot.maxVal])
-      .range([0, maxRadius]);
+      .range([0, polarPlot.maxRadius]);
 
     polarPlot.vizBody.attr("transform",
       "translate(" + centerX + ", " + centerY + ")");
@@ -122,6 +123,10 @@ var polarPlot = {
     polarPlot.values = polarPlot.valueFuncs.map(function (d) {
       return d();
     });
+    polarPlot.maxVal = d3.max(polarPlot.flatten(polarPlot.values));
+    polarPlot.radius = d3.scale.linear().domain([0, polarPlot.maxVal])
+      .range([0, polarPlot.maxRadius]);
+
     return polarPlot.draw();
   },
 
