@@ -40,34 +40,53 @@ var bubbleMap = {
         .style("fill", colorAttack)
         // show tooltip
         .on("mouseover", function(d, i) {
-          bubbleMap.tooltip.transition()
-            .duration(200)
-            .style("opacity", 0.9)
-
-          // city name and count
-          var html = d.city + ": <b>" + numberFormat(d.count) + "</b>";
-          bubbleMap.tooltip.html(html)
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY) + "px");
+          showTooltip(d, true);
         })
         // hide tooltip
         .on("mouseout", function(d, i) {
-          bubbleMap.tooltip.transition()
-            .duration(200)
-            .style("opacity", 0);
+          hideTooltip(d);
         });
 
     // updated circles
     selection
       .transition(transitionDuration)
-      .attr("r", function(d) { return rScale(d.count); })
-      .style("fill", colorAttack);
+        .attr("r", function(d) { return rScale(d.count); })
+        .style("fill", colorAttack);
 
     // exiting circles
     selection.exit()
+      // show updated tooltip
+      .on("mouseover", function(d, i) {
+        showTooltip(d, false);
+      })
+      // hide tooltip
+      .on("mouseout", function(d, i) {
+        hideTooltip(d);
+      })
       .transition(transitionDuration)
-      .attr("r", radiusNoData)
-      .style("fill", colorNoAttack);
+        .attr("r", radiusNoData)
+        .style("fill", colorNoAttack)
+      
+
+    var showTooltip = function(d, showCount) {
+      bubbleMap.tooltip.transition()
+        .duration(200)
+        .style("opacity", 0.9)
+
+      // city name and count
+      var html = d.city + ": <b>" 
+        + (showCount ? numberFormat(d.count) : "-") 
+        + "</b>";
+      bubbleMap.tooltip.html(html)
+        .style("left", (d3.event.pageX) + "px")
+        .style("top", (d3.event.pageY) + "px");
+    }
+
+    var hideTooltip = function(d) {
+      bubbleMap.tooltip.transition()
+        .duration(200)
+        .style("opacity", 0);
+    }
   },
 
   init: function(gWrapper, bbMap, world) {
