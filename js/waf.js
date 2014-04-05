@@ -364,14 +364,15 @@ var waf = {
     // aggregate by city, drop all other dimensions
     var cities = {};
     filteredData.forEach(function(d) {
-      var city = d.city;
+      var cityId = d.country + "-" + d.state + "-" + d.city;
       // city already exists, just add the total count
-      if (cities[city]) {
-        cities[city].count += +d.count;
+      if (cities[cityId]) {
+        cities[cityId].count += d.count;
       } else {
         // create new city
-        cities[city] = {
-          city: city,
+        cities[cityId] = {
+          id: cityId,
+          city: d.city,
           lat: d.lat,
           lng: d.lng,
           count: d.count
