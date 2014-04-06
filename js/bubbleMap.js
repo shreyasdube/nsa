@@ -49,7 +49,8 @@ var bubbleMap = {
 
     // updated circles
     selection
-      .transition(transitionDuration)
+      .transition()
+      .duration(transitionDuration)
         .attr("r", function(d) { return rScale(d.count); })
         .style("fill", colorAttack);
 
@@ -63,7 +64,8 @@ var bubbleMap = {
       .on("mouseout", function(d, i) {
         hideTooltip(d);
       })
-      .transition(transitionDuration)
+      .transition()
+      .duration(transitionDuration)
         .attr("r", radiusNoData)
         .style("fill", colorNoAttack)
       
