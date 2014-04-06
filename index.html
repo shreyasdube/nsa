@@ -11,6 +11,7 @@
   <!--script src="http://d3js.org/topojson.v1.min.js"></script-->
   <script type="text/javascript" src="lib/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="lib/colorbrewer.js"></script>
+  <script type="text/javascript" src="js/timeRangeSelector.js"></script>
   <script type="text/javascript" src="js/controller.js"></script>
   <script type="text/javascript" src="js/waf.js"></script>
   <script type="text/javascript" src="js/countryCodeUtil.js"></script>
@@ -85,6 +86,7 @@
     }
   </style>
 
+  <div id="timeRangeSelector"></div>
   <div>
     <span id="countrySelector">Region&nbsp;</span>
     <span id="networkSelector">Network&nbsp;</span>
@@ -94,6 +96,13 @@
 
   <script type="text/javascript">
     var width = 960, height = 1040;
+
+    var bbTimeRange = {
+      top: 5, 
+      left: 10, 
+      height: 150, 
+      width: width - 10
+    }
 
     var bbMap = {
       top: 310,
@@ -116,6 +125,18 @@
       width: 400,
       clipPath: 'icicleClipPath'
     }
+
+    var gTimeSelector = d3.select("#timeRangeSelector")
+      .append("svg")
+        .attr({
+          width: bbTimeRange.width, 
+          height: bbTimeRange.height
+        })
+      .append("g")
+        .attr({
+          class: "timeRangeWrapper",
+          transform: "translate(" + bbTimeRange.left + "," + bbTimeRange.top  + ")"
+        });
 
     var svg = d3.select("#vis").append("svg")
       .attr({
