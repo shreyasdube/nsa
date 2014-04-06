@@ -3,6 +3,7 @@ var timeRangeSelector = {
   g: null, 
   x: d3.scale.linear(),
   y: d3.scale.linear(),
+  yAxis: d3.svg.axis(),
   rects: null,
   brush: null,
   defaultExtent: [0, 24],
@@ -42,17 +43,7 @@ var timeRangeSelector = {
 
     var brushMove = function() {
       console.log("brushmove");
-      var s = timeRangeSelector.brush.extent();
-      timeRangeSelector.rects
-        .style("fill", function(d, i) { 
-          // color selected rects to show they are selected
-          if(s[0] <= i && i <= s[1]) {
-            return colorAttack;
-          } else {
-            // grey out others
-            return colorNoAttack;
-          }
-        });
+      timeRangeSelector.colorSelectedBars();
     }
 
     var brushEnd = function() {
@@ -77,7 +68,7 @@ var timeRangeSelector = {
     timeRangeSelector.bb = bb;
     timeRangeSelector.g  = gWrapper;
 
-    var data = waf.getFilteredDataGroupedHourly();
+    var data = waf.getCompleteFilteredDataGroupedHourly();
 
     timeRangeSelector.x
       .domain([0, data.length])
@@ -91,7 +82,7 @@ var timeRangeSelector = {
       .scale(timeRangeSelector.x)
       .orient("bottom");
 
-    var yAxis = d3.svg.axis()
+    timeRangeSelector.yAxis
       .scale(timeRangeSelector.y)
       .orient("left")
       .ticks(4);
@@ -103,7 +94,7 @@ var timeRangeSelector = {
 
     gWrapper.append("g")
       .attr("class", "y axis")
-      .call(yAxis);
+      .call(timeRangeSelector.yAxis);
 
     // draw chart
     timeRangeSelector.rects = gWrapper.selectAll(".timeAttack")
@@ -122,6 +113,24 @@ var timeRangeSelector = {
 
   update: function() {
     console.log("update time range!");
+    var data = waf.getCompleteFilteredDataGroupedHourly();
+
+    // update y-scale
+    timeRangeSelector.y
+      .domain([0, d3.max(data)]);
+
+    // update y-axis
+    timeRangeSelector.g.select(".y.axis")
+      .call(timeRangeSelector.yAxis);
+
+    // update data
+    timeRangeSelector.rects
+      .data(data);
+
+    timeRangeSelector.rects
+      .attr("y", function(d) { return timeRangeSelector.y(d); })
+      .attr("height", function(d) { return timeRangeSelector.bb.height - timeRangeSelector.y(d); })
+      // .style("fill", "green");
   },
 
   getSelectedTimeRange: function() {
@@ -133,6 +142,20 @@ var timeRangeSelector = {
     } else {
       return timeRangeSelector.defaultExtent;
     }
+  }, 
+
+  colorSelectedBars: function() {
+    var s = timeRangeSelector.getSelectedTimeRange();
+    timeRangeSelector.rects
+      .style("fill", function(d, i) { 
+        // color selected rects to show they are selected
+        if(s[0] <= i && i <= s[1]) {
+          return colorAttack;
+        } else {
+          // grey out others
+          return colorNoAttack;
+        }
+      });
   }
 
 }
