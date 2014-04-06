@@ -128,9 +128,9 @@ var timeRangeSelector = {
       .data(data);
 
     timeRangeSelector.rects
-      .attr("y", function(d) { return timeRangeSelector.y(d); })
-      .attr("height", function(d) { return timeRangeSelector.bb.height - timeRangeSelector.y(d); })
-      // .style("fill", "green");
+      .transition().duration(transitionDuration)
+        .attr("y", function(d) { return timeRangeSelector.y(d); })
+        .attr("height", function(d) { return timeRangeSelector.bb.height - timeRangeSelector.y(d); });
   },
 
   getSelectedTimeRange: function() {
