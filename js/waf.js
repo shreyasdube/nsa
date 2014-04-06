@@ -83,7 +83,7 @@ var waf = {
       hourBuckets[d.hour] += d.count;
     });
 
-    return hourBuckets.concat(hourBuckets[0]);
+    return hourBuckets;
   },
 
   getFilteredHierarchy: function() {
