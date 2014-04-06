@@ -49,6 +49,10 @@ var bubbleMap = {
 
     // updated circles
     selection
+      // show updated tooltip
+      .on("mouseover", function(d, i) {
+        showTooltip(d, true);
+      })
       .transition()
       .duration(transitionDuration)
         .attr("r", function(d) { return rScale(d.count); })
