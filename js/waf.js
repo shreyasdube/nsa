@@ -59,7 +59,7 @@ var waf = {
 
     // bucket counts based upon hour of the day
     waf.getFilteredData().forEach(function(d) {
-      hourBuckets[d.date.getHours()] += d.count;
+      hourBuckets[d.hour] += d.count;
     });
 
     return hourBuckets.concat(hourBuckets[0]);
@@ -402,12 +402,19 @@ var waf = {
   },
 
   init: function(wafData) {
+    // get timezone offset
+    var timezoneOffset = new Date().getTimezoneOffset() * 60000;
+
     waf.data = wafData.map(function(d) {
       // convert numbers and dates
       d.count = +d.count;
       d.lat   = +d.lat;
       d.lng   = +d.lng;
-      d.date  = new Date(+d.timestamp * 1000);
+      // convert to GMT
+      d.date  = new Date((+d.timestamp * 1000) + timezoneOffset);
+
+      // store synthesized data here
+      d.hour  =  d.date.getHours();
       return d;
     });
   }
