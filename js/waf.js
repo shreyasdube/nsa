@@ -23,26 +23,31 @@ var waf = {
   // returns only those data items that match the selected country and network dropdowns
   // not meant for direct use
   getFilteredData: function() {
+    var extent  = timeRangeSelector.getSelectedTimeRange();
     var country = uiUtil.getSelectedCountry();
     var network = uiUtil.getSelectedNetwork();
 
-    console.log("filter by ", country, network);
+    console.log("filter by ", extent, country, network);
     return waf.data.filter(function(d) {
-
-      // if both are *, return immediately
-      if (country === "*" && network === "*") {
-        return true;
-      } else {
-        // if country is *, then filter by network
-        if (country === "*") {
-          return d.network === network;
-        } else if (network === "*") {
-          // filter by country
-          return d.country === country;
+      // check if data falls within time range
+      if (d.hour >= extent[0] && d.hour < extent[1]) {
+        // if both are *, return immediately
+        if (country === "*" && network === "*") {
+          return true;
         } else {
-          // filter by both
-          return d.country === country && d.network === network;
+          // if country is *, then filter by network
+          if (country === "*") {
+            return d.network === network;
+          } else if (network === "*") {
+            // filter by country
+            return d.country === country;
+          } else {
+            // filter by both
+            return d.country === country && d.network === network;
+          }
         }
+      } else {
+        return false;
       }
     });
   },

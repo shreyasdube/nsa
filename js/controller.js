@@ -2,6 +2,7 @@ var controller = {
   // called when the selector(s) are changed
   update: function() {
     console.log("update!");
+    timeRangeSelector.update();
     uiUtil.update();
     bubbleMap.update();
     polarPlot.update();
@@ -21,7 +22,7 @@ var controller = {
     uiUtil.initNetworkSelector("#networkSelector")
       .on("change", function() {
         controller.update();
-      });;
+      });
 
     // init time range selector
     timeRangeSelector.init(gTimeSelector, bbTimeSelector);

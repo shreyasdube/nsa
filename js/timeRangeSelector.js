@@ -4,13 +4,15 @@ var timeRangeSelector = {
   x: d3.scale.linear(),
   y: d3.scale.linear(),
   rects: null,
+  brush: null,
+  defaultExtent: [0, 24],
 
   // add brushing; heavily inspired by [5]
   initBrushing: function() {
     
-    var brush = d3.svg.brush()
+    timeRangeSelector.brush = d3.svg.brush()
       .x(timeRangeSelector.x)
-      .extent([0, .5]);
+      .extent(timeRangeSelector.defaultExtent);
 
     // exxtra large resize handles
     var arc = d3.svg.arc()
@@ -21,7 +23,7 @@ var timeRangeSelector = {
     // brush elements are drawn here
     var gBrush = timeRangeSelector.g.append("g")
       .attr("class", "brush")
-      .call(brush);
+      .call(timeRangeSelector.brush);
 
     // draw extra large resize handles
     gBrush.selectAll(".resize")
@@ -40,7 +42,7 @@ var timeRangeSelector = {
 
     var brushMove = function() {
       console.log("brushmove");
-      var s = brush.extent();
+      var s = timeRangeSelector.brush.extent();
       timeRangeSelector.rects
         .style("fill", function(d, i) { 
           // color selected rects to show they are selected
@@ -54,13 +56,15 @@ var timeRangeSelector = {
     }
 
     var brushEnd = function() {
-      console.log("brushend", brush.extent());
+      console.log("brushend", timeRangeSelector.getSelectedTimeRange());
       // todo what does this do?
       timeRangeSelector.g.classed("selecting", !d3.event.target.empty());
+      // update the UI!
+      controller.update();
     }
 
     // bind event listeners
-    brush
+    timeRangeSelector.brush
       .on("brushstart", brushStart)
       .on("brush", brushMove)
       .on("brushend", brushEnd);
@@ -114,6 +118,21 @@ var timeRangeSelector = {
 
     // init brushing
     timeRangeSelector.initBrushing();
+  },
+
+  update: function() {
+    console.log("update time range!");
+  },
+
+  getSelectedTimeRange: function() {
+    if (timeRangeSelector.brush) {
+      var extent = timeRangeSelector.brush.extent();
+      extent[1] = Math.floor(Math.max(1, extent[1]));
+      console.log("extent: " + extent);
+      return extent;
+    } else {
+      return timeRangeSelector.defaultExtent;
+    }
   }
 
 }
