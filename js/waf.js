@@ -22,33 +22,37 @@ var waf = {
 
   // returns only those data items that match the selected country and network dropdowns
   // not meant for direct use
-  getFilteredData: function() {
-    var extent  = timeRangeSelector.getSelectedTimeRange();
+  filterByCountryAndNetwork: function() {
     var country = uiUtil.getSelectedCountry();
     var network = uiUtil.getSelectedNetwork();
 
-    console.log("filter by ", extent, country, network);
+    console.log("filter by ", country, network);
     return waf.data.filter(function(d) {
-      // check if data falls within time range
-      if (d.hour >= extent[0] && d.hour < extent[1]) {
-        // if both are *, return immediately
-        if (country === "*" && network === "*") {
-          return true;
-        } else {
-          // if country is *, then filter by network
-          if (country === "*") {
-            return d.network === network;
-          } else if (network === "*") {
-            // filter by country
-            return d.country === country;
-          } else {
-            // filter by both
-            return d.country === country && d.network === network;
-          }
-        }
+      // if both are *, return immediately
+      if (country === "*" && network === "*") {
+        return true;
       } else {
-        return false;
+        // if country is *, then filter by network
+        if (country === "*") {
+          return d.network === network;
+        } else if (network === "*") {
+          // filter by country
+          return d.country === country;
+        } else {
+          // filter by both
+          return d.country === country && d.network === network;
+        }
       }
+    });
+  },
+
+  getFilteredData: function() {
+    var extent  = timeRangeSelector.getSelectedTimeRange();
+    console.log("filter by extent", extent);
+
+    return waf.filterByCountryAndNetwork().filter(function(d) {
+      // check if data falls within time range
+      return (d.hour >= extent[0] && d.hour < extent[1]);
     });
   },
 
@@ -64,6 +68,18 @@ var waf = {
 
     // bucket counts based upon hour of the day
     waf.getFilteredData().forEach(function(d) {
+      hourBuckets[d.hour] += d.count;
+    });
+
+    return hourBuckets.concat(hourBuckets[0]);
+  },
+
+  // this is used by the time range selector only
+  getCompleteFilteredDataGroupedHourly: function() {
+    var hourBuckets = d3.range(24).map(function() { return 0; });
+
+    // bucket counts based upon hour of the day
+    waf.filterByCountryAndNetwork().forEach(function(d) {
       hourBuckets[d.hour] += d.count;
     });
 
