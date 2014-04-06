@@ -23,6 +23,8 @@ var controller = {
         controller.update();
       });;
 
+    // init time range selector
+    timeRangeSelector.init(gTimeSelector, bbTimeSelector);
 
     // init the world map
     bubbleMap.init(gMapWrapper, bbMap, world);
