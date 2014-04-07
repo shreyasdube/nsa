@@ -3,6 +3,7 @@ var controller = {
   update: function() {
     console.log("update!");
     timeRangeSelector.update();
+    waf.refreshFilteredData();
     uiUtil.update();
     bubbleMap.update();
     polarPlot.update();
@@ -23,6 +24,9 @@ var controller = {
       .on("change", function() {
         controller.update();
       });
+
+    // update the filtered data
+    waf.refreshFilteredData();
 
     // init time range selector
     timeRangeSelector.init(gTimeSelector, bbTimeSelector);

@@ -1,5 +1,6 @@
 var waf = {
   data: null,
+  filteredData: null,
 
   getNetworks: function() {
     // get all unique networks
@@ -46,11 +47,11 @@ var waf = {
     });
   },
 
-  getFilteredData: function() {
+  refreshFilteredData: function() {
     var extent  = timeRangeSelector.getSelectedTimeRange();
     console.log("filter by extent", extent);
 
-    return waf.filterByCountryAndNetwork().filter(function(d) {
+    waf.filteredData = waf.filterByCountryAndNetwork().filter(function(d) {
       // check if data falls within time range
       return (d.hour >= extent[0] && d.hour < extent[1]);
     });
@@ -67,7 +68,7 @@ var waf = {
     var hourBuckets = d3.range(24).map(function() { return 0; });
 
     // bucket counts based upon hour of the day
-    waf.getFilteredData().forEach(function(d) {
+    waf.filteredData.forEach(function(d) {
       hourBuckets[d.hour] += d.count;
     });
 
@@ -376,11 +377,9 @@ var waf = {
   },
 
   getAggregatedMapData: function() {
-    var filteredData = waf.getFilteredData();
-
     // aggregate by city, drop all other dimensions
     var cities = {};
-    filteredData.forEach(function(d) {
+    waf.filteredData.forEach(function(d) {
       var cityId = d.country + "-" + d.state + "-" + d.city;
       // city already exists, just add the total count
       if (cities[cityId]) {
@@ -412,10 +411,9 @@ var waf = {
   },
 
   getNumberOfAttacks: function() {
-    var filteredData = waf.getFilteredData();
     var count = 0;
 
-    filteredData.forEach(function(d) {
+    waf.filteredData.forEach(function(d) {
       count += d.count;
     });
 
