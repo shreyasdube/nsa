@@ -16,8 +16,10 @@ var iciclePlot = {
     vizBody.append("defs").append("clipPath")
       .attr("id", bounds.clipPath)
       .append("rect")
-        .attr("width", bounds.width)
-        .attr("height", bounds.height);
+        .attr({
+          width: bounds.width,
+          height: bounds.height
+        });
 
     iciclePlot.root = iciclePlot.rootFunc();
 
@@ -37,16 +39,29 @@ var iciclePlot = {
     iciclePlot.vizBody.selectAll('.icicle').remove();
 
     iciclePlot.icicles = iciclePlot.vizBody.selectAll('.icicle')
-        .data(partition(d3.entries(iciclePlot.root)[0]));
+        .data(partition(d3.entries(iciclePlot.root)[0]))
+      .enter().append("g")
+        .attr({class: "icicle"})
+        .attr("transform", function(d) { return "translate(" + iciclePlot.x(d.x) + "," + iciclePlot.y(d.y) + ")"; } );
 
-    iciclePlot.icicles.enter().append("rect")
-      .attr("class", "icicle")
-      .attr("x", function(d) { return iciclePlot.x(d.x); })
-      .attr("y", function(d) { return iciclePlot.y(d.y); })
-      .attr("width", function(d) { return iciclePlot.x(d.dx); })
-      .attr("height", function(d) { return iciclePlot.y(d.dy); })
-      .attr("fill", function(d) { return color((d.children ? d : d.parent).key); })
+    iciclePlot.icicles.append("rect")
+      .transition().duration(transitionDuration)
+      .attr({
+        x: 0,
+        y: 0,
+        width: function(d) { return iciclePlot.x(d.dx); },
+        height: function(d) { return iciclePlot.y(d.dy); },
+        fill: function(d) { return color((d.children ? d : d.parent).key); }
+      })
       .on("click", iciclePlot.clicked);
+
+    iciclePlot.icicles.append("text")
+      .transition().duration(transitionDuration)
+      .attr({
+        x: function(d) { return iciclePlot.x(d.dx) / 2; },
+        y: function(d) { return iciclePlot.y(d.dy) / 2; },
+        text: function(d) { return d.key; }
+      });
   },
 
   update: function(d) {
@@ -60,9 +75,11 @@ var iciclePlot = {
 
     iciclePlot.icicles.transition()
       .duration(transitionDuration)
-      .attr("x", function(d) { return iciclePlot.x(d.x); })
-      .attr("y", function(d) { return iciclePlot.y(d.y); })
-      .attr("width", function(d) { return iciclePlot.x(d.x + d.dx) - iciclePlot.x(d.x); })
-      .attr("height", function(d) { return iciclePlot.y(d.y + d.dy) - iciclePlot.y(d.y); });
+      .attr({
+        x: function(d) { return iciclePlot.x(d.x); },
+        y: function(d) { return iciclePlot.y(d.y); },
+        width: function(d) { return iciclePlot.x(d.x + d.dx) - iciclePlot.x(d.x); },
+        height: function(d) { return iciclePlot.y(d.y + d.dy) - iciclePlot.y(d.y); }
+      });
   }
 }
