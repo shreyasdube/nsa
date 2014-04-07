@@ -34,6 +34,8 @@ var iciclePlot = {
       .children(function(d) { return isNaN(d.value) ? d3.entries(d.value) : null; })
       .value(function(d) { return d.value; });
 
+    iciclePlot.vizBody.selectAll('.icicle').remove();
+
     iciclePlot.icicles = iciclePlot.vizBody.selectAll('.icicle')
         .data(partition(d3.entries(iciclePlot.root)[0]));
 
