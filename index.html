@@ -35,6 +35,19 @@
     svg {
     }
 
+    #numberOfAttacksHeader {
+      font-size: 36px;
+      text-align: center;
+      padding-bottom: 4px;
+      border-bottom: 1px solid white;
+    }
+    #numberOfAttacks {
+      font-size: 30px;
+      font-weight: bold;
+      color: red;
+      text-align: center;
+    }
+
     .timeRangeWrapper .axis path, .timeRangeWrapper .axis line {
       fill: none;
       stroke: white;
@@ -132,7 +145,8 @@
       <!-- right column -->
       <td>
         <div>
-          Number of Attacks: <span id="numberOfAttacks">0</span>
+          <h1 id="numberOfAttacksHeader">Number of Attacks</h1>
+          <div id="numberOfAttacks">0</div>
         </div>
         <div id="polarPlot"></div>
         <div id="iciclePlot"></div>
