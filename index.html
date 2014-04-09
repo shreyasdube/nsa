@@ -116,16 +116,32 @@
     }
   </style>
 
-  <div id="timeRangeSelector"></div>
-  <div>
-    <span id="countrySelector">Region&nbsp;</span>
-    <span id="networkSelector">Network&nbsp;</span>
-    Number of Attacks: <span id="numberOfAttacks">0</span>
-  </div>
+  <table>
+    <tr>
+      <!-- left column -->
+      <td>
+        <div id="bubbleMap"></div>
+        <div id="timeRangeSelector"></div>
+        <div>
+          <span id="countrySelector">Region&nbsp;</span>
+          <span id="networkSelector">Network&nbsp;</span>
+        </div>
+      </td>
+      <!-- right column -->
+      <td>
+        <div>
+          Number of Attacks: <span id="numberOfAttacks">0</span>
+        </div>
+        <div id="polarPlot"></div>
+        <div id="iciclePlot"></div>
+      </td>
+    </tr>
+  </table>
+  
   <div id="vis"></div>
 
   <script type="text/javascript">
-    var width = 960, height = 1040;
+    var width = 960, height = 700;
 
     var bbTimeSelector = {};
     bbTimeSelector.margin = {
@@ -138,7 +154,7 @@
     bbTimeSelector.width = width - bbTimeSelector.margin.left - bbTimeSelector.margin.right;
 
     var bbMap = {
-      top: 310,
+      top: 10,
       left: 10,
       height: 720,
       width: 940
@@ -153,7 +169,7 @@
 
     var bbIcicle = {
       top: 10,
-      left: 310,
+      left: 10,
       height: 280,
       width: 400,
       clipPath: 'icicleClipPath'
@@ -171,32 +187,44 @@
           transform: "translate(" + bbTimeSelector.margin.left + "," + bbTimeSelector.margin.top  + ")"
         });
 
-    var svg = d3.select("#vis").append("svg")
+    // Bubble map
+    var gMapWrapper = d3.select("#bubbleMap").append("svg")
       .attr({
         width: width,
         height: height
-      });
+      })
+      .append("g")
+        .attr({
+          class: "mapWrapper",
+          transform: "translate(" + bbMap.left + "," + bbMap.top + ")"
+        });
 
     // Polar plot
-    var gPolarWrapper = svg.append("g")
-      .attr({
-        class: "polarWrapper",
-        transform: "translate(" + bbPolar.left + "," + bbPolar.top + ")"
-      });
+    var gPolarWrapper = d3.select("#polarPlot")
+      .append("svg")
+        .attr({
+          width: bbPolar.width + 20, 
+          height: bbPolar.height + 20
+        })
+        .append("g")
+          .attr({
+            class: "polarWrapper",
+            transform: "translate(" + bbPolar.left + "," + bbPolar.top + ")"
+          });
 
     // Icicle plot
-    var gIcicleWrapper = svg.append("g")
-      .attr({
-        class: "icicleWrapper",
-        transform: "translate(" + bbIcicle.left + "," + bbIcicle.top + ")"
-      });
-
-    // Bubble map
-    var gMapWrapper = svg.append("g")
-      .attr({
-        class: "mapWrapper",
-        transform: "translate(" + bbMap.left + "," + bbMap.top + ")"
-      });
+    var gIcicleWrapper = d3.select("#iciclePlot")
+      .append("svg")
+        .attr({
+          width: bbIcicle.width + 20, 
+          height: bbIcicle.height + 20
+        })
+        .append("g")
+        .attr({
+          class: "icicleWrapper",
+          transform: "translate(" + bbIcicle.left + "," + bbIcicle.top + ")"
+        });
+    
 
     // pretty format large numbers
     var numberFormat = d3.format(",.0f");
