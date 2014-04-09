@@ -121,7 +121,7 @@ var bubbleMap = {
 
     // projection used
     bubbleMap.projection = d3.geo.mercator()
-      .translate([bbMap.width / 2, bbMap.height / 1.8])
+      .translate([bbMap.width / 2, bbMap.height / 1.75])
       .scale(140);
     // path used to draw the world map
     bubbleMap.path = d3.geo.path().projection(bubbleMap.projection);
