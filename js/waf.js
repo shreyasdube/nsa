@@ -59,9 +59,7 @@ var waf = {
 
   getFilteredHourlyMean: function() {
     var mean = d3.mean(waf.getFilteredDataGroupedHourly());
-
-    // we return 25 buckets to wrap around to 0
-    return d3.range(25).map(function() { return mean; });
+    return d3.range(24).map(function() { return mean; });
   },
 
   getFilteredDataGroupedHourly: function() {
