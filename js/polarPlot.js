@@ -5,15 +5,17 @@ var polarPlot = {
   categories: [],
   valueFuncs: [],
   values: [],
+  color: null,
   maxVal: 0,
   maxRadius: 0,
   radius: null,
 
-  init: function(vizBody, bounds, categories, valueFuncs) {
+  init: function(vizBody, bounds, categories, valueFuncs, color) {
     polarPlot.vizBody = vizBody;
     polarPlot.bounds = bounds;
     polarPlot.categories = categories;
     polarPlot.valueFuncs = valueFuncs;
+    polarPlot.color = d3.scale.ordinal().domain(color.length).range(color);
 
     polarPlot.values = polarPlot.valueFuncs.map(function (d) {
       // concat the first value to the end to close the circle
@@ -94,8 +96,6 @@ var polarPlot = {
   },
 
   draw: function() {
-    var color = d3.scale.category10();
-
     var lines = polarPlot.vizBody.selectAll('.line')
       .data(polarPlot.values);
 
@@ -108,7 +108,7 @@ var polarPlot = {
           return (i / polarPlot.categories.length) * 2 * Math.PI;
         })
       )
-      .style('stroke', function (d, i) { return color(i); })
+      .style('stroke', function (d, i) { return polarPlot.color(i); })
       .style("fill", "none");
 
     lines.transition()
@@ -124,7 +124,7 @@ var polarPlot = {
 
   update: function() {
     polarPlot.values = polarPlot.valueFuncs.map(function (d) {
-      return d();
+      return d().concat(d()[0]);
     });
     polarPlot.maxVal = d3.max(polarPlot.flatten(polarPlot.values));
     polarPlot.radius = d3.scale.linear().domain([0, polarPlot.maxVal])

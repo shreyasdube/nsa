@@ -34,7 +34,7 @@ var controller = {
     bubbleMap.init(gMapWrapper, bbMap, world);
 
     // draw polar plot
-    polarPlot.init(gPolarWrapper, bbPolar, d3.range(24), [waf.getFilteredHourlyMean, waf.getFilteredDataGroupedHourly]);
+    polarPlot.init(gPolarWrapper, bbPolar, d3.range(24), [waf.getFilteredHourlyMean, waf.getFilteredDataGroupedHourly], ['lightblue', colorAttack]);
 
     // update the UI
     controller.update();
