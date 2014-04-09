@@ -16,7 +16,8 @@ var polarPlot = {
     polarPlot.valueFuncs = valueFuncs;
 
     polarPlot.values = polarPlot.valueFuncs.map(function (d) {
-      return d();
+      // concat the first value to the end to close the circle
+      return d().concat(d()[0]);
     });
 
     polarPlot.setScales();
