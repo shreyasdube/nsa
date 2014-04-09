@@ -7,7 +7,6 @@ var controller = {
     uiUtil.update();
     bubbleMap.update();
     polarPlot.update();
-    iciclePlot.update();
   },
 
   // initialize the visualization
@@ -36,9 +35,6 @@ var controller = {
 
     // draw polar plot
     polarPlot.init(gPolarWrapper, bbPolar, d3.range(24), [waf.getFilteredHourlyMean, waf.getFilteredDataGroupedHourly]);
-
-    // draw icicle plot
-    iciclePlot.init(gIcicleWrapper, bbIcicle, waf.getFilteredHierarchy);
 
     // update the UI
     controller.update();

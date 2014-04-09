@@ -97,12 +97,6 @@
       stroke-width: 3;
     }
 
-    .icicleWrapper .icicle {
-      clip-path: url(#icicleClipPath);
-      stroke: #272822;
-      stroke-width: 1;
-    }
-
     table {
       border: none;
     }
@@ -187,14 +181,6 @@
       width: 280
     }
 
-    var bbIcicle = {
-      top: 10,
-      left: 10,
-      height: 280,
-      width: 400,
-      clipPath: 'icicleClipPath'
-    }
-
     var gTimeSelector = d3.select("#timeRangeSelector")
       .append("svg")
         .attr({
@@ -231,20 +217,6 @@
             class: "polarWrapper",
             transform: "translate(" + bbPolar.left + "," + bbPolar.top + ")"
           });
-
-    // Icicle plot
-    var gIcicleWrapper = d3.select("#iciclePlot")
-      .append("svg")
-        .attr({
-          width: bbIcicle.width + 20, 
-          height: bbIcicle.height + 20
-        })
-        .append("g")
-        .attr({
-          class: "icicleWrapper",
-          transform: "translate(" + bbIcicle.left + "," + bbIcicle.top + ")"
-        });
-    
 
     // pretty format large numbers
     var numberFormat = d3.format(",.0f");
