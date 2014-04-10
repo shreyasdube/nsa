@@ -1,6 +1,7 @@
 NSA - Not Safe Anymore
 ===
 CS171 Final Project - Visualization of Web Attacks on the Web over a 24-hour period. 
+URL: http://notsafeanymo.appspot.com/
 
 Authors:
 * Shreyas Dube
@@ -18,3 +19,12 @@ By answering the following questions through the visualization, we aim to provid
 * What geographic and cyclical patterns are present in the data?
 * What time of day are the risks lowest?
 * Which ISP’s provide the best security?
+
+## Directory Layout
+### Code: 
+* JavaScript: `js/*`
+* HTML: `index.html`
+
+### Data:
+* `data/waf_5mi` for the attack dataset
+* `data/countrycodes.json` and `data/world_data.json` reused from HW4 for map data
