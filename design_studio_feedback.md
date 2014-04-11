@@ -46,7 +46,7 @@ Multiple views are coordinated. One things could be an issue is that GMT time us
 ### Is there any animation planned? Is it clear? Is it intuitive? 
 The animation of the visualization is very clear and intuitive.
 
-## Questions during Presentation:
+## Questions during Presentation
 
 ### The bubbles can potentially appear cluttered. How do you plan to address this?
 We allow the user to zoom in and out, and use opacity to allow overlapped bubbles to still be visible.
