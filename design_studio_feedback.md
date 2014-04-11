@@ -4,8 +4,7 @@ Group Members:
 * Jie Zhang
 * Esther Weeks 
 
-Quality of feedback: 
-* very helpful
+Quality of feedback: very helpful
 
 ## General Questions
 ### Are the objectives interesting to the target audience? 
@@ -46,3 +45,6 @@ Multiple views are coordinated. One things could be an issue is that GMT time us
 
 ### Is there any animation planned? Is it clear? Is it intuitive? 
 The animation of the visualization is very clear and intuitive.
+
+## Next Steps
+
