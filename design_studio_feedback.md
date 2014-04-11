@@ -1,8 +1,11 @@
-## Review Details: 
+## Review Details
 
 Group Members: 
 * Jie Zhang
-* Esther Weeks
+* Esther Weeks 
+
+Quality of feedback: 
+* very helpful
 
 ## General Questions
 ### Are the objectives interesting to the target audience? 
