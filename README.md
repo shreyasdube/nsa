@@ -8,6 +8,15 @@ Authors:
 * Shreyas Dube
 * Christopher Gerber
 
+## Directory Layout
+### Code
+* JavaScript: `js/*`
+* HTML: `index.html`
+
+### Data
+* `data/waf_5mi` for the attack dataset
+* `data/countrycodes.json` and `data/world_data.json` reused from HW4 for map data
+
 ## Background and Motivation 
 
 Web Security is an on-going concern for all organizations and individuals. It is also a time and resource consuming exercise that needs to be balanced against other priorities. Given the recent online attacks on big banks and retailers, we are interested in visualizing the attributes of such attacks - which countries do they target the most, what times of the day are popular for such attacks and what networks (ISPs) are they carried out on.
@@ -21,11 +30,3 @@ By answering the following questions through the visualization, we aim to provid
 * What time of day are the risks lowest?
 * Which ISP’s provide the best security?
 
-## Directory Layout
-### Code
-* JavaScript: `js/*`
-* HTML: `index.html`
-
-### Data
-* `data/waf_5mi` for the attack dataset
-* `data/countrycodes.json` and `data/world_data.json` reused from HW4 for map data
