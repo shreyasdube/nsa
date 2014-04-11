@@ -49,62 +49,49 @@ The animation of the visualization is very clear and intuitive.
 ## Questions:
 
 ### The bubbles can potentially appear cluttered. How do you plan to address this?
+We allow the user to zoom in and out, and use opacity to allow overlapped bubbles to still be visible.
 
-#### We allow the user to zoom in and out, and use opacity to allow overlapped bubbles to still be visible.
-
-#### ACTION: None
+ACTION: None
 
 ### Is the polar plot tied to the city?
+No. The polar plot is tied to the filters.
 
-#### No. The polar plot is tied to the filters.
-
-#### ACTION: Better label the polar plot to clarify the meaning.
+ACTION: Better label the polar plot to clarify the meaning.
 
 ### On the polar plot can you show both the local and GMT time?
+That is a possibility. We also talked about possibly allowing the user to toggle between global time and normalized time.
 
-#### That is a possibility. We also talked about possibly allowing the user to toggle between global time and normalized time.
-
-#### ACTION: Provide better labeling around the timezone of the hours, and look into toggling between global and normalized time.
+ACTION: Provide better labeling around the timezone of the hours, and look into toggling between global and normalized time.
 
 ### Are you using shades of red to convey meaning?
+No. It’s actually the opacity.
 
-#### No. It’s actually the opacity.
-
-#### ACTION: None
+ACTION: None
 
 ### You should see how the red looks in gray-scale to understand how it will appear to a color-blind user.
-
-#### ACTION: Look at visualization in gray-scale, and make changes if necessary.
+ACTION: Look at visualization in gray-scale, and make changes if necessary.
 
 ### What other elements will be added to the visualization?
+* Top 10 lists for country, ISP, etc.
+* Considering bot vs. real users
 
-#### Top 10 lists for country, ISP, etc.
-
-#### Considering bot vs. real users
-
-#### ACTION: Add at least one more linked visualization.
+ACTION: Add at least one more linked visualization.
 
 ### How did you do the data aggregation?
+We used Ruby and Java, and focused on the 5 minute data aggregations to start.
 
-#### We used Ruby and Java, and focused on the 5 minute data aggregations to start.
-
-#### ACTION: None
+ACTION: None
 
 ### Does 24 hours show enough time to actually identify trends? What if you had a month of data?
+The data set is too small to extrapolate long-term trends, but we are limited in what we can obtain from Akamai at this time.
 
-#### The data set is too small to extrapolate long-term trends, but we are limited in what we can obtain from Akamai at this time.
-
-#### ACTION: None
+ACTION: None
 
 ### You should put the date or date range on the page somewhere.
-
-#### ACTION: Add start and end time of data set on the page.
+ACTION: Add start and end time of data set on the page.
 
 ### You should add explanatory text to guide the user.
-
-#### ACTION: Add an explanation of the page elements. Mention the data source, time zone, etc.
+ACTION: Add an explanation of the page elements. Mention the data source, time zone, etc.
 
 ### You should consider adding a “Play” button to roll through the day hour-by-hour.
-
-#### ACTION: Look into adding this animation.
-
+ACTION: Look into adding this animation.
