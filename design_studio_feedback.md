@@ -1,3 +1,9 @@
+## Review Details: 
+
+Group Members: 
+* Jie Zhang
+* Esther Weeks
+
 ## General Questions
 ### Are the objectives interesting to the target audience? 
 Yes, very interesting.
