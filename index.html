@@ -186,7 +186,7 @@
     var bbDataTable = {
       top: 10,
       left: 10,
-      height: 280,
+      height: 380,
       width: 280
     }
 
@@ -218,8 +218,8 @@
     var gPolarWrapper = d3.select("#polarPlot")
       .append("svg")
         .attr({
-          width: bbPolar.width + 20, 
-          height: bbPolar.height + 20
+          width: bbPolar.width,
+          height: bbPolar.height
         })
         .append("g")
           .attr({
@@ -228,17 +228,7 @@
           });
 
     // Data table
-    var gDataTableWrapper = d3.select("#dataTable")
-      .append("svg")
-        .attr({
-          width: bbDataTable.width + 20, 
-          height: bbDataTable.height + 20
-        })
-        .append("g")
-          .attr({
-            class: "dataTableWrapper",
-            transform: "translate(" + bbDataTable.left + "," + bbDataTable.top + ")"
-          });
+    var gDataTableWrapper = d3.select("#dataTable");
 
     // pretty format large numbers
     var numberFormat = d3.format(",.0f");

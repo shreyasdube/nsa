@@ -149,11 +149,7 @@ var waf = {
     counts = {};
 
     waf.filteredData.forEach(function(d) {
-      if (counts[d.browser]) {
-        counts[d.browser] += d.count;
-      } else {
-        counts[d.browser] = d.count;
-      }
+      counts[d.browser] = d.count + (counts[d.browser] || 0);
     });
 
     return waf.descCountsHash(counts);
@@ -163,11 +159,7 @@ var waf = {
     counts = {};
 
     waf.filteredData.forEach(function(d) {
-      if (counts[d.os]) {
-        counts[d.os] += d.count;
-      } else {
-        counts[d.os] = d.count;
-      }
+      counts[d.os] = d.count + (counts[d.os] || 0);
     });
 
     return waf.descCountsHash(counts);
@@ -177,27 +169,25 @@ var waf = {
     counts = {};
 
     waf.filteredData.forEach(function(d) {
-      if (counts[d.country]) {
-        counts[d.country] += d.count;
-      } else {
-        counts[d.country] = d.count;
-      }
+      counts[d.country] = d.count + (counts[d.country] || 0);
     });
 
     return waf.descCountsHash(counts);
   },
 
   descCountsHash: function(counts) {
-    result = [];
-
-    result[0] = Object.keys(counts).sort(function(a,b) {
+    // First pass to get the sorted keys
+    result = Object.keys(counts).sort(function(a,b) {
       return counts[b] - counts[a];
     });
-    result[1] = result[0].map(function(d) {
-      return counts[d];
-    });
 
-    return result;
+    // Second pass to return array of {key:k, value:v}
+    return result.map(function(d) {
+      return {
+        item: d,
+        count: counts[d]
+      };
+    });
   },
 
   init: function(wafData) {

@@ -29,10 +29,10 @@ var polarPlot = {
 
   setScales: function() {
     var vizPadding = {
-      top: 14,
-      right: 0,
-      bottom: 0,
-      left: 0
+      top: 10,
+      right: 10,
+      bottom: 10,
+      left: 10
     };
 
     var heightCircleConstraint = polarPlot.bounds.height - vizPadding.top - vizPadding.bottom;
