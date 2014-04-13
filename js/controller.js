@@ -7,6 +7,7 @@ var controller = {
     uiUtil.update();
     bubbleMap.update();
     polarPlot.update();
+    dataTable.update();
   },
 
   // initialize the visualization
@@ -35,6 +36,9 @@ var controller = {
 
     // draw polar plot
     polarPlot.init(gPolarWrapper, bbPolar, d3.range(24), [waf.getFilteredHourlyMean, waf.getFilteredDataGroupedHourly], ['lightblue', colorAttack]);
+
+    // draw data table
+    dataTable.init(gDataTableWrapper, bbDataTable, ['Browser', 'Operating System', 'Country'], [waf.getTopBrowsers, waf.getTopOperatingSystems, waf.getTopCountries], 10);
 
     // update the UI
     controller.update();

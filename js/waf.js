@@ -145,6 +145,61 @@ var waf = {
     return count;
   },
 
+  getTopBrowsers: function() {
+    counts = {};
+
+    waf.filteredData.forEach(function(d) {
+      if (counts[d.browser]) {
+        counts[d.browser] += d.count;
+      } else {
+        counts[d.browser] = d.count;
+      }
+    });
+
+    return waf.descCountsHash(counts);
+  },
+
+  getTopOperatingSystems: function () {
+    counts = {};
+
+    waf.filteredData.forEach(function(d) {
+      if (counts[d.os]) {
+        counts[d.os] += d.count;
+      } else {
+        counts[d.os] = d.count;
+      }
+    });
+
+    return waf.descCountsHash(counts);
+  },
+
+  getTopCountries: function (){
+    counts = {};
+
+    waf.filteredData.forEach(function(d) {
+      if (counts[d.country]) {
+        counts[d.country] += d.count;
+      } else {
+        counts[d.country] = d.count;
+      }
+    });
+
+    return waf.descCountsHash(counts);
+  },
+
+  descCountsHash: function(counts) {
+    result = [];
+
+    result[0] = Object.keys(counts).sort(function(a,b) {
+      return counts[b] - counts[a];
+    });
+    result[1] = result[0].map(function(d) {
+      return counts[d];
+    });
+
+    return result;
+  },
+
   init: function(wafData) {
     // get timezone offset
     var timezoneOffset = new Date().getTimezoneOffset() * 60000;
