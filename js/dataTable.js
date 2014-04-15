@@ -8,16 +8,18 @@ var dataTable = {
   tbody: null,
 
   init: function(vizBody, bounds, series, valueFuncs, maxItems) {
-    dataTable.vizBody = vizBody;
-    dataTable.bounds = bounds;
-    dataTable.valueFuncs = valueFuncs;
-    dataTable.maxItems = maxItems
+    var that = this;
+    that.vizBody = vizBody;
+    that.bounds = bounds;
+    that.valueFuncs = valueFuncs;
+    that.maxItems = maxItems;
+    that.selection = 0;
 
-    var table = dataTable.vizBody.append("table");
+    var table = that.vizBody.append("table");
     table.attr({class: 'dataTable'});
 
     var thead = table.append("thead");
-    dataTable.tbody = table.append("tbody");
+    that.tbody = table.append("tbody");
 
     if (series.length == 1) {
       // If only one series, no drop-down
@@ -35,30 +37,29 @@ var dataTable = {
         .attr("value", function(d, i) { return i; })
         .text(function(d) { return d; });
 
-      selector.on("change", dataTable.selectSeries);
+      selector.on("change", function() {
+        that.selection = this.selectedIndex;
+        that.update();
+      });
     }
 
     thead.append("th")
       .style("text-align", "right")
       .text("Count");
 
-    dataTable.draw();
-  },
-
-  selectSeries: function() {
-    dataTable.selection = this.selectedIndex;
-    dataTable.update();
+    that.draw();
   },
 
   draw: function() {
     // load the new data
-    dataTable.values = dataTable.valueFuncs.map(function (d) {
-      return d().slice(0, dataTable.maxItems);
+    var that = this
+    that.values = that.valueFuncs.map(function (d) {
+      return d().slice(0, that.maxItems);
     });
 
     // create/update table rows
-    var tr = dataTable.tbody.selectAll("tr")
-      .data(dataTable.values[dataTable.selection]);
+    var tr = that.tbody.selectAll("tr")
+      .data(that.values[that.selection]);
 
     tr.enter().append("tr");
     tr.exit().remove();
@@ -76,6 +77,6 @@ var dataTable = {
 
   update: function() {
     // we can just reuse the draw function
-    dataTable.draw();
+    this.draw();
   }
 }

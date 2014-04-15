@@ -11,20 +11,21 @@ var polarPlot = {
   radius: null,
 
   init: function(vizBody, bounds, categories, valueFuncs, color) {
-    polarPlot.vizBody = vizBody;
-    polarPlot.bounds = bounds;
-    polarPlot.categories = categories;
-    polarPlot.valueFuncs = valueFuncs;
-    polarPlot.color = d3.scale.ordinal().domain(color.length).range(color);
+    var that = this;
+    that.vizBody = vizBody;
+    that.bounds = bounds;
+    that.categories = categories;
+    that.valueFuncs = valueFuncs;
+    that.color = d3.scale.ordinal().domain(color.length).range(color);
 
-    polarPlot.values = polarPlot.valueFuncs.map(function (d) {
+    that.values = that.valueFuncs.map(function (d) {
       // concat the first value to the end to close the circle
       return d().concat(d()[0]);
     });
 
-    polarPlot.setScales();
-    polarPlot.addAxes();
-    polarPlot.draw();
+    that.setScales();
+    that.addAxes();
+    that.draw();
   },
 
   setScales: function() {
@@ -35,104 +36,111 @@ var polarPlot = {
       left: 10
     };
 
-    var heightCircleConstraint = polarPlot.bounds.height - vizPadding.top - vizPadding.bottom;
-    var widthCircleConstraint = polarPlot.bounds.width - vizPadding.left - vizPadding.right;
-    polarPlot.maxRadius = d3.min([heightCircleConstraint, widthCircleConstraint]) / 2;
+    var that = this;
+    var heightCircleConstraint = that.bounds.height - vizPadding.top - vizPadding.bottom;
+    var widthCircleConstraint = that.bounds.width - vizPadding.left - vizPadding.right;
+    that.maxRadius = d3.min([heightCircleConstraint, widthCircleConstraint]) / 2;
 
     var centerX = widthCircleConstraint / 2 + vizPadding.left;
     var centerY = heightCircleConstraint / 2 + vizPadding.top;
 
-    polarPlot.maxVal = d3.max(polarPlot.flatten(polarPlot.values));
-    polarPlot.radius = d3.scale.linear().domain([0, polarPlot.maxVal])
-      .range([0, polarPlot.maxRadius]);
+    that.maxVal = d3.max(that.flatten(that.values));
+    that.radius = d3.scale.linear().domain([0, that.maxVal])
+      .range([0, that.maxRadius]);
 
-    polarPlot.vizBody.attr("transform",
+    that.vizBody.attr("transform",
       "translate(" + centerX + ", " + centerY + ")");
   },
 
   addAxes: function() {
-    var radialTicks = polarPlot.radius.ticks(5);
+    var that = this;
 
-    polarPlot.vizBody.selectAll('.circle-ticks').remove();
-    polarPlot.vizBody.selectAll('.line-ticks').remove();
+    var radialTicks = that.radius.ticks(5);
 
-    var circleAxes = polarPlot.vizBody.selectAll('.circle-ticks')
+    that.vizBody.selectAll('.circle-ticks').remove();
+    that.vizBody.selectAll('.line-ticks').remove();
+
+    var circleAxes = that.vizBody.selectAll('.circle-ticks')
       .data(radialTicks)
       .enter().append('svg:g')
       .attr("class", "circle-ticks");
 
     circleAxes.append("svg:circle")
       .attr("r", function (d, i) {
-        return polarPlot.radius(d);
+        return that.radius(d);
       })
       .attr("class", "circle-axis");
 
     circleAxes.append("svg:text")
       .attr("text-anchor", "middle")
       .attr("dy", function (d) {
-        return -1 * polarPlot.radius(d);
+        return -1 * that.radius(d);
       })
       .text(String);
 
-    var lineAxes = polarPlot.vizBody.selectAll('.line-ticks')
-      .data(polarPlot.categories)
+    var lineAxes = that.vizBody.selectAll('.line-ticks')
+      .data(that.categories)
       .enter().append('svg:g')
       .attr("transform", function (d, i) {
-        return "rotate(" + ((i / polarPlot.categories.length * 360) - 90) +
-          ")translate(" + polarPlot.radius(polarPlot.maxVal) + ")";
+        return "rotate(" + ((i / that.categories.length * 360) - 90) +
+          ")translate(" + that.radius(that.maxVal) + ")";
       })
       .attr("class", "line-ticks");
 
     lineAxes.append('svg:line')
-      .attr("x2", -1 * polarPlot.radius(polarPlot.maxVal))
+      .attr("x2", -1 * that.radius(that.maxVal))
       .attr("class", "line-axis");
 
     lineAxes.append('svg:text')
       .text(String)
       .attr("text-anchor", "middle")
       .attr("transform", function (d, i) {
-        return (i / polarPlot.categories.length * 360) < 180 ? null : "rotate(180)";
+        return (i / that.categories.length * 360) < 180 ? null : "rotate(180)";
       });
   },
 
   draw: function() {
-    var lines = polarPlot.vizBody.selectAll('.line')
-      .data(polarPlot.values);
+    var that = this;
+
+    var lines = that.vizBody.selectAll('.line')
+      .data(that.values);
 
     lines.enter().append('svg:path')
       .attr("class", "line")
       .attr("d", d3.svg.line.radial()
         .radius(function (d) { return 0; })
         .angle(function (d, i) {
-          i = i % polarPlot.categories.length; // wrap back around
-          return (i / polarPlot.categories.length) * 2 * Math.PI;
+          i = i % that.categories.length; // wrap back around
+          return (i / that.categories.length) * 2 * Math.PI;
         })
       )
-      .style('stroke', function (d, i) { return polarPlot.color(i); })
+      .style('stroke', function (d, i) { return that.color(i); })
       .style("fill", "none");
 
     lines.transition()
       .duration(transitionDuration)
       .attr("d", d3.svg.line.radial()
-        .radius(function (d) { return polarPlot.radius(d); })
+        .radius(function (d) { return that.radius(d); })
         .angle(function (d, i) {
-          i = i % polarPlot.categories.length; // wrap back around
-          return (i / polarPlot.categories.length) * 2 * Math.PI;
+          i = i % that.categories.length; // wrap back around
+          return (i / that.categories.length) * 2 * Math.PI;
       })
     );
   },
 
   update: function() {
-    polarPlot.values = polarPlot.valueFuncs.map(function (d) {
+    var that = this;
+
+    that.values = that.valueFuncs.map(function (d) {
       return d().concat(d()[0]);
     });
-    polarPlot.maxVal = d3.max(polarPlot.flatten(polarPlot.values));
-    polarPlot.radius = d3.scale.linear().domain([0, polarPlot.maxVal])
-      .range([0, polarPlot.maxRadius]);
+    that.maxVal = d3.max(that.flatten(that.values));
+    that.radius = d3.scale.linear().domain([0, that.maxVal])
+      .range([0, that.maxRadius]);
 
-    polarPlot.addAxes();
+    that.addAxes();
 
-    return polarPlot.draw();
+    return that.draw();
   },
 
   flatten: function(values) {

@@ -58,8 +58,15 @@ var waf = {
   },
 
   getFilteredHourlyMean: function() {
-    var mean = d3.mean(waf.getFilteredDataGroupedHourly());
-    return d3.range(24).map(function() { return mean; });
+    var extent = timeRangeSelector.brush.extent();
+    var data = waf.getFilteredDataGroupedHourly().map(function (d, i) {
+      if (i >= extent[0] && i < extent[1]) return d;
+    });
+    var mean = d3.mean(data);
+    return d3.range(24).map(function(d, i) {
+      if (i >= extent[0] && i < extent[1]) return mean;
+      return 0;
+    });
   },
 
   getFilteredDataGroupedHourly: function() {
@@ -70,7 +77,7 @@ var waf = {
       hourBuckets[d.hour] += d.count;
     });
 
-    return hourBuckets.concat(hourBuckets[0]);
+    return hourBuckets;
   },
 
   // this is used by the time range selector only
