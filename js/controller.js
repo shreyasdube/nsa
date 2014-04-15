@@ -6,8 +6,9 @@ var controller = {
     waf.refreshFilteredData();
     uiUtil.update();
     bubbleMap.update();
-    polarPlot.update();
-    dataTable.update();
+    pp1.update();
+    dt1.update();
+    dt2.update();
   },
 
   // initialize the visualization
@@ -35,10 +36,15 @@ var controller = {
     bubbleMap.init(gMapWrapper, bbMap, world);
 
     // draw polar plot
-    polarPlot.init(gPolarWrapper, bbPolar, d3.range(24), [waf.getFilteredHourlyMean, waf.getFilteredDataGroupedHourly], ['lightblue', colorAttack]);
+    pp1 = Object.create(polarPlot);
+    pp1.init(gPolarWrapper, bbPolar, d3.range(24), [waf.getFilteredHourlyMean, waf.getFilteredDataGroupedHourly], ['lightblue', colorAttack]);
 
-    // draw data table
-    dataTable.init(gDataTableWrapper, bbDataTable, ['Browser', 'Operating System', 'Country'], [waf.getTopBrowsers, waf.getTopOperatingSystems, waf.getTopCountries], 10);
+    // draw data tables
+    dt1 = Object.create(dataTable);
+    dt1.init(gDataTableWrapper, bbDataTable, ['Country'], [waf.getTopCountries], 10);
+
+    dt2 = Object.create(dataTable);
+    dt2.init(gDataTableWrapper2, bbDataTable, ['Browser', 'Operating System'], [waf.getTopBrowsers, waf.getTopOperatingSystems], 10);
 
     // update the UI
     controller.update();
