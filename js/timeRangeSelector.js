@@ -45,6 +45,8 @@ var timeRangeSelector = {
     var brushMove = function() {
       console.log("brushmove");
       timeRangeSelector.colorSelectedBars();
+      // update the UI!
+      controller.update();
     }
 
     var brushEnd = function() {
@@ -80,7 +82,8 @@ var timeRangeSelector = {
       .on("brushend", brushEnd);
 
     brushStart();
-    brushMove();
+    timeRangeSelector.colorSelectedBars();
+    // brushMove();
   },
 
   init: function(gWrapper, bb) {
