@@ -181,7 +181,7 @@ var waf = {
       return counts[b] - counts[a];
     });
 
-    // Second pass to return array of {key:k, value:v}
+    // Second pass to return array of {item:k, count:v}
     return result.map(function(d) {
       return {
         item: d,
