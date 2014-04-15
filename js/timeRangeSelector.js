@@ -45,10 +45,15 @@ var timeRangeSelector = {
     var brushMove = function() {
       console.log("brushmove");
       timeRangeSelector.colorSelectedBars();
-      // update the UI!
+
+      // reduce animation duration to ensure we can see realtime changes
       var oldTransitionDuration = transitionDuration;
       transitionDuration = 150;
+
+      // update the UI!
       controller.update();
+
+      // restore animation duration
       transitionDuration = oldTransitionDuration;
     }
 
