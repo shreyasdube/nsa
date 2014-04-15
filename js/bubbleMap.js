@@ -53,8 +53,8 @@ var bubbleMap = {
       .on("mouseover", function(d, i) {
         showTooltip(d, true);
       })
-      // .transition()
-      // .duration(transitionDuration)
+      .transition()
+      .duration(transitionDuration)
         .attr("r", function(d) { return rScale(d.count); })
         .style("fill", colorAttack);
 
@@ -68,8 +68,8 @@ var bubbleMap = {
       .on("mouseout", function(d, i) {
         hideTooltip(d);
       })
-      // .transition()
-      // .duration(transitionDuration)
+      .transition()
+      .duration(transitionDuration)
         .attr("r", radiusNoData)
         .style("fill", colorNoAttack)
       

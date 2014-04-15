@@ -45,8 +45,15 @@ var timeRangeSelector = {
     var brushMove = function() {
       console.log("brushmove");
       timeRangeSelector.colorSelectedBars();
+      
+      // disable transitions for a while
+      transitionDuration = 0;
+      
       // update the UI!
       controller.update();
+
+      // renable transitions
+      transitionDuration = 750;
     }
 
     var brushEnd = function() {
