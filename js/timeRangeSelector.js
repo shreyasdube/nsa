@@ -58,8 +58,8 @@ var timeRangeSelector = {
 
       // if empty when rounded, use floor & ceil instead
       if (extent1[0] >= extent1[1]) {
-        extent1[0] = d3.time.day.floor(extent0[0]);
-        extent1[1] = d3.time.day.ceil(extent0[1]);
+        extent1[0] = Math.floor(extent0[0]);
+        extent1[1] = Math.ceil(extent0[1]);
       }
 
       // snap to rounded values
