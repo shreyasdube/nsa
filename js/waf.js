@@ -112,7 +112,7 @@ var waf = {
     // aggregate by city, drop all other dimensions
     var cities = {};
     waf.filteredData.forEach(function(d) {
-      var cityId = d.country + "-" + d.state + "-" + d.city;
+      var cityId = d.id;
       // city already exists, just add the total count
       if (cities[cityId]) {
         cities[cityId].count += d.count;
@@ -151,6 +151,12 @@ var waf = {
 
     return count;
   },
+
+  getDataForCity: function(country, state, city) {
+    var data = waf.filteredData.filter(function(d) {
+
+    });
+  }, 
 
   getTopBrowsers: function() {
     counts = {};
@@ -210,7 +216,8 @@ var waf = {
       d.date  = new Date((+d.timestamp * 1000) + timezoneOffset);
 
       // store synthesized data here
-      d.hour  =  d.date.getHours();
+      d.id   = d.country + "-" + d.state + "-" + d.city;
+      d.hour =  d.date.getHours();
       return d;
     });
   }
