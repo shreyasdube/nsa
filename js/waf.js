@@ -154,12 +154,17 @@ var waf = {
       return d.id === city.id;
     });
 
+    var completeCityData = waf.filterByCountryAndNetwork().filter(function(d) {
+      return d.id === city.id;
+    });
+
     return {
       attacks: {
         city: city.count, 
         total: waf.getNumberOfAttacks()
       }, 
-      hourly: waf.groupHourly(cityData)
+      // hourlyFiltered: waf.groupHourly(cityData), 
+      hourlyComplete: waf.groupHourly(completeCityData), 
     };
   }, 
 

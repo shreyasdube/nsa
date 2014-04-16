@@ -26,7 +26,7 @@ var bubbleMap = {
 
     // get detailed data for city
     var cityData = waf.getDataForCity(city);
-    var hourlyData = cityData.hourly;
+    var hourlyData = cityData.hourlyComplete;
 
     // bounding box for tooltip viz
     var bb = {};
