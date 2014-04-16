@@ -17,14 +17,82 @@ var bubbleMap = {
     var html = city.city + ": <b>" 
       + (showCount ? numberFormat(city.count) : "-") 
       + "</b>";
-    bubbleMap.tooltip.append("span")
+    bubbleMap.tooltip.append("div")
       .html(html);
 
     if (!showCount) {
       return;
     }
-    
-    console.log(waf.getDataForCity(city));
+
+    // get detailed data for city
+    var cityData = waf.getDataForCity(city);
+    var hourlyData = cityData.hourly;
+
+    // bounding box for tooltip viz
+    var bb = {};
+    bb.margin = {
+      top: 10, 
+      right: 40, 
+      bottom: 20, 
+      left: 60
+    };
+    bb.height = 100 - bb.margin.top - bb.margin.bottom;
+    bb.width = 400 - bb.margin.left - bb.margin.right;
+
+    // parent <g> element
+    var g = bubbleMap.tooltip
+      .append("svg")
+        .attr({
+          width: bb.width + bb.margin.left + bb.margin.right, 
+          height: bb.height + bb.margin.top + bb.margin.bottom
+        })
+      .append("g")
+        .attr({
+          class: "tooltipTimeRangeWrapper",
+          transform: "translate(" + bb.margin.left + "," + bb.margin.top  + ")"
+        });
+
+    // x scale
+    var x = d3.scale.linear()
+      .domain([0, hourlyData.length])
+      .range([0, bb.width]);
+
+    // y scale
+    var y = d3.scale.linear()
+      .domain([0, d3.max(hourlyData)])
+      .rangeRound([bb.height, 0]);
+
+    // x axis
+    var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+    // y axis
+    var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left")
+      .ticks(4);
+
+    // draw x axis
+    g.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + bb.height + ")")
+      .call(xAxis);
+
+    // draw y axis
+    g.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+
+    g.selectAll(".timeAttack")
+      .data(hourlyData)
+      .enter().append("rect")
+        .attr("class", "timeAttack")
+        .attr("x", function(d, i) { return x(i); })
+        .attr("y", function(d) { return y(d); })
+        .attr("height", function(d) { return bb.height - y(d); })
+        .attr("width", (bb.width / hourlyData.length) - 2)
+        .style("fill", colorAttack);
   }, 
 
   update: function() {
