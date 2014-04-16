@@ -27,6 +27,8 @@ var bubbleMap = {
     // get detailed data for city
     var cityData = waf.getDataForCity(city);
     var hourlyData = cityData.hourlyComplete;
+    // this will tell us the selected time window
+    var extent = timeRangeSelector.getSelectedTimeRange();
 
     // bounding box for tooltip viz
     var bb = {};
@@ -92,7 +94,15 @@ var bubbleMap = {
         .attr("y", function(d) { return y(d); })
         .attr("height", function(d) { return bb.height - y(d); })
         .attr("width", (bb.width / hourlyData.length) - 2)
-        .style("fill", colorAttack);
+        .style("fill", function(d, i) {
+          // use color for attacks if this hour is within the selected time range
+          if (i >= extent[0] && i < extent[1]) {
+            return colorAttack;
+          } else {
+            // otherwise grey out
+            return colorNoAttack;
+          }
+        });
   }, 
 
   update: function() {
