@@ -1,7 +1,5 @@
-function Plot(vizBody, bounds, title, subtitle) {
+function Plot(vizBody, bounds) {
   this.vizBody = vizBody;
   this.bounds = bounds;
-  this.title = title;
-  this.subtitle = subtitle;
 }
 

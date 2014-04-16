@@ -1,7 +1,7 @@
-function DataTable(vizBody, bounds, title, subtitle, series, valueFuncs, maxItems) {
+function DataTable(vizBody, bounds, series, valueFuncs, maxItems) {
   // Initialize the parent prototype
   this.base = Plot;
-  this.base(vizBody, bounds, title, subtitle);
+  this.base(vizBody, bounds);
 
   // Initialize with provided parameters
   this.series = series;

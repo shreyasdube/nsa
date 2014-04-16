@@ -1,8 +1,8 @@
 // Based upon ideas from http://bl.ocks.org/jeffthink/1630683
-function PolarPlot(vizBody, bounds, title, subtitle, categories, valueFuncs, color) {
+function PolarPlot(vizBody, bounds, categories, valueFuncs, color) {
   // Initialize the parent prototype
   this.base = Plot;
-  this.base(vizBody, bounds, title, subtitle);
+  this.base(vizBody, bounds);
 
   // Initialize with provided parameters
   this.categories = categories;
