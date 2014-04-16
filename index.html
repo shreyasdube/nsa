@@ -21,7 +21,7 @@
   <script type="text/javascript" src="js/dataTable.js"></script>
 
   <style type="text/css">
-    body {
+    body, div.tooltip {
       color: white;
       background-color: #272822;
     }
@@ -46,13 +46,15 @@
       padding-bottom: 20px;
     }
 
-    .timeRangeWrapper .axis path, .timeRangeWrapper .axis line {
+    .timeRangeWrapper .axis path, .timeRangeWrapper .axis line, 
+    .tooltipTimeRangeWrapper .axis path, .tooltipTimeRangeWrapper .axis line {
       fill: none;
       stroke: white;
       shape-rendering: crispEdges;
     }
 
-    .timeRangeWrapper .axis text {
+    .timeRangeWrapper .axis text, 
+    .tooltipTimeRangeWrapper .axis text {
       stroke: white;
     }
 
