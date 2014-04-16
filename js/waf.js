@@ -152,10 +152,17 @@ var waf = {
     return count;
   },
 
-  getDataForCity: function(country, state, city) {
-    var data = waf.filteredData.filter(function(d) {
-
+  getDataForCity: function(city) {
+    var cityData = waf.filteredData.filter(function(d) {
+      return d.id === city.id;
     });
+
+    return {
+      attacks: {
+        city: city.count, 
+        total: waf.getNumberOfAttacks()
+      }
+    };
   }, 
 
   getTopBrowsers: function() {

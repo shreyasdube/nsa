@@ -83,6 +83,7 @@ var bubbleMap = {
       var html = d.city + ": <b>" 
         + (showCount ? numberFormat(d.count) : "-") 
         + "</b>";
+      console.log(waf.getDataForCity(d));
       bubbleMap.tooltip.html(html)
         .style("left", (d3.event.pageX) + "px")
         .style("top", (d3.event.pageY) + "px");
