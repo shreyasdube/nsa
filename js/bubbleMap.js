@@ -9,6 +9,24 @@ var bubbleMap = {
     return bubbleMap.projection([parseFloat(d.lng), parseFloat(d.lat)]);
   },
 
+  createTooltip: function(city, showCount) {
+    // reset
+    bubbleMap.tooltip.html("");
+
+    // city name and count
+    var html = city.city + ": <b>" 
+      + (showCount ? numberFormat(city.count) : "-") 
+      + "</b>";
+    bubbleMap.tooltip.append("span")
+      .html(html);
+
+    if (!showCount) {
+      return;
+    }
+    
+    console.log(waf.getDataForCity(city));
+  }, 
+
   update: function() {
     var radiusNoData = 3;
     var data = waf.getAggregatedMapData();
@@ -79,12 +97,9 @@ var bubbleMap = {
         .duration(200)
         .style("opacity", 0.9)
 
-      // city name and count
-      var html = d.city + ": <b>" 
-        + (showCount ? numberFormat(d.count) : "-") 
-        + "</b>";
-      console.log(waf.getDataForCity(d));
-      bubbleMap.tooltip.html(html)
+      bubbleMap.createTooltip(d, showCount);
+      
+      bubbleMap.tooltip
         .style("left", (d3.event.pageX) + "px")
         .style("top", (d3.event.pageY) + "px");
     }
