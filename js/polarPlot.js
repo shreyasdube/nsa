@@ -1,34 +1,18 @@
 // Based upon ideas from http://bl.ocks.org/jeffthink/1630683
-var polarPlot = {
-  vizBody: null,
-  bounds: {},
-  categories: [],
-  valueFuncs: [],
-  values: [],
-  color: null,
-  maxVal: 0,
-  maxRadius: 0,
-  radius: null,
+function PolarPlot(vizBody, bounds, title, subtitle, categories, valueFuncs, color) {
+  // Initialize the parent prototype
+  this.base = Plot;
+  this.base(vizBody, bounds, title, subtitle);
 
-  init: function(vizBody, bounds, categories, valueFuncs, color) {
-    var that = this;
-    that.vizBody = vizBody;
-    that.bounds = bounds;
-    that.categories = categories;
-    that.valueFuncs = valueFuncs;
-    that.color = d3.scale.ordinal().domain(color.length).range(color);
+  // Initialize with provided parameters
+  this.categories = categories;
+  this.valueFuncs = valueFuncs;
+  this.color = d3.scale.ordinal().domain(color.length).range(color);
 
-    that.values = that.valueFuncs.map(function (d) {
-      // concat the first value to the end to close the circle
-      return d().concat(d()[0]);
-    });
+  var that = this;
 
-    that.setScales();
-    that.addAxes();
-    that.draw();
-  },
-
-  setScales: function() {
+  // Define functions
+  this.setScales = function() {
     var vizPadding = {
       top: 10,
       right: 10,
@@ -36,7 +20,6 @@ var polarPlot = {
       left: 10
     };
 
-    var that = this;
     var heightCircleConstraint = that.bounds.height - vizPadding.top - vizPadding.bottom;
     var widthCircleConstraint = that.bounds.width - vizPadding.left - vizPadding.right;
     that.maxRadius = d3.min([heightCircleConstraint, widthCircleConstraint]) / 2;
@@ -50,11 +33,9 @@ var polarPlot = {
 
     that.vizBody.attr("transform",
       "translate(" + centerX + ", " + centerY + ")");
-  },
+  };
 
-  addAxes: function() {
-    var that = this;
-
+  this.addAxes = function() {
     var radialTicks = that.radius.ticks(5);
 
     that.vizBody.selectAll('.circle-ticks').remove();
@@ -97,11 +78,9 @@ var polarPlot = {
       .attr("transform", function (d, i) {
         return (i / that.categories.length * 360) < 180 ? null : "rotate(180)";
       });
-  },
+  };
 
-  draw: function() {
-    var that = this;
-
+  this.draw = function() {
     var lines = that.vizBody.selectAll('.line')
       .data(that.values);
 
@@ -126,11 +105,9 @@ var polarPlot = {
           return (i / that.categories.length) * 2 * Math.PI;
       })
     );
-  },
+  };
 
-  update: function() {
-    var that = this;
-
+  this.update = function() {
     that.values = that.valueFuncs.map(function (d) {
       return d().concat(d()[0]);
     });
@@ -141,12 +118,24 @@ var polarPlot = {
     that.addAxes();
 
     return that.draw();
-  },
+  };
 
-  flatten: function(values) {
+  this.flatten = function(values) {
     return values.reduce(function(prev, curr) {
       return prev.concat(curr);
     },[]);
-  }
+  };
+
+  // Finish initialization
+  this.values = this.valueFuncs.map(function (d) {
+    // concat the first value to the end to close the circle
+    return d().concat(d()[0]);
+  });
+
+  this.setScales();
+  this.addAxes();
+  this.draw();
 };
+
+PolarPlot.prototype = new Plot;
 

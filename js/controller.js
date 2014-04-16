@@ -36,15 +36,12 @@ var controller = {
     bubbleMap.init(gMapWrapper, bbMap, world);
 
     // draw polar plot
-    pp1 = Object.create(polarPlot);
-    pp1.init(gPolarWrapper, bbPolar, d3.range(24), [waf.getFilteredHourlyMean, waf.getFilteredDataGroupedHourly], ['lightblue', colorAttack]);
+    pp1 = new PolarPlot(gPolarWrapper, bbPolar, "Attacks Per Hour", "Times in GMT; Mean in gray", d3.range(24), [waf.getFilteredHourlyMean, waf.getFilteredDataGroupedHourly], ['lightblue', colorAttack]);
 
     // draw data tables
-    dt1 = Object.create(dataTable);
-    dt1.init(gDataTableWrapper, bbDataTable, ['Country'], [waf.getTopCountries], 10);
+    dt1 = new DataTable(gDataTableWrapper, bbDataTable, "Top Countries for Selection", "", ['Country'], [waf.getTopCountries], 10);
 
-    dt2 = Object.create(dataTable);
-    dt2.init(gDataTableWrapper2, bbDataTable, ['Browser', 'Operating System'], [waf.getTopBrowsers, waf.getTopOperatingSystems], 10);
+    dt2 = new DataTable(gDataTableWrapper2, bbDataTable, "Other Top 10 Lists for Selection", "", ['Browser', 'Operating System'], [waf.getTopBrowsers, waf.getTopOperatingSystems], 10);
 
     // update the UI
     controller.update();
