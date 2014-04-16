@@ -27,10 +27,14 @@
       background-color: #272822;
     }
 
-    text, body{
+    text, body {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 9pt;
       /*font-weight: bold;*/
+    }
+
+    h2 {
+      text-align: center;
     }
 
     svg {
@@ -140,7 +144,7 @@
       <td>
         <div>
           <h1>Not Safe Anymore</h1>
-          <h2>Visualization of Web Attacks on the Web over a 24-hour period</h2>
+          <span>Visualization of Web Attacks on the Web over a 24-hour period</span>
         </div>
         <div id="bubbleMap"></div>
         <div id="timeRangeSelector"></div>
@@ -150,15 +154,14 @@
         </div>
       </td>
       <!-- right column -->
-      <td>
+      <td style="width:280px">
         <div>
           <h1 id="numberOfAttacksHeader">Number of Attacks</h1>
           <div id="numberOfAttacks">0</div>
         </div>
         <hr />
         <div>
-          <h2 id="polarPlotHeader">Number of Attacks per Hour</h2>
-          <h3 id="polarPlotSubtitle">(times are GMT)</h3>
+          <h2 id="polarPlotHeader">Number of Attacks/Hour (GMT)</h2>
           <div id="polarPlot"></div>
         </div>
         <hr />
@@ -168,7 +171,7 @@
         </div>
         <hr />
         <div>
-          <h2 id="dataTableHeader2">Top 10 Source Machine Types</h2>
+          <h2 id="dataTableHeader2">Top 10 Machine Types</h2>
           <div id="dataTable2"></div>
         </div>
       </td>
