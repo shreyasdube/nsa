@@ -1,58 +1,18 @@
-var dataTable = {
-  vizBody: null,
-  bounds: {},
-  valueFuncs: [],
-  values: [],
-  maxItems: 0,
-  selection: 0,
-  tbody: null,
+function DataTable(vizBody, bounds, title, subtitle, series, valueFuncs, maxItems) {
+  // Initialize the parent prototype
+  this.base = Plot;
+  this.base(vizBody, bounds, title, subtitle);
 
-  init: function(vizBody, bounds, series, valueFuncs, maxItems) {
-    var that = this;
-    that.vizBody = vizBody;
-    that.bounds = bounds;
-    that.valueFuncs = valueFuncs;
-    that.maxItems = maxItems;
-    that.selection = 0;
+  // Initialize with provided parameters
+  this.series = series;
+  this.valueFuncs = valueFuncs;
+  this.maxItems = maxItems;
 
-    var table = that.vizBody.append("table");
-    table.attr({class: 'dataTable'});
+  var that = this;
 
-    var thead = table.append("thead");
-    that.tbody = table.append("tbody");
-
-    if (series.length == 1) {
-      // If only one series, no drop-down
-      thead.append("th")
-        .style("text-align", "left")
-        .text(series[0]);
-    } else {
-      // Create a drop-down with each series name
-      var selector = thead.append("th")
-        .style("text-align", "left")
-        .append("select");
-
-      selector.selectAll("option").data(series)
-        .enter().append("option")
-        .attr("value", function(d, i) { return i; })
-        .text(function(d) { return d; });
-
-      selector.on("change", function() {
-        that.selection = this.selectedIndex;
-        that.update();
-      });
-    }
-
-    thead.append("th")
-      .style("text-align", "right")
-      .text("Count");
-
-    that.draw();
-  },
-
-  draw: function() {
+  // Define functions
+  this.draw = function() {
     // load the new data
-    var that = this
     that.values = that.valueFuncs.map(function (d) {
       return d().slice(0, that.maxItems);
     });
@@ -73,10 +33,50 @@ var dataTable = {
       .style("text-align", function(d, i) { return (i == 0) ? 'left' : 'right' });
 
     cells.text(function(d) { return d; });
-  },
+  };
 
-  update: function() {
+  this.update = function() {
     // we can just reuse the draw function
-    this.draw();
+    that.draw();
+  };
+
+  // Finish initialization
+  this.selection = 0;
+
+  var table = this.vizBody.append("table");
+  table.attr({class: 'dataTable'});
+
+  var thead = table.append("thead");
+  this.tbody = table.append("tbody");
+
+  if (series.length == 1) {
+    // If only one series, no drop-down
+    thead.append("th")
+      .style("text-align", "left")
+      .text(series[0]);
+  } else {
+    // Create a drop-down with each series name
+    var selector = thead.append("th")
+      .style("text-align", "left")
+      .append("select");
+
+    selector.selectAll("option").data(series)
+      .enter().append("option")
+      .attr("value", function(d, i) { return i; })
+      .text(function(d) { return d; });
+
+    selector.on("change", function() {
+      that.selection = this.selectedIndex;
+      that.update();
+    });
   }
+
+  thead.append("th")
+    .style("text-align", "right")
+    .text("Count");
+
+  this.draw();
 }
+
+DataTable.prototype = new Plot;
+
