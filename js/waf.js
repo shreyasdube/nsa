@@ -69,27 +69,24 @@ var waf = {
     });
   },
 
-  getFilteredDataGroupedHourly: function() {
+  groupHourly: function(filteredData) {
     var hourBuckets = d3.range(24).map(function() { return 0; });
 
     // bucket counts based upon hour of the day
-    waf.filteredData.forEach(function(d) {
+    filteredData.forEach(function(d) {
       hourBuckets[d.hour] += d.count;
     });
 
     return hourBuckets;
+  }, 
+
+  getFilteredDataGroupedHourly: function() {
+    return waf.groupHourly(waf.filteredData);
   },
 
   // this is used by the time range selector only
   getCompleteFilteredDataGroupedHourly: function() {
-    var hourBuckets = d3.range(24).map(function() { return 0; });
-
-    // bucket counts based upon hour of the day
-    waf.filterByCountryAndNetwork().forEach(function(d) {
-      hourBuckets[d.hour] += d.count;
-    });
-
-    return hourBuckets;
+    return waf.groupHourly(waf.filterByCountryAndNetwork());
   },
 
   getFilteredHierarchy: function() {
@@ -161,7 +158,8 @@ var waf = {
       attacks: {
         city: city.count, 
         total: waf.getNumberOfAttacks()
-      }
+      }, 
+      hourly: waf.groupHourly(cityData)
     };
   }, 
 
