@@ -183,12 +183,19 @@
   <script type="text/javascript">
     var width = 960, height = 600;
 
+    var bbPlayButton = {
+      top: 10,
+      left: 10,
+      height: 70,
+      width: 70
+    }
+
     var bbTimeSelector = {};
     bbTimeSelector.margin = {
       top: 10, 
       right: 40, 
       bottom: 20, 
-      left: 60
+      left: 140
     };
     bbTimeSelector.height = 100 - bbTimeSelector.margin.top - bbTimeSelector.margin.bottom;
     bbTimeSelector.width = width - bbTimeSelector.margin.left - bbTimeSelector.margin.right;
@@ -214,17 +221,24 @@
       width: 280
     }
 
-    var gTimeSelector = d3.select("#timeRangeSelector")
+    var tsSvg = d3.select("#timeRangeSelector")
       .append("svg")
         .attr({
           width: bbTimeSelector.width + bbTimeSelector.margin.left + bbTimeSelector.margin.right, 
           height: bbTimeSelector.height + bbTimeSelector.margin.top + bbTimeSelector.margin.bottom
-        })
-      .append("g")
-        .attr({
-          class: "timeRangeWrapper",
-          transform: "translate(" + bbTimeSelector.margin.left + "," + bbTimeSelector.margin.top  + ")"
         });
+
+    var gPlayButton = tsSvg.append("g")
+      .attr({
+        id: "playButtonWrapper",
+        transform: "translate(" + bbPlayButton.left + "," + bbPlayButton.top + ")"
+      });
+
+    var gTimeSelector = tsSvg.append("g")
+      .attr({
+        class: "timeRangeWrapper",
+        transform: "translate(" + bbTimeSelector.margin.left + "," + bbTimeSelector.margin.top  + ")"
+      });
 
     // Bubble map
     var gMapWrapper = d3.select("#bubbleMap").append("svg")
@@ -281,4 +295,5 @@
   [5] http://bl.ocks.org/mbostock/4349545
   [6] http://bl.ocks.org/mbostock/6232537
   [7] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_of_the_Object_Model
+  [8] http://www.iconarchive.com/show/play-stop-pause-icons-by-icons-land/Step-Forward-Normal-Red-icon.html
 -->

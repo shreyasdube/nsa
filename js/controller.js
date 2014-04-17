@@ -31,6 +31,7 @@ var controller = {
 
     // init time range selector
     timeRangeSelector.init(gTimeSelector, bbTimeSelector);
+    uiUtil.initPlayButton("#playButtonWrapper", timeRangeSelector);
 
     // init the world map
     bubbleMap.init(gMapWrapper, bbMap, world);

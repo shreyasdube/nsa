@@ -2,6 +2,9 @@ var uiUtil = {
 
   countrySelectorId: null,
   networkSelectorId: null,
+  playButtonId: null,
+  timeRangeSelector: null,
+  isPlaying: false,
 
   initCountrySelector: function(countrySelectorId) {
     uiUtil.countrySelectorId = countrySelectorId;
@@ -53,6 +56,39 @@ var uiUtil = {
   // gets selected network
   getSelectedNetwork: function() {
     return d3.select(uiUtil.networkSelectorId + " > select").node().value;
+  },
+
+  initPlayButton: function(playButtonId, timeRangeSelector) {
+    uiUtil.playButtonId = playButtonId;
+    uiUtil.timeRangeSelector = timeRangeSelector;
+
+    uiUtil.isPlaying = false;
+
+    var that = this;
+
+    var tickCallback = function() {
+      return function() {
+        if (that.isPlaying) {
+          timeRangeSelector.animate();
+          d3.timer(tickCallback(), transitionDuration);
+        }
+        return true;
+      }
+    };
+
+    var button = d3.select(playButtonId)
+      .append("image")
+        .attr({
+          x: 3,
+          y: 3,
+          width: 64,
+          height: 64,
+          "xlink:href": "/img/play_pause.png"
+        })
+        .on("click", function() {
+          that.isPlaying = !(that.isPlaying);
+          if (that.isPlaying) d3.timer(tickCallback());
+        });
   },
 
   updateNumberOfAttacks: function() {

@@ -141,6 +141,16 @@ var timeRangeSelector = {
     timeRangeSelector.initBrushing();
   },
 
+  animate: function() {
+    var hour = timeRangeSelector.brush.extent()[0];
+    var maxExtent = timeRangeSelector.defaultExtent[1];
+    hour = (hour + 1) % maxExtent;
+    timeRangeSelector.brush.extent([hour, hour+1]);
+
+    d3.select(timeRangeSelector)
+      .call(timeRangeSelector.brush.event);
+  },
+
   update: function() {
     console.log("update time range!");
     var data = waf.getCompleteFilteredDataGroupedHourly();
