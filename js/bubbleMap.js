@@ -223,7 +223,7 @@ var bubbleMap = {
     var zoom = d3.behavior.zoom()
         // .translate([0, 0])
         // .scale(1)
-        .scaleExtent([1, 8])
+        .scaleExtent([1, 24])
         .on("zoom", function() {
           bubbleMap.g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
         });
