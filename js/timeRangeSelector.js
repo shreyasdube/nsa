@@ -142,12 +142,12 @@ var timeRangeSelector = {
   },
 
   animate: function() {
-    var hour = timeRangeSelector.brush.extent()[0];
+    var hour = timeRangeSelector.getSelectedTimeRange()[0];
     var maxExtent = timeRangeSelector.defaultExtent[1];
     hour = (hour + 1) % maxExtent;
-    timeRangeSelector.brush.extent([hour, hour+1]);
 
-    d3.select(timeRangeSelector)
+    d3.select(".brush")
+      .call(timeRangeSelector.brush.extent([hour, hour+1]))
       .call(timeRangeSelector.brush.event);
   },
 
