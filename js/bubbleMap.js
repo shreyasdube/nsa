@@ -133,13 +133,19 @@ var bubbleMap = {
         .attr("cx", function(d, i) { return bubbleMap.latLngToXY(d)[0]; })
         .attr("cy", function(d, i) { return bubbleMap.latLngToXY(d)[1]; })
         .attr("r", function(d) { return rScale(d.count); })
-        .style("fill", colorAttack)
+        .style({
+          fill: colorAttack,
+          'stroke-width': "0px",
+          stroke: "yellow"
+        })
         // show tooltip
         .on("mouseover", function(d, i) {
+          this.style.strokeWidth = "2px";
           showTooltip(d, true);
         })
         // hide tooltip
         .on("mouseout", function(d, i) {
+          this.style.strokeWidth = "0px";
           hideTooltip(d);
         });
 
@@ -147,6 +153,7 @@ var bubbleMap = {
     selection
       // show updated tooltip
       .on("mouseover", function(d, i) {
+        this.style.strokeWidth = "2px";
         showTooltip(d, true);
       })
       .transition()
