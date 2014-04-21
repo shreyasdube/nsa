@@ -140,6 +140,16 @@
       border-radius: 8px;
       pointer-events: none;
     }
+
+    div#filterSelectors {
+      position: absolute;
+      padding: 4px;
+      border: 1px solid white;
+      border-radius: 8px;
+      background-color: #272822;
+      top: 745px;
+      left: 690px;
+    }
   </style>
 
   <table>
@@ -153,12 +163,13 @@
           <p>By hovering over an individual city you can see more granular data about the attacks detected. Clicking and dragging on the map causes the map to pan, and scrolling on the map changes the zoom level. Clicking the play/pause button in the lower left causes the data to animate, showing one hour of data at a time.</p>
           <p> The data being presented is based upon a sample of data taken between <span id='data_start'>the start time</span> and <span id='data_end'>the end time</span> (local time).</p>
         </div>
+        <div id="filterSelectors">
+          Filter by Country: <span id="countrySelector"></span>
+          <br />
+          Filter by Network: <span id="networkSelector"></span>
+        </div>
         <div id="bubbleMap"></div>
         <div id="timeRangeSelector"></div>
-        <div>
-          <span id="countrySelector">Filter By Region&nbsp;</span>
-          <span id="networkSelector">Filter By Network&nbsp;</span>
-        </div>
       </td>
       <!-- right column -->
       <td style="width:280px">
