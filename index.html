@@ -147,8 +147,6 @@
       border: 1px solid white;
       border-radius: 8px;
       background-color: #272822;
-      top: 745px;
-      left: 690px;
     }
   </style>
 
@@ -269,6 +267,14 @@
           class: "mapWrapper",
           transform: "translate(" + bbMap.left + "," + bbMap.top + ")"
         });
+
+    // Filter Selectors
+    var filterSelectorOffset = d3.select("#bubbleMap")[0][0];
+    var gFilterSelectors = d3.select("#filterSelectors")
+      .style({
+        top: (filterSelectorOffset.offsetTop + 550) + "px",
+        left: (filterSelectorOffset.offsetLeft + 25) + "px"
+      });
 
     // Polar plot
     var gPolarWrapper = d3.select("#polarPlot")
