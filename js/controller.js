@@ -25,6 +25,7 @@ var controller = {
       .on("change", function() {
         controller.update();
       });
+    uiUtil.initWafStartEnd();
 
     // update the filtered data
     waf.refreshFilteredData();

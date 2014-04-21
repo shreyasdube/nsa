@@ -58,6 +58,24 @@ var uiUtil = {
     return d3.select(uiUtil.networkSelectorId + " > select").node().value;
   },
 
+  initWafStartEnd: function() {
+    // FYI: use reduce, rather than min, to limit memory usage
+    // get the min date in the set
+    dataStart = waf.data.reduce(function(prev,curr) {
+      if (prev.date < curr.date) return prev;
+      return curr;
+    }).date;
+    // get the max date in the set
+    dataEnd = waf.data.reduce(function(prev,curr) {
+      if (prev.date > curr.date) return prev;
+      return curr;
+    }).date;
+
+    // update the visualization
+    d3.select('#data_start').text(longDateFormat(dataStart));
+    d3.select('#data_end').text(longDateFormat(dataEnd));
+  },
+
   initPlayButton: function(playButtonId, timeRangeSelector) {
     uiUtil.playButtonId = playButtonId;
     uiUtil.timeRangeSelector = timeRangeSelector;
