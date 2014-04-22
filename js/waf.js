@@ -233,6 +233,14 @@ var waf = {
     });
   },
 
+  visibleRange: function() {
+    var minLng = d3.min(waf.filteredData.map(function(d) { return d.lng; }));
+    var minLat = d3.min(waf.filteredData.map(function(d) { return d.lat; }));
+    var maxLng = d3.max(waf.filteredData.map(function(d) { return d.lng; }));
+    var maxLat = d3.max(waf.filteredData.map(function(d) { return d.lat; }));
+    return [{lng:minLng, lat:maxLat}, {lng:maxLng, lat:minLat}];
+  },
+
   init: function(wafData) {
     waf.data = wafData.map(function(d) {
       // convert numbers and dates

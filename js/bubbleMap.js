@@ -3,6 +3,8 @@ var bubbleMap = {
   g: null,
   projection: null,
   path: null,
+  mapOverlay: null,
+  zoom: null,
   tooltip: null,
   // converts lon, lat to x and y using a d3 projection
   latLngToXY: function(d) {
@@ -105,6 +107,37 @@ var bubbleMap = {
         });
   }, 
 
+  zoomToFit: function() {
+    var visibleRangeLatLng = waf.visibleRange();
+    var visibleRangeXY = [
+      bubbleMap.latLngToXY(visibleRangeLatLng[0]),
+      bubbleMap.latLngToXY(visibleRangeLatLng[1]),
+    ];
+
+    var viewDimensions = {
+      width: 80 + visibleRangeXY[1][0] - visibleRangeXY[0][0],
+      height: 80 + visibleRangeXY[1][1] - visibleRangeXY[0][1]
+    };
+
+    var xScale = bubbleMap.bb.width / viewDimensions.width;
+    var yScale = bubbleMap.bb.height / viewDimensions.height;
+    var scale = d3.min([xScale, yScale]);
+
+    var translate = [(40-visibleRangeXY[0][0]) * scale, (40-visibleRangeXY[0][1]) * scale];
+
+    bubbleMap.g.attr("transform", "translate(" + translate + ")scale(" + scale + ")");
+
+    bubbleMap.zoom = d3.behavior.zoom()
+      .scale(scale)
+      .translate(translate)
+      .scaleExtent([1, 24])
+      .on("zoom", function() {
+        bubbleMap.g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+      });
+
+    bubbleMap.mapOverlay.call(bubbleMap.zoom);
+  },
+
   update: function() {
     var radiusNoData = 2;
     var data = waf.getAggregatedMapData();
@@ -201,6 +234,8 @@ var bubbleMap = {
         .duration(200)
         .style("opacity", 0);
     }
+
+    bubbleMap.zoomToFit();
   },
 
   init: function(gWrapper, bbMap, world) {
@@ -214,7 +249,7 @@ var bubbleMap = {
           .attr("width", bbMap.width)
           .attr("height", bbMap.height);
 
-    var mapOverlay = gWrapper.append("rect")
+    bubbleMap.mapOverlay = gWrapper.append("rect")
         .attr("class", "mapOverlay")
         // .attr("transform", "translate(" + bbMap.left + "," + bbMap.top + ")")
         .attr("width", bbMap.width)
@@ -234,7 +269,7 @@ var bubbleMap = {
     // path used to draw the world map
     bubbleMap.path = d3.geo.path().projection(bubbleMap.projection);
 
-    var zoom = d3.behavior.zoom()
+    bubbleMap.zoom = d3.behavior.zoom()
         // .translate([0, 0])
         // .scale(1)
         .scaleExtent([1, 24])
@@ -248,6 +283,6 @@ var bubbleMap = {
           .attr("class", "country")
           .attr("d", bubbleMap.path);
 
-    mapOverlay.call(zoom);
+    bubbleMap.mapOverlay.call(bubbleMap.zoom);
   }
 }
