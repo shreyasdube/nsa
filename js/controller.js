@@ -38,7 +38,7 @@ var controller = {
     bubbleMap.init(gMapWrapper, bbMap, world);
 
     // draw polar plot
-    pp1 = new PolarPlot(gPolarWrapper, bbPolar, d3.range(24), [waf.getFilteredHourlyMean, waf.getFilteredDataGroupedHourly], ['lightblue', colorAttack]);
+    pp1 = new PolarPlot(gPolarWrapper, bbPolar, d3.range(24), [waf.getFilteredHourlyMean, waf.getFilteredDataGroupedHourly], ['polarMean', 'polarAttack']);
 
     // draw data tables
     dt1 = new DataTable(gDataTableWrapper, bbDataTable, ['Country'], [waf.getTopCountries], 10);

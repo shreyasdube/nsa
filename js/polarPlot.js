@@ -1,5 +1,5 @@
 // Based upon ideas from http://bl.ocks.org/jeffthink/1630683
-function PolarPlot(vizBody, bounds, categories, valueFuncs, color) {
+function PolarPlot(vizBody, bounds, categories, valueFuncs, styleClass) {
   // Initialize the parent prototype
   this.base = Plot;
   this.base(vizBody, bounds);
@@ -7,7 +7,7 @@ function PolarPlot(vizBody, bounds, categories, valueFuncs, color) {
   // Initialize with provided parameters
   this.categories = categories;
   this.valueFuncs = valueFuncs;
-  this.color = d3.scale.ordinal().domain(color.length).range(color);
+  this.styleClass = d3.scale.ordinal().domain(styleClass.length).range(styleClass);
 
   var that = this;
 
@@ -85,7 +85,6 @@ function PolarPlot(vizBody, bounds, categories, valueFuncs, color) {
       .data(that.values);
 
     lines.enter().append('svg:path')
-      .attr("class", "line")
       .attr("d", d3.svg.line.radial()
         .radius(function (d) { return 0; })
         .angle(function (d, i) {
@@ -93,7 +92,7 @@ function PolarPlot(vizBody, bounds, categories, valueFuncs, color) {
           return (i / that.categories.length) * 2 * Math.PI;
         })
       )
-      .style('stroke', function (d, i) { return that.color(i); })
+      .attr('class', function (d, i) { return "line " + that.styleClass(i); })
       .style("fill", "none");
 
     lines.transition()
