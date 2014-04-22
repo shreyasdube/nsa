@@ -163,7 +163,9 @@ var bubbleMap = {
       .transition()
       .duration(transitionDuration)
         .attr("r", function(d) { return rScale(d.count); })
-        .style("fill", colorAttack);
+        .style("fill", function(d) {
+          return d.count ? colorAttack : colorNoAttack;
+        });
 
     selection.order();
 

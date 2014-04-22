@@ -111,6 +111,23 @@ var waf = {
   getAggregatedMapData: function() {
     // aggregate by city, drop all other dimensions
     var cities = {};
+
+    // initialize with all cities
+    waf.data.forEach(function(d) {
+      var cityId = d.id;
+      // only add new cities
+      if (!cities[cityId]) {
+        // create new city
+        cities[cityId] = {
+          id: cityId,
+          city: d.city,
+          lat: d.lat,
+          lng: d.lng,
+          count: 0
+        }
+      }
+    });
+
     waf.filteredData.forEach(function(d) {
       var cityId = d.id;
       // city already exists, just add the total count
