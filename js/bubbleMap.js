@@ -106,13 +106,13 @@ var bubbleMap = {
   }, 
 
   update: function() {
-    var radiusNoData = 3;
+    var radiusNoData = 2;
     var data = waf.getAggregatedMapData();
 
     // create linear scale for the radius
     var rScale = d3.scale.sqrt()
       .domain(d3.extent(data, function(d) { return d.count; }))
-      .range([radiusNoData + 2, 32]);
+      .range([radiusNoData, 36]);
 
     // reset
     // bubbleMap.g.selectAll(".mapAttack").classed("mapAttackDisabled", true);
@@ -155,6 +155,10 @@ var bubbleMap = {
       .on("mouseover", function(d, i) {
         this.style.strokeWidth = "2px";
         showTooltip(d, true);
+      })
+      .on("mouseout", function(d, i) {
+        this.style.strokeWidth = "0px";
+        hideTooltip(d);
       })
       .transition()
       .duration(transitionDuration)

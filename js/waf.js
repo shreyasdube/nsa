@@ -86,7 +86,7 @@ var waf = {
 
   // this is used by the time range selector only
   getCompleteFilteredDataGroupedHourly: function() {
-    return waf.groupHourly(waf.filterByCountryAndNetwork());
+    return waf.groupHourly(waf.filteredData);
   },
 
   getFilteredHierarchy: function() {
