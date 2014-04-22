@@ -112,7 +112,7 @@ var bubbleMap = {
     // create linear scale for the radius
     var rScale = d3.scale.sqrt()
       .domain(d3.extent(data, function(d) { return d.count; }))
-      .range([radiusNoData, 36]);
+      .range([radiusNoData, 20]);
 
     // reset
     // bubbleMap.g.selectAll(".mapAttack").classed("mapAttackDisabled", true);
