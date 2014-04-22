@@ -51,9 +51,12 @@ var waf = {
     var extent  = timeRangeSelector.getSelectedTimeRange();
     console.log("filter by extent", extent);
 
+    // filter, and sort array in DESC order
     waf.filteredData = waf.filterByCountryAndNetwork().filter(function(d) {
       // check if data falls within time range
       return (d.hour >= extent[0] && d.hour < extent[1]);
+    }).sort(function(a, b) {
+      return d3.descending(a.count, b.count);
     });
   },
 
@@ -86,7 +89,7 @@ var waf = {
 
   // this is used by the time range selector only
   getCompleteFilteredDataGroupedHourly: function() {
-    return waf.groupHourly(waf.filteredData);
+    return waf.groupHourly(waf.filterByCountryAndNetwork());
   },
 
   getFilteredHierarchy: function() {

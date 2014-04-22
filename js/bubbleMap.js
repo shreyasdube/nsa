@@ -165,6 +165,8 @@ var bubbleMap = {
         .attr("r", function(d) { return rScale(d.count); })
         .style("fill", colorAttack);
 
+    selection.order();
+
     // exiting circles
     selection.exit()
       // show updated tooltip
@@ -178,8 +180,7 @@ var bubbleMap = {
       .transition()
       .duration(transitionDuration)
         .attr("r", radiusNoData)
-        .style("fill", colorNoAttack)
-      
+        .style("fill", colorNoAttack);
 
     var showTooltip = function(d, showCount) {
       bubbleMap.tooltip.transition()
