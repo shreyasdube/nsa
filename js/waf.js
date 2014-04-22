@@ -234,20 +234,17 @@ var waf = {
   },
 
   init: function(wafData) {
-    // get timezone offset
-    var timezoneOffset = new Date().getTimezoneOffset() * 60000;
-
     waf.data = wafData.map(function(d) {
       // convert numbers and dates
       d.count = +d.count;
       d.lat   = +d.lat;
       d.lng   = +d.lng;
       // convert to GMT
-      d.date  = new Date((+d.timestamp * 1000) + timezoneOffset);
+      d.date  = new Date(+d.timestamp * 1000);
 
       // store synthesized data here
       d.id   = d.country + "-" + d.state + "-" + d.city;
-      d.hour =  d.date.getHours();
+      d.hour =  d.date.getUTCHours();
       return d;
     });
   }

@@ -159,7 +159,7 @@
           <h3>Visualization of Web Attacks on the Web over a 24-hour period</h3>
           <p>This application allows you to view network attack data that was collected by Akamai's firewalls. It shows the number of attacks originating from each origin, based upon the filters that have been applied. That data can be filtered by hour of the day, country, or source network, using the controls at the bottom of the page. By default, all data is displayed.</p>
           <p>By hovering over an individual city you can see more granular data about the attacks detected. Clicking and dragging on the map causes the map to pan, and scrolling on the map changes the zoom level. Clicking the play/pause button in the lower left causes the data to animate, showing one hour of data at a time.</p>
-          <p> The data being presented is based upon a sample of data taken between <span id='data_start'>the start time</span> and <span id='data_end'>the end time</span> (local time).</p>
+          <p> The data being presented is based upon a sample of data taken between <span id='data_start'>the start time</span> and <span id='data_end'>the end time</span> GMT.</p>
         </div>
         <div id="filterSelectors">
           Filter by Country: <span id="countrySelector"></span>
@@ -295,7 +295,7 @@
 
     // pretty format large numbers and dates
     var numberFormat = d3.format(",.0f");
-    var longDateFormat = d3.time.format("%A, %B %e, %Y at %H:%M"); 
+    var longDateFormat = d3.time.format.utc("%A, %B %e, %Y at %H:%M"); 
 
     // default transition duration
     var transitionDuration = 750;
