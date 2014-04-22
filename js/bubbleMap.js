@@ -110,37 +110,43 @@ var bubbleMap = {
   zoomToFit: function() {
     var autoZoomMargin = 40;  // includes both sides
 
+    // figure out what should be visible
     var visibleRangeLatLng = waf.visibleRange();
     var visibleRangeXY = [
       bubbleMap.latLngToXY(visibleRangeLatLng[0]),
       bubbleMap.latLngToXY(visibleRangeLatLng[1]),
     ];
 
+    // get the dimensions, including a margin
     var viewDimensions = {
       width: autoZoomMargin + visibleRangeXY[1][0] - visibleRangeXY[0][0],
       height: autoZoomMargin + visibleRangeXY[1][1] - visibleRangeXY[0][1]
     };
 
+    // calculate the appropriate scaling factor
     var xScale = bubbleMap.bb.width / viewDimensions.width;
     var yScale = bubbleMap.bb.height / viewDimensions.height;
     var scale = d3.min([xScale, yScale]);
 
+    // determine the view size with the proper aspect ratio
     var scaledDimensions = {
       height: bubbleMap.bb.height / scale,
       width: bubbleMap.bb.width / scale
     };
 
+    // determine the upper-left of that view in the unscaled world
     var upperLeft = {
       left: (visibleRangeXY[0][0] + visibleRangeXY[1][0] - scaledDimensions.width) / 2,
       top: (visibleRangeXY[0][1] + visibleRangeXY[1][1] - scaledDimensions.height) / 2
     };
 
+    // store the scaled translation to move that point to the righe place
     var translate = [-upperLeft.left * scale, -upperLeft.top * scale];
 
-//     var translate = [(autoZoomMargin-visibleRangeXY[0][0]) * scale, (autoZoomMargin-visibleRangeXY[0][1]) * scale];
-
+    // update the view
     bubbleMap.g.attr("transform", "translate(" + translate + ")scale(" + scale + ")");
 
+    // update the zooming behavior
     bubbleMap.zoom = d3.behavior.zoom()
       .scale(scale)
       .translate(translate)
@@ -148,7 +154,6 @@ var bubbleMap = {
       .on("zoom", function() {
         bubbleMap.g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
       });
-
     bubbleMap.mapOverlay.call(bubbleMap.zoom);
   },
 
