@@ -1,6 +1,7 @@
 var waf = {
   data: null,
   filteredData: null,
+  timeFilteredData: null,
 
   getNetworks: function() {
     // get all unique networks
@@ -51,8 +52,11 @@ var waf = {
     var extent  = timeRangeSelector.getSelectedTimeRange();
     console.log("filter by extent", extent);
 
+    // Recache the filtered data before applying time filter
+    waf.filteredData = waf.filterByCountryAndNetwork();
+
     // filter, and sort array in DESC order
-    waf.filteredData = waf.filterByCountryAndNetwork().filter(function(d) {
+    waf.timeFilteredData = waf.filteredData.filter(function(d) {
       // check if data falls within time range
       return (d.hour >= extent[0] && d.hour < extent[1]);
     }).sort(function(a, b) {
@@ -84,18 +88,18 @@ var waf = {
   }, 
 
   getFilteredDataGroupedHourly: function() {
-    return waf.groupHourly(waf.filteredData);
+    return waf.groupHourly(waf.timeFilteredData);
   },
 
   // this is used by the time range selector only
   getCompleteFilteredDataGroupedHourly: function() {
-    return waf.groupHourly(waf.filterByCountryAndNetwork());
+    return waf.groupHourly(waf.filteredData);
   },
 
   getFilteredHierarchy: function() {
     var root = {Attacks: {}}
 
-    waf.filteredData.forEach(function(d) {
+    waf.timeFilteredData.forEach(function(d) {
       if (root['Attacks'][d.country] == null) root['Attacks'][d.country] = {};
       if (root['Attacks'][d.country][d.state] == null) root['Attacks'][d.country][d.state] = {};
       if (root['Attacks'][d.country][d.state][d.city] == null) {
@@ -128,7 +132,7 @@ var waf = {
       }
     });
 
-    waf.filteredData.forEach(function(d) {
+    waf.timeFilteredData.forEach(function(d) {
       var cityId = d.id;
       // city already exists, just add the total count
       if (cities[cityId]) {
@@ -162,7 +166,7 @@ var waf = {
   getNumberOfAttacks: function() {
     var count = 0;
 
-    waf.filteredData.forEach(function(d) {
+    waf.timeFilteredData.forEach(function(d) {
       count += d.count;
     });
 
@@ -170,11 +174,11 @@ var waf = {
   },
 
   getDataForCity: function(city) {
-    var cityData = waf.filteredData.filter(function(d) {
+    var cityData = waf.timeFilteredData.filter(function(d) {
       return d.id === city.id;
     });
 
-    var completeCityData = waf.filterByCountryAndNetwork().filter(function(d) {
+    var completeCityData = waf.filteredData.filter(function(d) {
       return d.id === city.id;
     });
 
@@ -191,7 +195,7 @@ var waf = {
   getTopBrowsers: function() {
     counts = {};
 
-    waf.filteredData.forEach(function(d) {
+    waf.timeFilteredData.forEach(function(d) {
       counts[d.browser] = d.count + (counts[d.browser] || 0);
     });
 
@@ -201,7 +205,7 @@ var waf = {
   getTopOperatingSystems: function () {
     counts = {};
 
-    waf.filteredData.forEach(function(d) {
+    waf.timeFilteredData.forEach(function(d) {
       counts[d.os] = d.count + (counts[d.os] || 0);
     });
 
@@ -211,7 +215,7 @@ var waf = {
   getTopCountries: function (){
     counts = {};
 
-    waf.filteredData.forEach(function(d) {
+    waf.timeFilteredData.forEach(function(d) {
       counts[d.country] = d.count + (counts[d.country] || 0);
     });
 
