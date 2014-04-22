@@ -108,6 +108,7 @@ var bubbleMap = {
   }, 
 
   zoomToFit: function() {
+    var autoZoomMargin = 60;
     var visibleRangeLatLng = waf.visibleRange();
     var visibleRangeXY = [
       bubbleMap.latLngToXY(visibleRangeLatLng[0]),
@@ -115,15 +116,15 @@ var bubbleMap = {
     ];
 
     var viewDimensions = {
-      width: 80 + visibleRangeXY[1][0] - visibleRangeXY[0][0],
-      height: 80 + visibleRangeXY[1][1] - visibleRangeXY[0][1]
+      width: autoZoomMargin * 2 + visibleRangeXY[1][0] - visibleRangeXY[0][0],
+      height: autoZoomMargin * 2 + visibleRangeXY[1][1] - visibleRangeXY[0][1]
     };
 
     var xScale = bubbleMap.bb.width / viewDimensions.width;
     var yScale = bubbleMap.bb.height / viewDimensions.height;
     var scale = d3.min([xScale, yScale]);
 
-    var translate = [(40-visibleRangeXY[0][0]) * scale, (40-visibleRangeXY[0][1]) * scale];
+    var translate = [(autoZoomMargin-visibleRangeXY[0][0]) * scale, (autoZoomMargin-visibleRangeXY[0][1]) * scale];
 
     bubbleMap.g.attr("transform", "translate(" + translate + ")scale(" + scale + ")");
 
@@ -139,6 +140,8 @@ var bubbleMap = {
   },
 
   update: function() {
+    bubbleMap.zoomToFit();
+
     var radiusNoData = 2;
     var data = waf.getAggregatedMapData();
 
@@ -234,8 +237,6 @@ var bubbleMap = {
         .duration(200)
         .style("opacity", 0);
     }
-
-    bubbleMap.zoomToFit();
   },
 
   init: function(gWrapper, bbMap, world) {
