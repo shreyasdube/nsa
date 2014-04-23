@@ -62,13 +62,13 @@
     .timeRangeWrapper .axis path, .timeRangeWrapper .axis line, 
     .tooltipTimeRangeWrapper .axis path, .tooltipTimeRangeWrapper .axis line {
       fill: none;
-      stroke: white;
+      stroke: black;
       shape-rendering: crispEdges;
     }
 
     .timeRangeWrapper .axis text, 
     .tooltipTimeRangeWrapper .axis text {
-      stroke: white;
+      stroke: black;
     }
 
     .timeRangeWrapper .brush .extent {
@@ -137,8 +137,16 @@
     }
 
     .mapAttack {
-      fill: white;
+      fill: #f04;
       opacity: 0.4;
+      stroke: yellow;
+      stroke-width: 0px;
+    }
+
+    .mapAttack.noAttack {
+      fill: url(#crossHatch);
+      stroke: black;
+      stroke-width: 0.3px;
     }
 
     .mapOverlay {
@@ -150,7 +158,7 @@
       position: absolute;
       padding: 4px;
       font: 12px sans-serif;
-      border: 1px solid white;
+      border: 1px solid black;
       border-radius: 8px;
       pointer-events: none;
     }
@@ -158,7 +166,7 @@
     div#filterSelectors {
       position: absolute;
       padding: 4px;
-      border: 1px solid white;
+      border: 1px solid black;
       border-radius: 8px;
       background-color: lightgray;
     }
@@ -316,7 +324,7 @@
 
     // default colors
     var colorAttack = "#f04";
-    var colorNoAttack = "#909090";
+    var colorNoAttack = "#999";
 
 
     /*********************************************************************
