@@ -29,7 +29,7 @@ function DataTable(vizBody, bounds, series, valueFuncs, maxItems) {
       .data(function(d) { return [d.item, numberFormat(d.count)]; });
 
     cells.enter().append("td")
-      .style("color", function(d, i) { return (i == 0) ? 'lightgray' : 'red' })
+      .style("color", function(d, i) { return (i == 0) ? 'black' : 'red' })
       .style("text-align", function(d, i) { return (i == 0) ? 'left' : 'right' });
 
     cells.text(function(d) { return d; });
