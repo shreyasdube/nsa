@@ -187,20 +187,13 @@ var bubbleMap = {
         .attr("cx", function(d, i) { return bubbleMap.latLngToXY(d)[0]; })
         .attr("cy", function(d, i) { return bubbleMap.latLngToXY(d)[1]; })
         .attr("r", function(d) { return rScale(d.count); })
-        .style({
-          fill: colorAttack,
-          // 'stroke-width': "0px",
-          stroke: colorAttack
-        })
         // show tooltip
         .on("mouseover", function(d, i) {
-          // this.style.strokeWidth = "2px";
           hoverOver(d.id);
           showTooltip(d, d.count > 0);
         })
         // hide tooltip
         .on("mouseout", function(d, i) {
-          // this.style.strokeWidth = "0px";
           hoverOut();
           hideTooltip(d);
         });
@@ -221,29 +214,9 @@ var bubbleMap = {
       .transition()
       .duration(transitionDuration)
         .attr("r", function(d) { return rScale(d.count); })
-        .style("fill", function(d) {
-          return d.count ? colorAttack : colorNoAttack;
-        })
-        .style("stroke", function(d) {
-          return d.count ? colorAttack : colorNoAttack;
-        });
+        .attr("class", function(d) { return 'mapAttack ' + (d.count ? '' : 'noAttack'); });
 
     selection.order();
-
-    // exiting circles
-    /*selection.exit()
-      // show updated tooltip
-      .on("mouseover", function(d, i) {
-        showTooltip(d, false);
-      })
-      // hide tooltip
-      .on("mouseout", function(d, i) {
-        hideTooltip(d);
-      })
-      .transition()
-      .duration(transitionDuration)
-        .attr("r", radiusNoData)
-        .style("fill", colorNoAttack);*/
 
     var showTooltip = function(d, showCount) {
       bubbleMap.tooltip.transition()
@@ -280,12 +253,35 @@ var bubbleMap = {
     bubbleMap.bb = bbMap;
     // this will clip paths and points that lie outside the drawable area
     // thanks to [1]
-    gWrapper.append("defs")
-      .append("clipPath")
-        .attr("id", "bubbleMapClipper")
-        .append("rect")
-          .attr("width", bbMap.width)
-          .attr("height", bbMap.height);
+    var defs = gWrapper.append("defs");
+
+    defs.append("clipPath")
+      .attr("id", "bubbleMapClipper")
+      .append("rect")
+        .attr("width", bbMap.width)
+        .attr("height", bbMap.height);
+
+    // Add a pattern for use by 0 attack nodes
+    // http://www.carto.net/svg/samples/patterns.shtml
+    var pattern = defs.append("pattern")
+      .attr({
+        id: "crossHatch",
+        patternUnits: "userSpaceOnUse",
+        x: "0",
+        y: "0",
+        width: "1",
+        height: "1"
+      })
+      .append("g")
+        .style({
+          fill: "none",
+          stroke: "black",
+          "stroke-width": "0.3"
+        });
+    pattern.append("path")
+      .attr("d", "M0,0l1,1");
+    pattern.append("path")
+      .attr("d", "M1,0l-1,1");
 
     bubbleMap.mapOverlay = gWrapper.append("rect")
         .attr("class", "mapOverlay")
