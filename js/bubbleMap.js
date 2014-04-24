@@ -260,28 +260,6 @@ var bubbleMap = {
         .attr("width", bbMap.width)
         .attr("height", bbMap.height);
 
-    // Add a pattern for use by 0 attack nodes
-    // http://www.carto.net/svg/samples/patterns.shtml
-    var pattern = defs.append("pattern")
-      .attr({
-        id: "crossHatch",
-        patternUnits: "userSpaceOnUse",
-        x: "0",
-        y: "0",
-        width: "1",
-        height: "1"
-      })
-      .append("g")
-        .style({
-          fill: "none",
-          stroke: "black",
-          "stroke-width": "0.3"
-        });
-    pattern.append("path")
-      .attr("d", "M0,0l1,1");
-    pattern.append("path")
-      .attr("d", "M1,0l-1,1");
-
     bubbleMap.mapOverlay = gWrapper.append("rect")
         .attr("class", "mapOverlay")
         // .attr("transform", "translate(" + bbMap.left + "," + bbMap.top + ")")

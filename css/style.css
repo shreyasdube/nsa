@@ -142,7 +142,6 @@ table td {
 }
 
 .mapAttack.noAttack {
-  fill: url(#crossHatch);
   stroke: rgb(224,224,224)/*@NoAttack*/;
   stroke-width: 0.3px;
 }
