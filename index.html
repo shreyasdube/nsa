@@ -87,13 +87,13 @@
       stroke-width: 1.5px;
     }
 
-    /*.timeRangeWrapper .selecting rect {
-      fill-opacity: .2;
-    }*/
+    .timeAttack {
+      fill: #f00;
+    }
 
-    /*.timeRangeWrapper rect.selected {
-      stroke: #f00;
-    }*/
+    .timeAttack.noAttack {
+      fill: #999;
+    }
 
     .country {
       fill: none;
@@ -127,6 +127,20 @@
     .dataTable {
       width: 100%;
     }
+    .dataTable th {
+      text-align: left;
+    }
+    .dataTable th.count {
+      text-align: right;
+    }
+    .dataTable td {
+      color: lightgray;
+      text-align: left;
+    }
+    .dataTable td.count {
+      color: red;
+      text-align: right;
+    }
 
     table {
       border: none;
@@ -141,7 +155,7 @@
     }
 
     .mapAttack {
-      fill: #f04;
+      fill: red;
       opacity: 0.4;
       stroke: yellow;
       stroke-width: 0px;
@@ -335,9 +349,6 @@
     // default transition duration
     var transitionDuration = 750;
 
-    // default colors
-    var colorAttack = "red";
-    var colorNoAttack = "#909090";
 
     /*********************************************************************
                                 start here

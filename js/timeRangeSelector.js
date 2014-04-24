@@ -130,12 +130,11 @@ var timeRangeSelector = {
     timeRangeSelector.rects = gWrapper.selectAll(".timeAttack")
       .data(data)
       .enter().append("rect")
-        .attr("class", "timeAttack")
+        .attr("class", "timeAttack noAttack")
         .attr("x", function(d, i) { return timeRangeSelector.x(i); })
         .attr("y", function(d) { return timeRangeSelector.y(d); })
         .attr("height", function(d) { return bb.height - timeRangeSelector.y(d); })
-        .attr("width", (bb.width / data.length) - 2)
-        .style("fill", colorNoAttack);
+        .attr("width", (bb.width / data.length) - 2);
 
     // init brushing
     timeRangeSelector.initBrushing();
@@ -187,13 +186,13 @@ var timeRangeSelector = {
   colorSelectedBars: function() {
     var s = timeRangeSelector.getSelectedTimeRange();
     timeRangeSelector.rects
-      .style("fill", function(d, i) { 
+      .attr("class", function(d, i) { 
         // color selected rects to show they are selected
         if(s[0] <= i && i < s[1]) {
-          return colorAttack;
+          return "timeAttack";
         } else {
           // grey out others
-          return colorNoAttack;
+          return "timeAttack noAttack";
         }
       });
   }

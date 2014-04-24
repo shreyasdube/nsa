@@ -91,18 +91,17 @@ var bubbleMap = {
     g.selectAll(".timeAttack")
       .data(hourlyData)
       .enter().append("rect")
-        .attr("class", "timeAttack")
         .attr("x", function(d, i) { return x(i); })
         .attr("y", function(d) { return y(d); })
         .attr("height", function(d) { return bb.height - y(d); })
         .attr("width", (bb.width / hourlyData.length) - 2)
-        .style("fill", function(d, i) {
+        .attr("class", function(d, i) {
           // use color for attacks if this hour is within the selected time range
           if (i >= extent[0] && i < extent[1]) {
-            return colorAttack;
+            return "timeAttack";
           } else {
             // otherwise grey out
-            return colorNoAttack;
+            return "timeAttack noAttack";
           }
         });
   }, 

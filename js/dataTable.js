@@ -29,8 +29,7 @@ function DataTable(vizBody, bounds, series, valueFuncs, maxItems) {
       .data(function(d) { return [d.item, numberFormat(d.count)]; });
 
     cells.enter().append("td")
-      .style("color", function(d, i) { return (i == 0) ? 'lightgray' : 'red' })
-      .style("text-align", function(d, i) { return (i == 0) ? 'left' : 'right' });
+      .classed("count", function(d, i) { return (i > 0); });
 
     cells.text(function(d) { return d; });
   };
@@ -52,12 +51,10 @@ function DataTable(vizBody, bounds, series, valueFuncs, maxItems) {
   if (series.length == 1) {
     // If only one series, no drop-down
     thead.append("th")
-      .style("text-align", "left")
       .text(series[0]);
   } else {
     // Create a drop-down with each series name
     var selector = thead.append("th")
-      .style("text-align", "left")
       .append("select");
 
     selector.selectAll("option").data(series)
@@ -72,7 +69,7 @@ function DataTable(vizBody, bounds, series, valueFuncs, maxItems) {
   }
 
   thead.append("th")
-    .style("text-align", "right")
+    .attr("class", "count")
     .text("Count");
 
   this.draw();
