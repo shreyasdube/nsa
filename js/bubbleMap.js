@@ -189,17 +189,19 @@ var bubbleMap = {
         .attr("r", function(d) { return rScale(d.count); })
         .style({
           fill: colorAttack,
-          'stroke-width': "0px",
-          stroke: "yellow"
+          // 'stroke-width': "0px",
+          stroke: colorAttack
         })
         // show tooltip
         .on("mouseover", function(d, i) {
-          this.style.strokeWidth = "2px";
+          // this.style.strokeWidth = "2px";
+          hoverOver(d.id);
           showTooltip(d, true);
         })
         // hide tooltip
         .on("mouseout", function(d, i) {
-          this.style.strokeWidth = "0px";
+          // this.style.strokeWidth = "0px";
+          hoverOut();
           hideTooltip(d);
         });
 
@@ -207,11 +209,13 @@ var bubbleMap = {
     selection
       // show updated tooltip
       .on("mouseover", function(d, i) {
-        this.style.strokeWidth = "2px";
+        // this.style.strokeWidth = "2px";
+        hoverOver(d.id);
         showTooltip(d, true);
       })
       .on("mouseout", function(d, i) {
-        this.style.strokeWidth = "0px";
+        // this.style.strokeWidth = "0px";
+        hoverOut();
         hideTooltip(d);
       })
       .transition()
@@ -219,12 +223,15 @@ var bubbleMap = {
         .attr("r", function(d) { return rScale(d.count); })
         .style("fill", function(d) {
           return d.count ? colorAttack : colorNoAttack;
+        })
+        .style("stroke", function(d) {
+          return d.count ? colorAttack : colorNoAttack;
         });
 
     selection.order();
 
     // exiting circles
-    selection.exit()
+    /*selection.exit()
       // show updated tooltip
       .on("mouseover", function(d, i) {
         showTooltip(d, false);
@@ -236,7 +243,7 @@ var bubbleMap = {
       .transition()
       .duration(transitionDuration)
         .attr("r", radiusNoData)
-        .style("fill", colorNoAttack);
+        .style("fill", colorNoAttack);*/
 
     var showTooltip = function(d, showCount) {
       bubbleMap.tooltip.transition()
@@ -254,6 +261,18 @@ var bubbleMap = {
       bubbleMap.tooltip.transition()
         .duration(200)
         .style("opacity", 0);
+    }
+
+    var hoverOver = function(cityId) {
+      bubbleMap.g.selectAll(".mapAttack")
+        .classed("hideAttack", function(d) {
+          return d.id !== cityId;
+        });
+    }
+
+    var hoverOut = function() {
+      bubbleMap.g.selectAll(".mapAttack")
+        .classed("hideAttack", false);
     }
   },
 
