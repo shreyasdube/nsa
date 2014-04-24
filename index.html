@@ -8,9 +8,10 @@
 <body>
   <script src="lib/d3.min.js"></script>
   <script src="http://d3js.org/queue.v1.min.js"></script>
-  <!--script src="http://d3js.org/topojson.v1.min.js"></script-->
   <script type="text/javascript" src="lib/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="lib/colorbrewer.js"></script>
+  <script type="text/javascript" src="lib/cssvarshim-1.0.419.js"></script>
+
   <script type="text/javascript" src="js/countryCodeUtil.js"></script>
   <script type="text/javascript" src="js/waf.js"></script>
   <script type="text/javascript" src="js/controller.js"></script>
@@ -22,9 +23,30 @@
   <script type="text/javascript" src="js/dataTable.js"></script>
 
   <style type="text/css">
+    /* We want to use the RdGy[11] Brewer theme: */
+    /* .RdGy .q0-11{fill:rgb(103,0,31)} */
+    /* .RdGy .q1-11{fill:rgb(178,24,43)} */
+    /* .RdGy .q2-11{fill:rgb(214,96,77)} */
+    /* .RdGy .q3-11{fill:rgb(244,165,130)} */
+    /* .RdGy .q4-11{fill:rgb(253,219,199)} */
+    /* .RdGy .q5-11{fill:rgb(255,255,255)} */
+    /* .RdGy .q6-11{fill:rgb(224,224,224)} */
+    /* .RdGy .q7-11{fill:rgb(186,186,186)} */
+    /* .RdGy .q8-11{fill:rgb(135,135,135)} */
+    /* .RdGy .q9-11{fill:rgb(77,77,77)} */
+    /* .RdGy .q10-11{fill:rgb(26,26,26)} */
+
+    /* Use CSS Variable Shim to leverage themes /*
+    /*@Attack:rgb(178,24,43)*/
+    /*@NoAttack:rgb(224,224,224)*/
+    /*@Background:rgb(77,77,77)*/
+    /*@Lowlight:rgb(135,135,135)*/
+    /*@Normal:rgb(186,186,186)*/
+    /*@Highlight:rgb(255,255,255)*/
+
     body, div.tooltip {
-      color: white;
-      background-color: #272822;
+      color: rgb(0,0,0)/*@Highlight*/;
+      background-color: rgb(0,0,0)/*@Background*/;
     }
 
     text, body {
@@ -38,7 +60,7 @@
     }
 
     p {
-      color: lightgray;
+      color: rgb(0,0,0)/*@Normal*/;
     }
 
     svg {
@@ -58,21 +80,21 @@
     #numberOfAttacks {
       font-size: 30px;
       font-weight: bold;
-      color: red;
+      color: red/*@Attack*/;
       text-align: center;
       padding-bottom: 20px;
     }
 
-    .timeRangeWrapper .axis path, .timeRangeWrapper .axis line, 
+    .timeRangeWrapper .axis path, .timeRangeWrapper .axis line,
     .tooltipTimeRangeWrapper .axis path, .tooltipTimeRangeWrapper .axis line {
       fill: none;
-      stroke: white;
+      stroke: white/*@Highlight*/;
       shape-rendering: crispEdges;
     }
 
-    .timeRangeWrapper .axis text, 
+    .timeRangeWrapper .axis text,
     .tooltipTimeRangeWrapper .axis text {
-      stroke: white;
+      stroke: white/*@Highlight*/;
     }
 
     .timeRangeWrapper .brush .extent {
@@ -97,16 +119,16 @@
 
     .country {
       fill: none;
-      stroke: white;
+      stroke: white/*@Highlight*/;
     }
 
     .polarWrapper .line-axis, .polarWrapper .circle-axis {
       fill: none;
-      stroke: darkgray;
+      stroke: darkgray/*@Lowlight*/;
     }
 
     .polarWrapper .line-ticks, .polarWrapper .circle-ticks {
-      stroke: lightgray;
+      stroke: lightgray/*@Normal*/;
     }
 
     .polarWrapper .line {
@@ -114,13 +136,13 @@
     }
 
     .polarMean {
-      stroke: white;
+      stroke: white/*@Highlight*/;
       stroke-width: 3;
       stroke-dasharray: 10,5;
     }
 
     .polarAttack {
-      stroke: red;
+      stroke: red/*@Attack*/;
       stroke-width: 4;
     }
 
@@ -134,11 +156,11 @@
       text-align: right;
     }
     .dataTable td {
-      color: lightgray;
+      color: lightgray/*@Normal*/;
       text-align: left;
     }
     .dataTable td.count {
-      color: red;
+      color: red/*@Attack*/;
       text-align: right;
     }
 
@@ -163,7 +185,7 @@
 
     .mapAttack.noAttack {
       fill: url(#crossHatch);
-      stroke: black;
+      stroke: black/*@NoAttack*/;
       stroke-width: 0.3px;
     }
 
@@ -182,7 +204,7 @@
       position: absolute;
       padding: 4px;
       font: 12px sans-serif;
-      border: 1px solid white;
+      border: 1px solid white/*@Highlight*/;
       border-radius: 8px;
       pointer-events: none;
     }
@@ -190,9 +212,9 @@
     div#filterSelectors {
       position: absolute;
       padding: 4px;
-      border: 1px solid white;
+      border: 1px solid white/*@Highlight*/;
       border-radius: 8px;
-      background-color: #272822;
+      background-color: #272822/*@Background*/
     }
   </style>
 
@@ -242,10 +264,12 @@
       </td>
     </tr>
   </table>
-  
+
   <div id="vis"></div>
 
   <script type="text/javascript">
+    refreshTheme();
+
     var width = 960, height = 600;
 
     var bbPlayButton = {
@@ -257,9 +281,9 @@
 
     var bbTimeSelector = {};
     bbTimeSelector.margin = {
-      top: 10, 
-      right: 40, 
-      bottom: 20, 
+      top: 10,
+      right: 40,
+      bottom: 20,
       left: 140
     };
     bbTimeSelector.height = 100 - bbTimeSelector.margin.top - bbTimeSelector.margin.bottom;
@@ -289,7 +313,7 @@
     var tsSvg = d3.select("#timeRangeSelector")
       .append("svg")
         .attr({
-          width: bbTimeSelector.width + bbTimeSelector.margin.left + bbTimeSelector.margin.right, 
+          width: bbTimeSelector.width + bbTimeSelector.margin.left + bbTimeSelector.margin.right,
           height: bbTimeSelector.height + bbTimeSelector.margin.top + bbTimeSelector.margin.bottom
         });
 
@@ -344,7 +368,7 @@
 
     // pretty format large numbers and dates
     var numberFormat = d3.format(",.0f");
-    var longDateFormat = d3.time.format.utc("%A, %B %e, %Y at %H:%M"); 
+    var longDateFormat = d3.time.format.utc("%A, %B %e, %Y at %H:%M");
 
     // default transition duration
     var transitionDuration = 750;
