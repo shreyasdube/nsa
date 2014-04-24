@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Not Safe Anymore</title>
+  <link href="css/style.css" rel="stylesheet"/>
 </head>
 
 
@@ -21,202 +22,6 @@
   <script type="text/javascript" src="js/bubbleMap.js"></script>
   <script type="text/javascript" src="js/polarPlot.js"></script>
   <script type="text/javascript" src="js/dataTable.js"></script>
-
-  <style type="text/css">
-    /* We want to use the RdGy[11] Brewer theme: */
-    /* .RdGy .q0-11{fill:rgb(103,0,31)} */
-    /* .RdGy .q1-11{fill:rgb(178,24,43)} */
-    /* .RdGy .q2-11{fill:rgb(214,96,77)} */
-    /* .RdGy .q3-11{fill:rgb(244,165,130)} */
-    /* .RdGy .q4-11{fill:rgb(253,219,199)} */
-    /* .RdGy .q5-11{fill:rgb(255,255,255)} */
-    /* .RdGy .q6-11{fill:rgb(224,224,224)} */
-    /* .RdGy .q7-11{fill:rgb(186,186,186)} */
-    /* .RdGy .q8-11{fill:rgb(135,135,135)} */
-    /* .RdGy .q9-11{fill:rgb(77,77,77)} */
-    /* .RdGy .q10-11{fill:rgb(26,26,26)} */
-
-    /* Use CSS Variable Shim to leverage themes /*
-    /*@Attack:rgb(178,24,43)*/
-    /*@NoAttack:rgb(224,224,224)*/
-    /*@Background:rgb(77,77,77)*/
-    /*@Lowlight:rgb(135,135,135)*/
-    /*@Normal:rgb(186,186,186)*/
-    /*@Highlight:rgb(255,255,255)*/
-
-    body, div.tooltip {
-      color: rgb(0,0,0)/*@Highlight*/;
-      background-color: rgb(0,0,0)/*@Background*/;
-    }
-
-    text, body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 9pt;
-      /*font-weight: bold;*/
-    }
-
-    h2 {
-      text-align: center;
-    }
-
-    p {
-      color: rgb(0,0,0)/*@Normal*/;
-    }
-
-    svg {
-    }
-
-    p.overview {
-      width: 940px;
-      font-size: 12px;
-    }
-    p.overview a {
-      color: white;
-    }
-
-    #numberOfAttacksHeader {
-      text-align: center;
-    }
-    #numberOfAttacks {
-      font-size: 30px;
-      font-weight: bold;
-      color: red/*@Attack*/;
-      text-align: center;
-      padding-bottom: 20px;
-    }
-
-    .timeRangeWrapper .axis path, .timeRangeWrapper .axis line,
-    .tooltipTimeRangeWrapper .axis path, .tooltipTimeRangeWrapper .axis line {
-      fill: none;
-      stroke: white/*@Highlight*/;
-      shape-rendering: crispEdges;
-    }
-
-    .timeRangeWrapper .axis text,
-    .tooltipTimeRangeWrapper .axis text {
-      stroke: white/*@Highlight*/;
-    }
-
-    .timeRangeWrapper .brush .extent {
-      fill-opacity: .4;
-      shape-rendering: crispEdges;
-    }
-
-    .timeRangeWrapper .brush .resize path {
-      fill: #666;
-      fill-opacity: .8;
-      stroke: #000;
-      stroke-width: 1.5px;
-    }
-
-    .timeAttack {
-      fill: #f00;
-    }
-
-    .timeAttack.noAttack {
-      fill: #999;
-    }
-
-    .country {
-      fill: none;
-      stroke: white/*@Highlight*/;
-    }
-
-    .polarWrapper .line-axis, .polarWrapper .circle-axis {
-      fill: none;
-      stroke: darkgray/*@Lowlight*/;
-    }
-
-    .polarWrapper .line-ticks, .polarWrapper .circle-ticks {
-      stroke: lightgray/*@Normal*/;
-    }
-
-    .polarWrapper .line {
-      opacity: 0.7;
-    }
-
-    .polarMean {
-      stroke: white/*@Highlight*/;
-      stroke-width: 3;
-      stroke-dasharray: 10,5;
-    }
-
-    .polarAttack {
-      stroke: red/*@Attack*/;
-      stroke-width: 4;
-    }
-
-    .dataTable {
-      width: 100%;
-    }
-    .dataTable th {
-      text-align: left;
-    }
-    .dataTable th.count {
-      text-align: right;
-    }
-    .dataTable td {
-      color: lightgray/*@Normal*/;
-      text-align: left;
-    }
-    .dataTable td.count {
-      color: red/*@Attack*/;
-      text-align: right;
-    }
-
-    table {
-      border: none;
-    }
-
-    table td {
-      vertical-align: top;
-    }
-
-    .mapWrapper {
-      clip-path: url(#bubbleMapClipper);
-    }
-
-    .mapAttack {
-      fill: red;
-      opacity: 0.4;
-      stroke: yellow;
-      stroke-width: 0px;
-    }
-
-    .mapAttack.noAttack {
-      fill: url(#crossHatch);
-      stroke: black/*@NoAttack*/;
-      stroke-width: 0.3px;
-    }
-
-    .hideAttack {
-      fill-opacity: 0.2;
-      stroke-opacity: 0.8;
-      stroke-width: .1;
-    }
-
-    .mapOverlay {
-      fill: none;
-      pointer-events: all;
-    }
-
-    div.tooltip {
-      position: absolute;
-      padding: 4px;
-      font: 12px sans-serif;
-      border: 1px solid white/*@Highlight*/;
-      border-radius: 8px;
-      pointer-events: none;
-    }
-
-    div#filterSelectors {
-      position: absolute;
-      padding: 4px;
-      border: 1px solid white/*@Highlight*/;
-      border-radius: 8px;
-      background-color: #272822/*@Background*/
-    }
-  </style>
 
   <table>
     <tr>
@@ -268,6 +73,13 @@
   <div id="vis"></div>
 
   <script type="text/javascript">
+    setStyleFiles();
+    swapAProperty({selectorName:'@Attack', property:'rgb(178,24,43)'});
+    swapAProperty({selectorName:'@NoAttack', property:'rgb(224,224,224)'});
+    swapAProperty({selectorName:'@Background', property:'rgb(77,77,77)'});
+    swapAProperty({selectorName:'@Lowlight', property:'rgb(135,135,135)'});
+    swapAProperty({selectorName:'@Normal', property:'rgb(186,186,186)'});
+    swapAProperty({selectorName:'@Highlight', property:'rgb(255,255,255)'});
     refreshTheme();
 
     var width = 960, height = 600;
@@ -391,4 +203,5 @@
   [6] http://bl.ocks.org/mbostock/6232537
   [7] https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_of_the_Object_Model
   [8] http://www.iconarchive.com/show/play-stop-pause-icons-by-icons-land/Step-Forward-Normal-Red-icon.html
+  [9] https://cssvariableshim.azurewebsites.net/
 -->

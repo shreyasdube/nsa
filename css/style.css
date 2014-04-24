@@ -1,0 +1,169 @@
+/*@Attack:rgb(178,24,43)*/
+/*@NoAttack:rgb(224,224,224)*/
+/*@Background:rgb(77,77,77)*/
+/*@Lowlight:rgb(135,135,135)*/
+/*@Normal:rgb(186,186,186)*/
+/*@Highlight:rgb(255,255,255)*/
+
+body, div.tooltip {
+  color: rgb(255,255,255)/*@Highlight*/;
+  background-color: rgb(77,77,77)/*@Background*/;
+}
+
+text, body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9pt;
+  /*font-weight: bold;*/
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  color: rgb(186,186,186)/*@Normal*/;
+}
+
+svg {
+}
+
+p.overview {
+  width: 940px;
+}
+
+#numberOfAttacksHeader {
+  text-align: center;
+}
+#numberOfAttacks {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(178,24,43)/*@Attack*/;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.timeRangeWrapper .axis path, .timeRangeWrapper .axis line,
+.tooltipTimeRangeWrapper .axis path, .tooltipTimeRangeWrapper .axis line {
+  fill: none;
+  stroke: rgb(255,255,255)/*@Highlight*/;
+  shape-rendering: crispEdges;
+}
+
+.timeRangeWrapper .axis text,
+.tooltipTimeRangeWrapper .axis text {
+  stroke: rgb(255,255,255)/*@Highlight*/;
+}
+
+.timeRangeWrapper .brush .extent {
+  fill-opacity: .4;
+  shape-rendering: crispEdges;
+}
+
+.timeRangeWrapper .brush .resize path {
+  fill: #666;
+  fill-opacity: .8;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.timeAttack {
+  fill: rgb(178,24,43)/*@Attack*/;
+}
+
+.timeAttack.noAttack {
+  fill: rgb(224,224,224)/*@NoAttack*/;
+}
+
+.country {
+  fill: none;
+  stroke: rgb(255,255,255)/*@Highlight*/;
+}
+
+.polarWrapper .line-axis, .polarWrapper .circle-axis {
+  fill: none;
+  stroke: rgb(135,135,135)/*@Lowlight*/;
+}
+
+.polarWrapper .line-ticks, .polarWrapper .circle-ticks {
+  stroke: rgb(186,186,186)/*@Normal*/;
+}
+
+.polarWrapper .line {
+  opacity: 0.7;
+}
+
+.polarMean {
+  stroke: rgb(255,255,255)/*@Highlight*/;
+  stroke-width: 3;
+  stroke-dasharray: 10,5;
+}
+
+.polarAttack {
+  stroke: rgb(178,24,43)/*@Attack*/;
+  stroke-width: 4;
+}
+
+.dataTable {
+  width: 100%;
+}
+.dataTable th {
+  text-align: left;
+}
+.dataTable th.count {
+  text-align: right;
+}
+.dataTable td {
+  color: rgb(186,186,186)/*@Normal*/;
+  text-align: left;
+}
+.dataTable td.count {
+  color: rgb(178,24,43)/*@Attack*/;
+  text-align: right;
+}
+
+table {
+  border: none;
+}
+
+table td {
+  vertical-align: top;
+}
+
+.mapWrapper {
+  clip-path: url(#bubbleMapClipper);
+}
+
+.mapAttack {
+  fill: rgb(178,24,43)/*@Attack*/;
+  opacity: 0.4;
+  stroke: yellow;
+  stroke-width: 0px;
+}
+
+.mapAttack.noAttack {
+  fill: url(#crossHatch);
+  stroke: rgb(224,224,224)/*@NoAttack*/;
+  stroke-width: 0.3px;
+}
+
+.mapOverlay {
+  fill: none;
+  pointer-events: all;
+}
+
+div.tooltip {
+  position: absolute;
+  padding: 4px;
+  font: 12px sans-serif;
+  border: 1px solid rgb(255,255,255)/*@Highlight*/;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+div#filterSelectors {
+  position: absolute;
+  padding: 4px;
+  border: 1px solid rgb(255,255,255)/*@Highlight*/;
+  border-radius: 8px;
+  background-color: #272822/*@Background*/
+}
