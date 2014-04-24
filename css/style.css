@@ -1,9 +1,10 @@
+/* Change the following comments to update the theme
 /*@Attack:rgb(178,24,43)*/
-/*@NoAttack:rgb(224,224,224)*/
 /*@Background:rgb(77,77,77)*/
+/*@Highlight:rgb(255,255,255)*/
 /*@Lowlight:rgb(135,135,135)*/
 /*@Normal:rgb(186,186,186)*/
-/*@Highlight:rgb(255,255,255)*/
+/*@NoAttack:rgb(224,224,224)*/
 
 body, div.tooltip {
   color: rgb(255,255,255)/*@Highlight*/;
