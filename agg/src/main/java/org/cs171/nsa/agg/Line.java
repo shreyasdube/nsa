@@ -4,7 +4,10 @@
  */
 package org.cs171.nsa.agg;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  *
@@ -12,15 +15,26 @@ import java.util.Objects;
  */
 public class Line {
 
+    private static final Set<String> invalidCountries = new HashSet<>();
     private String country, state, city;
     private Float lat, lng;
     private String isp, userAgent;
     private String browser, browserVersion, os;
 
+    {
+        invalidCountries.addAll(Arrays.asList(new String[]{"-", "reserved", "AI",
+            "GI", "GF", "GG", "GP", "IO", "JE", "MQ", "MS", "PM", "RE", "VG"}));
+    }
+
     public Line(String line) {
         String[] tokens = line.split("\\,", 11);
         if (tokens.length == 11) {
+            // country is required as well 
             country = tokens[1];
+            if (invalidCountries.contains(country)) {
+                throw new IllegalArgumentException("Invalid country!");
+            }
+
             // some states might be undefined
             state = parse(tokens[2]);
             city = parse(tokens[3]);

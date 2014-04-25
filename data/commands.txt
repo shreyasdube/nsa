@@ -1,0 +1,11 @@
+cd ruby/
+ruby parse.rb ../data/waf-20131129 60 > ../data/waf-20131129_cleaned
+
+
+-----
+cd ruby/
+ruby parse.rb ../data/waf-20131202 60 > ../data/waf-20131202_cleaned
+cd ../data
+sort waf-20131202_cleaned -o waf-20131202_cleaned
+cd ../agg
+mvn clean package; java -Xmx2048m -cp target/agg-1.0.0-SNAPSHOT.jar org.cs171.nsa.agg.App ../data/waf-20131202_cleaned

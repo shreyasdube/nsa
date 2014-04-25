@@ -51,7 +51,7 @@ var controller = {
 
   init: function() {
     queue()
-      .defer(d3.csv, "../data/waf_5mi")
+      .defer(d3.csv, "../data/waf-20131202_cleaned_agg")
       .defer(d3.json, "../data/world_data.json")
       .defer(d3.json,"../data/countrycodes.json")
       .await(controller.initVis);
