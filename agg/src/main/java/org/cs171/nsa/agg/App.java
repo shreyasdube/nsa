@@ -52,7 +52,7 @@ public class App {
             // file writer
             w = new BufferedWriter(new FileWriter(outputFile));
             // write header
-            w.write("timestamp,country,state,city,lat,lng,network,browser,browserVersion,os,count");
+            w.write("timestamp,country,state,city,lat,lng,network,browser,os,count");
 
             String s;
             // the current timestamp that's being processed

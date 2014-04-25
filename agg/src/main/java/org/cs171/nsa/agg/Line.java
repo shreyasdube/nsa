@@ -19,7 +19,7 @@ public class Line {
     private String country, state, city;
     private Float lat, lng;
     private String isp, userAgent;
-    private String browser, browserVersion, os;
+    private String browser, os;
 
     {
         invalidCountries.addAll(Arrays.asList(new String[]{"-", "reserved", "AI",
@@ -48,7 +48,6 @@ public class Line {
             isp = parse(tokens[6]);
             userAgent = parse(tokens[7]);
             browser = parse(tokens[8]);
-            browserVersion = parse(tokens[9]);
             os = parse(tokens[10]);
         } else {
             throw new IllegalArgumentException("Invalid line: " + line);
@@ -79,7 +78,6 @@ public class Line {
         hash = 41 * hash + Objects.hashCode(this.lng);
         hash = 41 * hash + Objects.hashCode(this.isp);
         hash = 41 * hash + Objects.hashCode(this.browser);
-        hash = 41 * hash + Objects.hashCode(this.browserVersion);
         hash = 41 * hash + Objects.hashCode(this.os);
         return hash;
     }
@@ -114,9 +112,6 @@ public class Line {
         if (!Objects.equals(this.browser, other.browser)) {
             return false;
         }
-        if (!Objects.equals(this.browserVersion, other.browserVersion)) {
-            return false;
-        }
         if (!Objects.equals(this.os, other.os)) {
             return false;
         }
@@ -126,6 +121,6 @@ public class Line {
     @Override
     public String toString() {
         return country + "," + state + "," + city + "," + lat + "," + lng + ","
-                + isp + "," + browser + "," + browserVersion + "," + os;
+                + isp + "," + browser + "," + os;
     }
 }
