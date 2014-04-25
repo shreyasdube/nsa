@@ -245,6 +245,36 @@ var waf = {
     return [{lng:minLng, lat:maxLat}, {lng:maxLng, lat:minLat}];
   },
 
+  attackHistogram: function() {
+    // how many cities have the same number of attacks?
+    var attackCountBreakdown = {}; 
+    waf.data.forEach(function(d) {
+      var count = d.count;
+      if (attackCountBreakdown[count]) {
+        attackCountBreakdown[count].count ++;
+      } else {
+        attackCountBreakdown[count] = {
+          numAttacks: count, 
+          count: 1
+        };
+      }
+    });
+
+    // convert to array
+    var countArray = [];
+    for (var count in attackCountBreakdown) {
+      countArray.push(attackCountBreakdown[count]);
+    }
+
+    // sort array in DESC order
+    countArray.sort(function(a, b) {
+      return d3.descending(a.count, b.count);
+    });
+
+    return countArray;
+
+  }, 
+
   init: function(wafData) {
     waf.data = wafData.map(function(d) {
       // convert numbers and dates
