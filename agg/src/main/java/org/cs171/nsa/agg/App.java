@@ -15,6 +15,8 @@ import java.util.Map;
  *
  */
 public class App {
+    
+    private static int MIN_COUNT = 2;
 
     private static void agg(BufferedWriter w, Long timestamp, List<Line> lines)
             throws IOException {
@@ -36,8 +38,13 @@ public class App {
 
         // write data to file
         for (Map.Entry<Line, Integer> entry : lineCount.entrySet()) {
-            w.write("\n" + timestamp + "," + entry.getKey().toString() + ","
+            if (entry.getValue() >= MIN_COUNT) {
+                w.write("\n" + timestamp + "," + entry.getKey().toString() + ","
                     + entry.getValue());
+            } else {
+                System.out.println("Line Count too low: " + entry.getKey().toString() 
+                        + " ==> " + entry.getValue());
+            }
         }
     }
 
