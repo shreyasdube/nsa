@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class App {
     
-    private static int MIN_COUNT = 2;
+    private static int MIN_COUNT = 60;
 
     private static void agg(BufferedWriter w, Long timestamp, List<Line> lines)
             throws IOException {

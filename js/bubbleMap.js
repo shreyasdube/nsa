@@ -160,13 +160,13 @@ var bubbleMap = {
   update: function() {
     bubbleMap.zoomToFit();
 
-    var radiusNoData = 2;
+    var radiusNoData = .2;
     var data = waf.getAggregatedMapData();
 
     // create linear scale for the radius
     var rScale = d3.scale.sqrt()
       .domain(d3.extent(data, function(d) { return d.count; }))
-      .range([radiusNoData, 20]);
+      .range([2, 20]);
 
     // reset
     // bubbleMap.g.selectAll(".mapAttack").classed("mapAttackDisabled", true);
