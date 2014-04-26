@@ -22,6 +22,6 @@ File.open(filename) do |file|
 
     agent = UserAgent.parse(CGI.unescape(user_agent))
 
-    puts [time_bucket, country, state, city, lat, lon, isp, user_agent.chomp, agent.browser, agent.platform].join(',')
+    puts [time_bucket, country, state, city, lat, lon, isp, user_agent.chomp, agent.browser, agent.version.to_s, agent.platform].join(',')
   end
 end
