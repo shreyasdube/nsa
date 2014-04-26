@@ -48,6 +48,9 @@
       width: 940px;
       font-size: 12px;
     }
+    p.overview a {
+      color: white;
+    }
 
     #numberOfAttacksHeader {
       text-align: center;
@@ -178,8 +181,8 @@
         <div>
           <h1>Not Safe Anymore</h1>
           <h4>Visualizing Web Attacks on the Web over a 24-hour period</h4>
-          <p class="overview">This application allows you to view network attack data that was collected by Akamai's firewalls. It shows the number of attacks originating from each city, based upon the filters that have been applied. That data can be filtered by hour of the day, country, or network (ISP), using the controls at the bottom of the page. By default, all data is displayed.</p>
-          <p class="overview">By hovering over an individual city you can see more granular data about the attacks detected. Clicking and dragging on the map causes the map to pan, and scrolling on the map changes the zoom level. Clicking the play/pause button in the lower left causes the data to animate, showing one hour of data at a time.</p>
+          <p class="overview">This application allows you to view network attack data that was collected by <a href="http://www.akamai.com/html/solutions/waf.html">Akamai's firewalls</a>. It shows the number of attacks originating from each city, based upon the filters that have been applied. That data can be filtered by hour of the day, country, or network (ISP), using the controls at the bottom of the page. By default, all data is displayed.</p>
+          <p class="overview">By hovering over an individual city you can see more granular data about the attacks detected. Clicking and dragging on the map causes the map to pan, and scrolling on the map changes the zoom level. Clicking the play/pause button in the lower left causes the data to animate, showing one hour of data at a time. You can also view data for a specific hour, or an hour range by dragging the left and right edges of the time range selector at the bottom of the page.</p>
         </div>
         <div id="filterSelectors">
           Filter by Country: <span id="countrySelector"></span>
@@ -189,7 +192,7 @@
         <div id="bubbleMap"></div>
         <div id="timeRangeSelector"></div>
         <div>
-          <p class="overview"> The data being presented is based upon a sample of data taken between <span id='data_start'>the start time</span> and <span id='data_end'>the end time</span> GMT.</p>
+          <p class="overview">The data being presented is based upon a sample of data taken between <span id='data_start'>the start time</span> and <span id='data_end'>the end time</span> GMT. To keep the dataset small, we have filtered cities out who have less than <b>60 attacks</b> for a given hour.</p>
         </div>
       </td>
       <!-- right column -->
