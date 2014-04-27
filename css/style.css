@@ -1,20 +1,19 @@
 /* Change the following comments to update the theme
 /*@Attack:rgb(255,0,0)*/
-/*@NoAttack:rgb(224,224,224)*/
+/*@NoAttack:rgb(144,144,144)*/
 /*@Background:rgb(39,40,34)*/
-/*@Lowlight:rgb(135,135,135)*/
-/*@Normal:rgb(186,186,186)*/
+/*@Lowlight:rgb(169,169,169)*/
+/*@Normal:rgb(211,211,211)*/
 /*@Highlight:rgb(255,255,255)*/
 
 body, div.tooltip {
   color: rgb(255,255,255)/*@Highlight*/;
-  background-color: rgb(77,77,77)/*@Background*/;
+  background-color: rgb(39,40,34)/*@Background*/;
 }
 
 text, body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 9pt;
-  /*font-weight: bold;*/
 }
 
 h2 {
@@ -22,7 +21,7 @@ h2 {
 }
 
 p {
-  color: rgb(186,186,186)/*@Normal*/;
+  color: rgb(211,211,211)/*@Normal*/;
 }
 
 svg {
@@ -30,6 +29,10 @@ svg {
 
 p.overview {
   width: 940px;
+  font-size: 12px;
+}
+p.overview a {
+  color: rgb(255,255,255)/*@Highlight*/;
 }
 
 #numberOfAttacksHeader {
@@ -38,7 +41,7 @@ p.overview {
 #numberOfAttacks {
   font-size: 30px;
   font-weight: bold;
-  color: rgb(178,24,43)/*@Attack*/;
+  color: rgb(255,0,0)/*@Attack*/;
   text-align: center;
   padding-bottom: 20px;
 }
@@ -68,11 +71,11 @@ p.overview {
 }
 
 .timeAttack {
-  fill: rgb(178,24,43)/*@Attack*/;
+  fill: rgb(255,0,0)/*@Attack*/;
 }
 
 .timeAttack.noAttack {
-  fill: rgb(224,224,224)/*@NoAttack*/;
+  fill: rgb(144,144,144)/*@NoAttack*/;
 }
 
 .country {
@@ -100,7 +103,7 @@ p.overview {
 }
 
 .polarAttack {
-  stroke: rgb(178,24,43)/*@Attack*/;
+  stroke: rgb(255,0,0)/*@Attack*/;
   stroke-width: 4;
 }
 
@@ -114,11 +117,11 @@ p.overview {
   text-align: right;
 }
 .dataTable td {
-  color: rgb(186,186,186)/*@Normal*/;
+  color: rgb(211,211,211)/*@Normal*/;
   text-align: left;
 }
 .dataTable td.count {
-  color: rgb(178,24,43)/*@Attack*/;
+  color: rgb(255,0,0)/*@Attack*/;
   text-align: right;
 }
 
@@ -135,15 +138,18 @@ table td {
 }
 
 .mapAttack {
-  fill: rgb(178,24,43)/*@Attack*/;
+  fill: rgb(255,0,0)/*@Attack*/;
   opacity: 0.4;
-  stroke: yellow;
-  stroke-width: 0px;
+}
+
+.hideAttack {
+  fill-opacity: 0.2;
+  stroke-opacity: 0.8;
+  stroke-width: .1;
 }
 
 .mapAttack.noAttack {
-  stroke: rgb(224,224,224)/*@NoAttack*/;
-  stroke-width: 0.3px;
+  stroke: rgb()144,144,144,224,224)/*@NoAttack*/;
 }
 
 .mapOverlay {
@@ -165,5 +171,5 @@ div#filterSelectors {
   padding: 4px;
   border: 1px solid rgb(255,255,255)/*@Highlight*/;
   border-radius: 8px;
-  background-color: #272822/*@Background*/
+  background-color: rgb(39,40,34)/*@Background*/
 }

@@ -1,31 +1,44 @@
 var uiUtil = {
-
+  themeSelectorId: null,
   countrySelectorId: null,
   networkSelectorId: null,
   playButtonId: null,
   timeRangeSelector: null,
   isPlaying: false,
-  colorBlind: false,
-
-  toggleTheme: function() {
-    uiUtil.colorBlind = !uiUtil.colorBlind;
-    if (uiUtil.colorBlind) {
-      swapAProperty({selectorName:'@Attack', property:'rgb(178,24,43)'});
-      swapAProperty({selectorName:'@NoAttack', property:'rgb(224,224,224)'});
-      swapAProperty({selectorName:'@Background', property:'rgb(77,77,77)'});
-      swapAProperty({selectorName:'@Lowlight', property:'rgb(135,135,135)'});
-      swapAProperty({selectorName:'@Normal', property:'rgb(186,186,186)'});
-      swapAProperty({selectorName:'@Highlight', property:'rgb(255,255,255)'});
-    } else {
-      swapAProperty({selectorName:'@Attack', property:'rgb(255,0,0)'});
-      swapAProperty({selectorName:'@NoAttack', property:'rgb(224,224,224)'});
-      swapAProperty({selectorName:'@Background', property:'rgb(39,40,34)'});
-      swapAProperty({selectorName:'@Lowlight', property:'rgb(135,135,135)'});
-      swapAProperty({selectorName:'@Normal', property:'rgb(186,186,186)'});
-      swapAProperty({selectorName:'@Highlight', property:'rgb(255,255,255)'});
+  themes: {
+    standard: {
+      label: "Standard",
+      Attack: [255,0,0],
+      NoAttack: [144,144,144],
+      Background: [39,40,34],
+      Lowlight: [169,169,169],
+      Normal: [211,211,211],
+      Highlight: [255,255,255]
+    },
+    colorblind: {
+      label: "Color-blind Friendly",
+      Attack: [178,24,43],
+      NoAttack: [224,224,224],
+      Background: [77,77,77],
+      Lowlight: [135,135,135],
+      Normal: [186,186,186],
+      Highlight: [255,255,255]
     }
-    refreshTheme();
   },
+
+  initThemeSelector: function(themeSelectorId) {
+    uiUtil.themeSelectorId = themeSelectorId;
+
+    var select = d3.select(themeSelectorId).append("select");
+    select.selectAll("option").data(Object.keys(uiUtil.themes))
+      .enter().append("option")
+      .attr("value", function(d) { return d; })
+      .text(function(d) { return uiUtil.themes[d].label; });
+
+    return select;
+  },
+  // swapAProperty({selectorName:'@Attack', property:'rgb(178,24,43)'});
+  // refreshTheme();
 
   initCountrySelector: function(countrySelectorId) {
     uiUtil.countrySelectorId = countrySelectorId;

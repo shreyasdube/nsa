@@ -38,6 +38,19 @@ var controller = {
     waf.init(wafData);
     // init utils
     countryCodes.init(countries, world);
+    uiUtil.initThemeSelector("#themeSelector")
+      .on("change", function() {
+        var selectedTheme = d3.event.target.value;
+        Object.keys(uiUtil.themes[selectedTheme]).forEach(function(k) {
+          if (k != "label") {
+            swapAProperty({
+              selectorName: "@" + k,
+              property: "rgb(" + uiUtil.themes[selectedTheme][k].join(",") + ")"
+            });
+          }
+        });
+        refreshTheme();
+      });
     uiUtil.initCountrySelector("#countrySelector")
       .on("change", function() {
         controller.update();
