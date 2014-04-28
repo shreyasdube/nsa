@@ -1,0 +1,21 @@
+0,0007_3683,1385941835451,76.103.44.68,51031,GET,msn.foxsports.com,%2Flogin,,cfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Flogin%3Fcfu%3Dhttp%3A%2F%2Fmsn.foxsports.com%2Fnfl%2Flaces-out%2Fjim-harbaugh-just-saw-his-player-get-brought-down-by-his-120113,302,ccac90b,US,CA,OAKLAND,807,5775,510,ALAMEDA,06001,37.8430,-122.2388,94601-94607 94609-94615 94617-94619 94621-94624 94649 94659-94661 94666,NA,vhigh,5000,33651,PST,comcast,cable,7362,80,http,Mozilla%2F5.0+%28compatible%3B+MSIE+10.0%3B+Windows+NT+6.1%3B+WOW64%3B+Trident%2F6.0%29,http%3A%2F%2Fnews.google.com%2F,16941160343ccac90b,1.1,7988,3,959904%40%21%40true%40%21%400%40%21%40Blind+SQL+Injection+Attack%40%21%40WEB_ATTACK%2FSQL_INJECTION%40%21%40substring%40%21%40REQUEST_HEADERS%3ACookie%40%21%40%23%21%23
+
+0,nsst_7485,1385941465925,70.196.6.42,14094,GET,i.nordstromimage.com,%2Fimages%2Fstore%2Fpromos%2Fiphone_app%2Fv1%2Fdepts%2FJuniors%402x.png,,,403,36ffcdb7,US,TX,DALLAS,623,1920,214 972,DALLAS,48113,32.8367,-96.796,75201-75212 75214-75238 75240-75244 75246-75254 75260-75267 75270 75275 75277 75283-75285 75287 75301 75303 75312-75313 75315 75320 75326 75336 75339 75342 75354-75360 75367-75368 75370-75374 75376 75378-75382 75389-75395 75397-75398,NA,vhigh,5000,22394,CST,verizon,mobile,1922,80,http,,,67cb11601d136ffcdb7,1.1,83157,2,699991%40%21%40true%40%21%400%40%21%40Request+Missing+%2F+blank+User-Agent+and+Accept+Headers%40%21%40AKAMAI%2FBOT_DETECT_v1%40%21%40%40%21%40%40%21%40%23%21%23
+
+C - timestamp
+D - IP
+M - Country
+N - State
+O - City
+U - Lat
+V - Lng
+AC - Network
+AH - Useragent
+
+3,13,14,15,21,22,29,34,4
+
+
+
+rsync -avzh /archive_data/WAF/2014/04/15 .
+for f in *.gz; do echo "start $f"; zcat $f | cut -d, -f 3,13,14,15,21,22,29,34 > $f.csv; echo "end $f"; done
+cat *.csv > waf-20140415
