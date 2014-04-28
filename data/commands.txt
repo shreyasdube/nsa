@@ -1,6 +1,18 @@
-cd ruby/
-ruby parse.rb ../data/waf-20131129 60 > ../data/waf-20131129_cleaned
+C - timestamp
+D - IP
+M - Country
+N - State
+O - City
+U - Lat
+V - Lng
+AC - Network
+AH - Useragent
 
+3,13,14,15,21,22,29,34,4
+
+rsync -avzh /archive_data/WAF/2014/04/15 .
+for f in *.gz; do echo "start $f"; zcat $f | cut -d, -f 3,13,14,15,21,22,29,34 > $f.csv; echo "end $f"; done
+cat *.csv > waf-20140415
 
 -----
 cd ruby/
