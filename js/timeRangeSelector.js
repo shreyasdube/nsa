@@ -1,6 +1,6 @@
 var timeRangeSelector = {
   bb: null,
-  g: null, 
+  g: null,
   x: d3.scale.linear(),
   y: d3.scale.linear(),
   yAxis: d3.svg.axis(),
@@ -10,7 +10,7 @@ var timeRangeSelector = {
 
   // add brushing; heavily inspired by [5]
   initBrushing: function() {
-    
+
     timeRangeSelector.brush = d3.svg.brush()
       .x(timeRangeSelector.x)
       .extent(timeRangeSelector.defaultExtent);
@@ -78,7 +78,7 @@ var timeRangeSelector = {
           .call(timeRangeSelector.brush.event);
 
       console.log("brushend", timeRangeSelector.getSelectedTimeRange());
-      
+
       // update the UI!
       controller.update();
     }
@@ -103,7 +103,7 @@ var timeRangeSelector = {
     timeRangeSelector.x
       .domain([0, data.length])
       .range([0, bb.width]);
-    
+
     timeRangeSelector.y
       .domain([0, d3.max(data)])
       .rangeRound([bb.height, 0]);
@@ -182,7 +182,7 @@ var timeRangeSelector = {
     } else {
       return timeRangeSelector.defaultExtent;
     }
-  }, 
+  },
 
   colorSelectedBars: function() {
     var s = timeRangeSelector.getSelectedTimeRange();

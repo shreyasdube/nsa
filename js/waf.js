@@ -85,7 +85,7 @@ var waf = {
     });
 
     return hourBuckets;
-  }, 
+  },
 
   getFilteredDataGroupedHourly: function() {
     return waf.groupHourly(waf.timeFilteredData);
@@ -184,13 +184,13 @@ var waf = {
 
     return {
       attacks: {
-        city: city.count, 
+        city: city.count,
         total: waf.getNumberOfAttacks()
-      }, 
-      // hourlyFiltered: waf.groupHourly(cityData), 
-      hourlyComplete: waf.groupHourly(completeCityData), 
+      },
+      // hourlyFiltered: waf.groupHourly(cityData),
+      hourlyComplete: waf.groupHourly(completeCityData),
     };
-  }, 
+  },
 
   getTopBrowsers: function() {
     counts = {};
@@ -247,14 +247,14 @@ var waf = {
 
   attackHistogram: function() {
     // how many cities have the same number of attacks?
-    var attackCountBreakdown = {}; 
+    var attackCountBreakdown = {};
     waf.data.forEach(function(d) {
       var count = d.count;
       if (attackCountBreakdown[count]) {
         attackCountBreakdown[count].count ++;
       } else {
         attackCountBreakdown[count] = {
-          numAttacks: count, 
+          numAttacks: count,
           count: 1
         };
       }
@@ -273,7 +273,7 @@ var waf = {
 
     return countArray;
 
-  }, 
+  },
 
   init: function(wafData) {
     waf.data = wafData.map(function(d) {

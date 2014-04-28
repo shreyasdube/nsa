@@ -7,10 +7,10 @@ threadsafe: yes
 handlers:
 - url: /data
   static_dir: data
-  
+
 - url: /lib
   static_dir: lib
-  
+
 - url: /js
   static_dir: js
 

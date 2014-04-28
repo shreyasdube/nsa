@@ -16,8 +16,8 @@ var bubbleMap = {
     bubbleMap.tooltip.html("");
 
     // city name and count
-    var html = city.city + ": <b>" 
-      + (showCount ? numberFormat(city.count) : "-") 
+    var html = city.city + ": <b>"
+      + (showCount ? numberFormat(city.count) : "-")
       + "</b>";
     bubbleMap.tooltip.append("div")
       .html(html);
@@ -35,9 +35,9 @@ var bubbleMap = {
     // bounding box for tooltip viz
     var bb = {};
     bb.margin = {
-      top: 10, 
-      right: 40, 
-      bottom: 20, 
+      top: 10,
+      right: 40,
+      bottom: 20,
       left: 60
     };
     bb.height = 100 - bb.margin.top - bb.margin.bottom;
@@ -47,7 +47,7 @@ var bubbleMap = {
     var g = bubbleMap.tooltip
       .append("svg")
         .attr({
-          width: bb.width + bb.margin.left + bb.margin.right, 
+          width: bb.width + bb.margin.left + bb.margin.right,
           height: bb.height + bb.margin.top + bb.margin.bottom
         })
       .append("g")
@@ -105,7 +105,7 @@ var bubbleMap = {
             return colorNoAttack;
           }
         });
-  }, 
+  },
 
   zoomToFit: function() {
     var autoZoomMargin = 40;  // includes both sides
@@ -251,7 +251,6 @@ var bubbleMap = {
         .style("opacity", 0.9)
 
       bubbleMap.createTooltip(d, showCount);
-      
       bubbleMap.tooltip
         .style("left", (d3.event.pageX) + "px")
         .style("top", (d3.event.pageY) + "px");

@@ -2,18 +2,18 @@ var controller = {
   // initialize map of data files we have
   datasets: {
     taxDay: {
-      file: "../data/waf-20140415_cleaned_sorted_agg", 
+      file: "../data/waf-20140415_cleaned_sorted_agg",
       description: "2014 Tax Day"
     },
     blackFriday: {
-      file: "../data/waf-20131129_cleaned_sorted_agg", 
+      file: "../data/waf-20131129_cleaned_sorted_agg",
       description: "2013 Black Friday"
     },
     cyberMonday: {
-      file: "../data/waf-20131202_cleaned_agg", 
+      file: "../data/waf-20131202_cleaned_agg",
       description: "2013 Cyber Monday"
     }
-  }, 
+  },
   // retrieves query parameter from the URL
   getRequestParameter: function (name) {
     var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
@@ -73,11 +73,11 @@ var controller = {
   init: function() {
     // select default data file
     var selectedDataset = controller.datasets["taxDay"];
-    var day = controller.getRequestParameter("day"); 
+    var day = controller.getRequestParameter("day");
     if (day && controller.datasets[day]) {
       selectedDataset = controller.datasets[day];
     }
-    // update heading 
+    // update heading
     d3.select("#datasetDescription").text(selectedDataset.description);
     console.log("displaying data for " + selectedDataset.description);
 

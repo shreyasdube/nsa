@@ -44,7 +44,7 @@ var countryCodes = {
 
     countryCodes.initIsoCodeLookupTable(countries, wafCodes);
     countryCodes.initGeoJsonCodeLookupTable(countries, wafCodes);
-  }, 
+  },
 
   getSortedCountries: function() {
     // get all countries in sorted order

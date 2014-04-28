@@ -117,14 +117,14 @@ var uiUtil = {
       // also see [4]
       .tween("text", function() {
         // remove all ","s from the string; see [2]
-        var number = this.textContent.split(",").join(""); 
+        var number = this.textContent.split(",").join("");
         var i = d3.interpolate(+number, count);
 
         return function(t) {
           this.textContent = numberFormat(Math.round(i(t)));
         };
       });
-  }, 
+  },
 
   update: function() {
     uiUtil.updateNumberOfAttacks();
