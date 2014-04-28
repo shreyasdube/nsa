@@ -6,6 +6,6 @@ mvn clean package
 # run
 java -Xmx2048m -cp target/agg-1.0.0-SNAPSHOT.jar org.cs171.nsa.agg.App ../data/waf-20131129_cleaned_sorted
 
-java -Xmx2048m -cp target/agg-1.0.0-SNAPSHOT.jar org.cs171.nsa.agg.App ../data/waf-20131202_cleaned
+java -Xmx2048m -cp target/agg-1.0.0-SNAPSHOT.jar org.cs171.nsa.agg.App ../data/waf-20131202_cleaned_sorted
 
 java -Xmx2048m -cp target/agg-1.0.0-SNAPSHOT.jar org.cs171.nsa.agg.App ../data/waf-20140415_cleaned_sorted

@@ -10,7 +10,7 @@ var controller = {
       description: "2013 Black Friday"
     },
     cyberMonday: {
-      file: "../data/waf-20131202_cleaned_agg",
+      file: "../data/waf-20131202_cleaned_sorted_agg",
       description: "2013 Cyber Monday"
     }
   },
