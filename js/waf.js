@@ -69,6 +69,8 @@ var waf = {
     var data = waf.getFilteredDataGroupedHourly().map(function (d, i) {
       if (i >= extent[0] && i < extent[1]) return d;
     });
+
+    // calculate the mean, and then return an arc of that value
     var mean = d3.mean(data);
     return d3.range(24).map(function(d, i) {
       if (i >= extent[0] && i < extent[1]) return mean;
@@ -97,6 +99,7 @@ var waf = {
   },
 
   getFilteredHierarchy: function() {
+    // this dataset can be used by hierarchical visualizations
     var root = {Attacks: {}}
 
     waf.timeFilteredData.forEach(function(d) {
@@ -166,6 +169,7 @@ var waf = {
   getNumberOfAttacks: function() {
     var count = 0;
 
+    // sum all the things!
     waf.timeFilteredData.forEach(function(d) {
       count += d.count;
     });
@@ -187,7 +191,6 @@ var waf = {
         city: city.count,
         total: waf.getNumberOfAttacks()
       },
-      // hourlyFiltered: waf.groupHourly(cityData),
       hourlyComplete: waf.groupHourly(completeCityData),
     };
   },
@@ -238,6 +241,7 @@ var waf = {
   },
 
   visibleRange: function() {
+    // find the bounds of the visible data for auto-zooming
     var minLng = d3.min(waf.filteredData.map(function(d) { return d.lng; }));
     var minLat = d3.min(waf.filteredData.map(function(d) { return d.lat; }));
     var maxLng = d3.max(waf.filteredData.map(function(d) { return d.lng; }));

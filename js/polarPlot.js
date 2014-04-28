@@ -20,6 +20,7 @@ function PolarPlot(vizBody, bounds, categories, valueFuncs, styleClass) {
       left: 10
     };
 
+    // figure out the largest possible circle
     var heightCircleConstraint = that.bounds.height - vizPadding.top - vizPadding.bottom;
     var widthCircleConstraint = that.bounds.width - vizPadding.left - vizPadding.right;
     that.maxRadius = d3.min([heightCircleConstraint, widthCircleConstraint]) / 2;
@@ -31,11 +32,13 @@ function PolarPlot(vizBody, bounds, categories, valueFuncs, styleClass) {
     that.radius = d3.scale.linear().domain([0, that.maxVal])
       .range([0, that.maxRadius]);
 
+    // center the circle in the box
     that.vizBody.attr("transform",
       "translate(" + centerX + ", " + centerY + ")");
   };
 
   this.addAxes = function() {
+    // create the axes
     var radialTicks = that.radius.ticks(5);
 
     that.vizBody.selectAll('.circle-ticks').remove();
@@ -84,6 +87,7 @@ function PolarPlot(vizBody, bounds, categories, valueFuncs, styleClass) {
     var lines = that.vizBody.selectAll('.line')
       .data(that.values);
 
+    // draw the line
     lines.enter().append('svg:path')
       .attr("d", d3.svg.line.radial()
         .radius(function (d) { return 0; })
@@ -95,6 +99,7 @@ function PolarPlot(vizBody, bounds, categories, valueFuncs, styleClass) {
       .attr('class', function (d, i) { return "line " + that.styleClass(i); })
       .style("fill", "none");
 
+    // animate the changes
     lines.transition()
       .duration(transitionDuration)
       .attr("d", d3.svg.line.radial()
@@ -107,6 +112,7 @@ function PolarPlot(vizBody, bounds, categories, valueFuncs, styleClass) {
   };
 
   this.update = function() {
+    // update the dataset
     that.values = that.valueFuncs.map(function (d) {
       return d().concat(d()[0]);
     });
@@ -114,12 +120,15 @@ function PolarPlot(vizBody, bounds, categories, valueFuncs, styleClass) {
     that.radius = d3.scale.linear().domain([0, that.maxVal])
       .range([0, that.maxRadius]);
 
+    // figure out the new axes
     that.addAxes();
 
+    // draw it!
     return that.draw();
   };
 
   this.flatten = function(values) {
+    // a helper to flatten lists
     return values.reduce(function(prev, curr) {
       return prev.concat(curr);
     },[]);
@@ -131,6 +140,7 @@ function PolarPlot(vizBody, bounds, categories, valueFuncs, styleClass) {
     return d().concat(d()[0]);
   });
 
+  // do all the things
   this.setScales();
   this.addAxes();
   this.draw();

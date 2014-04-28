@@ -84,6 +84,7 @@ var uiUtil = {
 
     var that = this;
 
+    // create a callback at each tick
     var tickCallback = function() {
       return function() {
         if (that.isPlaying) {
@@ -94,6 +95,7 @@ var uiUtil = {
       }
     };
 
+    // create the play/pause button
     var button = d3.select(playButtonId)
       .append("image")
         .attr({
@@ -104,6 +106,7 @@ var uiUtil = {
           "xlink:href": "/img/play_pause.png"
         })
         .on("click", function() {
+          // toggle on each click
           that.isPlaying = !(that.isPlaying);
           if (that.isPlaying) d3.timer(tickCallback());
         });

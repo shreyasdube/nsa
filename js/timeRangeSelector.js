@@ -38,7 +38,6 @@ var timeRangeSelector = {
 
     var brushStart = function() {
       console.log("brushstart");
-      // todo what does this do?
       timeRangeSelector.g.classed("selecting", true);
     }
 
@@ -91,7 +90,6 @@ var timeRangeSelector = {
 
     brushStart();
     timeRangeSelector.colorSelectedBars();
-    // brushMove();
   },
 
   init: function(gWrapper, bb) {
@@ -176,7 +174,6 @@ var timeRangeSelector = {
   getSelectedTimeRange: function() {
     if (timeRangeSelector.brush) {
       var extent = timeRangeSelector.brush.extent();
-      // extent[1] = Math.floor(Math.max(1, extent[1]));
       console.log("extent: " + extent);
       return extent;
     } else {

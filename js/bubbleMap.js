@@ -168,17 +168,12 @@ var bubbleMap = {
       .domain(d3.extent(data, function(d) { return d.count; }))
       .range([radiusNoData, 20]);
 
-    // reset
-    // bubbleMap.g.selectAll(".mapAttack").classed("mapAttackDisabled", true);
-    // bubbleMap.g.selectAll(".mapAttack").remove();
-
     // use object constancy to preserve data bindings
     // see [1]
     var selection = bubbleMap.g.selectAll(".mapAttack")
       // some cities can have the same name, so I am concat'ing it with the latitude
       // to create a unique key
       .data(data, function(d) { return d.id; });
-      // .data(data);
 
     // new circles
     selection.enter().append("circle")
@@ -209,12 +204,10 @@ var bubbleMap = {
     selection
       // show updated tooltip
       .on("mouseover", function(d, i) {
-        // this.style.strokeWidth = "2px";
         hoverOver(d.id);
         showTooltip(d, d.count > 0);
       })
       .on("mouseout", function(d, i) {
-        // this.style.strokeWidth = "0px";
         hoverOut();
         hideTooltip(d);
       })
@@ -228,6 +221,7 @@ var bubbleMap = {
           return d.count ? colorAttack : colorNoAttack;
         });
 
+    // sort the circles
     selection.order();
 
     // exiting circles
@@ -288,7 +282,6 @@ var bubbleMap = {
 
     bubbleMap.mapOverlay = gWrapper.append("rect")
         .attr("class", "mapOverlay")
-        // .attr("transform", "translate(" + bbMap.left + "," + bbMap.top + ")")
         .attr("width", bbMap.width)
         .attr("height", bbMap.height)
 
@@ -307,18 +300,16 @@ var bubbleMap = {
     bubbleMap.path = d3.geo.path().projection(bubbleMap.projection);
 
     bubbleMap.zoom = d3.behavior.zoom()
-        // .translate([0, 0])
-        // .scale(1)
-        .scaleExtent([1, 24])
-        .on("zoom", function() {
-          bubbleMap.g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-        });
+      .scaleExtent([1, 24])
+      .on("zoom", function() {
+        bubbleMap.g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+      });
 
     bubbleMap.g.selectAll("path")
-        .data(world.features)
-        .enter().append("path")
-          .attr("class", "country")
-          .attr("d", bubbleMap.path);
+      .data(world.features)
+      .enter().append("path")
+        .attr("class", "country")
+        .attr("d", bubbleMap.path);
 
     bubbleMap.mapOverlay.call(bubbleMap.zoom);
   }
