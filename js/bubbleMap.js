@@ -160,7 +160,7 @@ var bubbleMap = {
   update: function() {
     bubbleMap.zoomToFit();
 
-    var radiusNoData = .5;
+    var radiusNoData = .8;
     var data = waf.getAggregatedMapData();
 
     // create linear scale for the radius
