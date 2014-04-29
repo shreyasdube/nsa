@@ -4,6 +4,8 @@ CS171 Final Project - Visualization of Web Attacks on the Web over a 24-hour per
 
 URL: http://notsafeanymo.appspot.com/
 
+Screencast: https://www.youtube.com/watch?v=5Nn5gk7E-38&feature=youtu.be
+
 Authors:
 * Shreyas Dube
 * Christopher Gerber
@@ -14,7 +16,9 @@ Authors:
 * HTML: `index.html`
 
 ### Data
-* `data/waf_5mi` for the attack dataset
+* `waf-20131129_cleaned_sorted_agg` for the Black Friday 2013 dataset
+* `waf-20131202_cleaned_sorted_agg` for the Cyber Monday 2013 dataset
+* `waf-20140415_cleaned_sorted_agg` for the Tax Day 2014 dataset
 * `data/countrycodes.json` and `data/world_data.json` reused from HW4 for map data
 
 ## Background and Motivation 
