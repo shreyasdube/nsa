@@ -165,7 +165,7 @@ var bubbleMap = {
 
     // create linear scale for the radius
     var rScale = d3.scale.sqrt()
-      .domain(d3.extent(data, function(d) { return d.count; }))
+      .domain([0, d3.max(data, function(d) { return d.count; })])
       .range([radiusNoData, 20]);
 
     // use object constancy to preserve data bindings
