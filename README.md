@@ -16,9 +16,9 @@ Authors:
 * HTML: `index.html`
 
 ### Data
-* `waf-20131129_cleaned_sorted_agg` for the Black Friday 2013 dataset
-* `waf-20131202_cleaned_sorted_agg` for the Cyber Monday 2013 dataset
-* `waf-20140415_cleaned_sorted_agg` for the Tax Day 2014 dataset
+* `data/waf-20131129_cleaned_sorted_agg` for the Black Friday 2013 dataset
+* `data/waf-20131202_cleaned_sorted_agg` for the Cyber Monday 2013 dataset
+* `data/waf-20140415_cleaned_sorted_agg` for the Tax Day 2014 dataset
 * `data/countrycodes.json` and `data/world_data.json` reused from HW4 for map data
 
 ## Background and Motivation 
