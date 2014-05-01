@@ -28,7 +28,7 @@ var waf = {
     var country = uiUtil.getSelectedCountry();
     var network = uiUtil.getSelectedNetwork();
 
-    console.log("filter by ", country, network);
+    // console.log("filter by ", country, network);
     return waf.data.filter(function(d) {
       // if both are *, return immediately
       if (country === "*" && network === "*") {
@@ -50,7 +50,7 @@ var waf = {
 
   refreshFilteredData: function() {
     var extent  = timeRangeSelector.getSelectedTimeRange();
-    console.log("filter by extent", extent);
+    // console.log("filter by extent", extent);
 
     // Recache the filtered data before applying time filter
     waf.filteredData = waf.filterByCountryAndNetwork();

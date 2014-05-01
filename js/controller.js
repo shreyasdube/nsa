@@ -22,7 +22,6 @@ var controller = {
 
   // called when the selector(s) are changed
   update: function() {
-    console.log("update!");
     timeRangeSelector.update();
     waf.refreshFilteredData();
     uiUtil.update();
@@ -79,7 +78,6 @@ var controller = {
     }
     // update heading
     d3.select("#datasetDescription").text(selectedDataset.description);
-    console.log("displaying data for " + selectedDataset.description);
 
     queue()
       .defer(d3.csv, selectedDataset.file)

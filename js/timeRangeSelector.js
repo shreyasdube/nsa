@@ -37,12 +37,10 @@ var timeRangeSelector = {
       .attr("height", timeRangeSelector.bb.height);
 
     var brushStart = function() {
-      console.log("brushstart");
       timeRangeSelector.g.classed("selecting", true);
     }
 
     var brushMove = function() {
-      console.log("brushmove");
       timeRangeSelector.colorSelectedBars();
 
       // reduce animation duration to ensure we can see realtime changes
@@ -76,7 +74,7 @@ var timeRangeSelector = {
           .call(timeRangeSelector.brush.extent(extent1))
           .call(timeRangeSelector.brush.event);
 
-      console.log("brushend", timeRangeSelector.getSelectedTimeRange());
+      // console.log("brushend", timeRangeSelector.getSelectedTimeRange());
 
       // update the UI!
       controller.update();
@@ -150,7 +148,6 @@ var timeRangeSelector = {
   },
 
   update: function() {
-    console.log("update time range!");
     var data = waf.getCompleteFilteredDataGroupedHourly();
 
     // update y-scale
@@ -174,7 +171,7 @@ var timeRangeSelector = {
   getSelectedTimeRange: function() {
     if (timeRangeSelector.brush) {
       var extent = timeRangeSelector.brush.extent();
-      console.log("extent: " + extent);
+      // console.log("extent: " + extent);
       return extent;
     } else {
       return timeRangeSelector.defaultExtent;
