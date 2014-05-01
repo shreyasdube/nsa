@@ -14,6 +14,7 @@ var controller = {
       description: "2013 Cyber Monday"
     }
   },
+
   // retrieves query parameter from the URL
   getRequestParameter: function (name) {
     var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
@@ -35,8 +36,9 @@ var controller = {
   initVis: function(error, wafData, world, countries) {
     // stash data
     waf.init(wafData);
-    // init utils
+    // init contry codes
     countryCodes.init(countries, world);
+    // init filter selectors
     uiUtil.initCountrySelector("#countrySelector")
       .on("change", function() {
         controller.update();
@@ -52,6 +54,7 @@ var controller = {
 
     // init time range selector
     timeRangeSelector.init(gTimeSelector, bbTimeSelector);
+    // and animation button
     uiUtil.initPlayButton("#playButtonWrapper", timeRangeSelector);
 
     // init the world map

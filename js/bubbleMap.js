@@ -171,8 +171,6 @@ var bubbleMap = {
     // use object constancy to preserve data bindings
     // see [1]
     var selection = bubbleMap.g.selectAll(".mapAttack")
-      // some cities can have the same name, so I am concat'ing it with the latitude
-      // to create a unique key
       .data(data, function(d) { return d.id; });
 
     // new circles
@@ -184,18 +182,15 @@ var bubbleMap = {
         .attr("r", function(d) { return rScale(d.count); })
         .style({
           fill: colorAttack,
-          // 'stroke-width': "0px",
           stroke: colorAttack
         })
         // show tooltip
         .on("mouseover", function(d, i) {
-          // this.style.strokeWidth = "2px";
           hoverOver(d.id);
           showTooltip(d, d.count > 0);
         })
         // hide tooltip
         .on("mouseout", function(d, i) {
-          // this.style.strokeWidth = "0px";
           hoverOut();
           hideTooltip(d);
         });
@@ -223,21 +218,6 @@ var bubbleMap = {
 
     // sort the circles
     selection.order();
-
-    // exiting circles
-    /*selection.exit()
-      // show updated tooltip
-      .on("mouseover", function(d, i) {
-        showTooltip(d, false);
-      })
-      // hide tooltip
-      .on("mouseout", function(d, i) {
-        hideTooltip(d);
-      })
-      .transition()
-      .duration(transitionDuration)
-        .attr("r", radiusNoData)
-        .style("fill", colorNoAttack);*/
 
     var showTooltip = function(d, showCount) {
       bubbleMap.tooltip.transition()
@@ -272,7 +252,6 @@ var bubbleMap = {
   init: function(gWrapper, bbMap, world) {
     bubbleMap.bb = bbMap;
     // this will clip paths and points that lie outside the drawable area
-    // thanks to [1]
     gWrapper.append("defs")
       .append("clipPath")
         .attr("id", "bubbleMapClipper")
@@ -299,12 +278,14 @@ var bubbleMap = {
     // path used to draw the world map
     bubbleMap.path = d3.geo.path().projection(bubbleMap.projection);
 
+    // zoom behavior
     bubbleMap.zoom = d3.behavior.zoom()
       .scaleExtent([1, 24])
       .on("zoom", function() {
         bubbleMap.g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
       });
 
+    // draw map
     bubbleMap.g.selectAll("path")
       .data(world.features)
       .enter().append("path")

@@ -249,6 +249,7 @@ var waf = {
     return [{lng:minLng, lat:maxLat}, {lng:maxLng, lat:minLat}];
   },
 
+  // for testing only!
   attackHistogram: function() {
     // how many cities have the same number of attacks?
     var attackCountBreakdown = {};

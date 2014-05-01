@@ -279,12 +279,14 @@
           height: bbTimeSelector.height + bbTimeSelector.margin.top + bbTimeSelector.margin.bottom
         });
 
+    // animation button
     var gPlayButton = tsSvg.append("g")
       .attr({
         id: "playButtonWrapper",
         transform: "translate(" + bbPlayButton.left + "," + bbPlayButton.top + ")"
       });
 
+    // time range selector
     var gTimeSelector = tsSvg.append("g")
       .attr({
         class: "timeRangeWrapper",

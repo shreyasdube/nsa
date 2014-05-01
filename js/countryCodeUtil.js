@@ -3,7 +3,7 @@ var countryCodes = {
   iso2CountryCodes: {},
   geoJsonCountryCodes: {},
 
-
+  // creates a map of countries either based on iso2Code or id
   initCountriesMap: function(countries, useIso2Code) {
     var countriesMap = {};
     countries.forEach(function(d) {
@@ -13,6 +13,7 @@ var countryCodes = {
     return countriesMap;
   },
 
+  // inits iso code lookup table
   initIsoCodeLookupTable: function(countries, wafCodes) {
     var countriesMap = countryCodes.initCountriesMap(countries, true);
     for (var wafCountry in wafCodes) {
@@ -26,6 +27,7 @@ var countryCodes = {
     }
   },
 
+  // inits geoJson code lookup table
   initGeoJsonCodeLookupTable: function(countries, wafCodes) {
     var countriesMap = countryCodes.initCountriesMap(countries, false);
     for (var wafCountry in wafCodes) {
@@ -42,6 +44,7 @@ var countryCodes = {
       wafCodes[countryCode] = countryCode;
     });
 
+    // init lookup tables
     countryCodes.initIsoCodeLookupTable(countries, wafCodes);
     countryCodes.initGeoJsonCodeLookupTable(countries, wafCodes);
   },

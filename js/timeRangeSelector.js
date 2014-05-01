@@ -33,6 +33,7 @@ var timeRangeSelector = {
         .attr("transform", "translate(0," + timeRangeSelector.bb.height / 2 + ")")
         .attr("d", arc);
 
+    // set height
     gBrush.selectAll("rect")
       .attr("height", timeRangeSelector.bb.height);
 
@@ -55,9 +56,6 @@ var timeRangeSelector = {
     }
 
     var brushEnd = function() {
-      // todo what does this do?
-      // timeRangeSelector.g.classed("selecting", !d3.event.target.empty());
-
       // brush snapping! see [6]
       if (!d3.event.sourceEvent) return; // only transition after input
       var extent0 = timeRangeSelector.brush.extent();
@@ -86,6 +84,7 @@ var timeRangeSelector = {
       .on("brush", brushMove)
       .on("brushend", brushEnd);
 
+    // initial brushing
     brushStart();
     timeRangeSelector.colorSelectedBars();
   },
@@ -94,8 +93,10 @@ var timeRangeSelector = {
     timeRangeSelector.bb = bb;
     timeRangeSelector.g  = gWrapper;
 
+    // get data
     var data = waf.getCompleteFilteredDataGroupedHourly();
 
+    // create x and y scale
     timeRangeSelector.x
       .domain([0, data.length])
       .range([0, bb.width]);
@@ -104,6 +105,7 @@ var timeRangeSelector = {
       .domain([0, d3.max(data)])
       .rangeRound([bb.height, 0]);
 
+    // create x and y axis
     var xAxis = d3.svg.axis()
       .scale(timeRangeSelector.x)
       .orient("bottom");
